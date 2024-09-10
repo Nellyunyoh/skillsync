@@ -17,10 +17,10 @@ body {
 .black {
   color: white;
   display: flex;
+  font-weight: bold;
   gap: 20px;
+  text-decoration: none;
 }
-
-
 
 .sidebar {
   width: 20%;
@@ -30,7 +30,7 @@ body {
   color: white;
   height: 100vh;
   transition: all 0.5s linear;
-  padding: 10px;
+  padding: 5px;
 }
 
 .menu li {

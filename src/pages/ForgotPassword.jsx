@@ -1,7 +1,7 @@
 // import React from 'react'
 import "./styles.css";
 import profile from "../assets/images/profileimg.png";
-import logomark from "../assets/images/Logomark.png";
+import logomark from "../assets/images/logomark.png";
 import logo from "../assets/images/logo1.png";
 // import {Link} from 'react-router-dom';
 

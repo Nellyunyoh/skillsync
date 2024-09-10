@@ -20,7 +20,7 @@ export const sidebar = () => {
     },
     {
       title: "Mentors",
-      path: "/mentor",
+      path: "/Mentors",
       icon: <IoPerson className="icons" />,
     },
 

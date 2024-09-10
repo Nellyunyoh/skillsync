@@ -1,5 +1,5 @@
 // import React from 'react'
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../Components/sidebar";
 import Navbar from "../components/Navbar";
 import "./Admin.css";
 import { FaUserCircle } from "react-icons/fa";
