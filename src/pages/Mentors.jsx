@@ -1,5 +1,5 @@
 // import React from 'react'
-import Sidebar from "../Components/Sidebar";
+import Sidebar from '../Components/Sidebar';
 import Navbar from "../components/Navbar";
 import "./Mentors.css";
 import { MdEdit } from "react-icons/md";
