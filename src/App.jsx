@@ -1,6 +1,6 @@
 // import React from "react";
 import ForgotPassword from "./pages/ForgotPassword"
-import Login from "./Pages/Login";
+import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import Mentors from "./pages/Mentors";
 import Interns from "./pages/Interns";
