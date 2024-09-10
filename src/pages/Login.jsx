@@ -1,7 +1,7 @@
 // import React from 'react';
 import "./styles.css";
 import profile from "../assets/images/profileimg.png";
-import logomark from "../assets/images/logomark.png";
+import logomark from "../assets/images/Logomark.png";
 import logo from "../assets/images/logo1.png";
 import { Link, useNavigate } from "react-router-dom";
 
