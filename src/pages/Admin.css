@@ -1,0 +1,148 @@
+.container {
+  /* display: flex; */
+  height: 100vh;
+}
+
+.main-content {
+  position: relative;
+  background: #ebe9e9;
+  width: 100%;
+  padding: 1rem;
+}
+
+.card-container {
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+.main-title {
+  color: black;
+  padding-bottom: 15px;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.info-card {
+  background: #ff6f61;
+  border-radius: 10px;
+  padding: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1.2rem;
+  width: 31%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 10px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.number {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.number-value {
+  font-size: 40px;
+  font-weight: 600;
+  position: relative;
+  top: 15px;
+}
+
+.title {
+  margin-top: 20px;
+}
+
+.icon {
+  color: black;
+  padding: 10px;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
+}
+
+.card-detail {
+  font-size: 40px;
+  color: black;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.card-details {
+  font-size: 40px;
+  color: black;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin-top: -15px;
+  /* padding-top: 20px; */
+}
+
+/* color css  */
+.tranquil-blue {
+  background: #5dade2;
+}
+
+.fresh-mint {
+  background: #48c9b0;
+}
+
+.table-header button {
+    background-color: #f5f5f5;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    float: right;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    /* margin-top: 40px; */
+    position: relative;
+    top: 20px;
+    border-radius: 15px;
+    overflow: hidden; 
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; 
+    ;
+  }
+  
+  th {
+    background-color: #ddd;
+  }
+
+  .edit-icon {
+    color: #775dd2;
+    cursor: pointer;
+  }
