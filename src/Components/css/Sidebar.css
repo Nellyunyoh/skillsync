@@ -33,6 +33,10 @@ body {
   padding: 5px;
 }
 
+.sidebar-item {
+  text-decoration: none;
+}
+
 .menu li {
   border-radius: 8px;
   transition: all 0.5s ease-in-out;

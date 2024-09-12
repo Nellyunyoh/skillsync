@@ -1,7 +1,8 @@
 // import React from 'react'
-import Sidebar from "../Components/Sidebar";
-import Navbar from "../Components/Navbar";
-import "./Admin.css";
+import Sidebar from '../../Components/Screens/Sidebar';
+import Navbar from "../../Components/Screens/Navbar";
+// import Usermanagement from '../../Components/Screens/Usermanagement';
+import "././../css/Admin.css";
 import { FaUserCircle } from "react-icons/fa";
 import { FaTasks } from "react-icons/fa";
 import { MdPeopleAlt } from "react-icons/md";
@@ -122,5 +123,6 @@ export const Admin = () => {
     </div>
   );
 };
+
 
 export default Admin;

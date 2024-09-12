@@ -1,5 +1,5 @@
 // import React from 'react'
-import "./Sidebar.css";
+import "../../Components/css/Sidebar.css";
 import { IoIosSettings } from "react-icons/io";
 import { FaMessage } from "react-icons/fa6";
 import { MdDashboard } from "react-icons/md";
@@ -71,7 +71,7 @@ export const sidebar = () => {
       <div className="logo">
         <ul className="menu">
           {data.map((item, index) => (
-            <Link key={index} to={item.path}>
+            <Link key={index} to={item.path} className="sidebar-item">
               <li className="black">
                 {item.icon}
                 <span>{item.title}</span>

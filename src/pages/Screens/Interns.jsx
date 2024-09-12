@@ -1,11 +1,11 @@
 // import React from 'react'
-import Sidebar from '../Components/Sidebar';
-import Navbar from "../Components/Navbar";
-import "./Mentors.css";
+import Sidebar from "../../Components/Screens/Sidebar";
+import Navbar from "../../Components/Screens/Navbar";
+import "../css/Mentors.css";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
-export const Mentors = () => {
+export const Interns = () => {
   // Modal open/close functionality
 //   const modal = document.getElementById("myModal");
 //   const openModalBtn = document.getElementById("openModalBtn");
@@ -93,9 +93,9 @@ export const Mentors = () => {
       <Sidebar />
       <div className="main-content">
         <Navbar />
-        <h1>Mentor List</h1>
+        <h1>Intern List</h1>
         <button id="openModalBtn" className="Add">
-          + Add Mentor
+          + Add Intern
         </button>
 
         <div id="myModal" className="modal">
@@ -173,7 +173,7 @@ export const Mentors = () => {
               <th>Email</th>
               <th>User ID</th>
               <th>Phone Number</th>
-              <th>Intern</th>
+              <th>Mentor</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -219,4 +219,4 @@ export const Mentors = () => {
     </div>
   );
 };
-export default Mentors;
+export default Interns;

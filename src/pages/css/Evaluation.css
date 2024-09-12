@@ -1,0 +1,72 @@
+.container {
+    width: 100%;
+    /* margin: 20px; */
+    /* padding: 20px; */
+    background-color: white;
+    top: 0;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .content {
+    width: 50%;
+    /* margin: 20px; */
+    /* padding: 20px; */
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+/*   
+  .container h1,
+  h2 {
+    text-align: center;
+    
+  } */
+  
+  form fieldset {
+    /* margin-bottom: 20px; */
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  form legend {
+    font-weight: bold;
+  }
+  
+  form label {
+    /* margin-top: 10px; */
+    display: block;
+    font-size: 12px;
+  }
+  
+  form input,
+  form select,
+  form textarea {
+    width: 100%;
+    /* padding: 3px; */
+    /* margin-top: 5px; */
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  form textarea {
+    resize: vertical;
+  }
+  
+  /* button[type="submit"] {
+    background-color: #775dd2;
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    font-size: 16px;
+  } */
+  
+  button[type="submit"]:hover {
+    background-color: #775dd6;
+  }

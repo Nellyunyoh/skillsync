@@ -1,7 +1,7 @@
 // import React from 'react'
-import Sidebar from '../Components/Sidebar';
-import Navbar from "../Components/Navbar";
-import './Projects.css'
+import Sidebar from '../../Components/Screens/Sidebar';
+import Navbar from "../../Components/Screens/Navbar";
+import '../css/Projects.css'
 export const Projects = () => {
   return (
     <div className="container">

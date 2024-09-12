@@ -1,101 +1,101 @@
 // import React from 'react'
-import Sidebar from "../Components/Sidebar";
-import Navbar from "../Components/Navbar";
-import "./Mentors.css";
+import Sidebar from "../../Components/Screens/Sidebar";
+import Navbar from "../../Components/Screens/Navbar";
+import "../css/Mentors.css";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
-export const Interns = () => {
+export const Mentors = () => {
   // Modal open/close functionality
-//   const modal = document.getElementById("myModal");
-//   const openModalBtn = document.getElementById("openModalBtn");
-//   const closeBtn = document.getElementsByClassName("close")[0];
+  //   const modal = document.getElementById("myModal");
+  //   const openModalBtn = document.getElementById("openModalBtn");
+  //   const closeBtn = document.getElementsByClassName("close")[0];
 
-//   openModalBtn.onclick = function () {
-//     modal.style.display = "block";
-//   };
+  //   openModalBtn.onclick = function () {
+  //     modal.style.display = "block";
+  //   };
 
-//   closeBtn.onclick = function () {
-//     modal.style.display = "none";
-//   };
+  //   closeBtn.onclick = function () {
+  //     modal.style.display = "none";
+  //   };
 
-//   window.onclick = function (event) {
-//     if (event.target == modal) {
-//       modal.style.display = "none";
-//     }
-//   };
+  //   window.onclick = function (event) {
+  //     if (event.target == modal) {
+  //       modal.style.display = "none";
+  //     }
+  //   };
 
-//   // Form handling and table actions
-//   const userForm = document.getElementById("user-form");
-//   const userTable = document.querySelector("#userTable tbody");
+  //   // Form handling and table actions
+  //   const userForm = document.getElementById("user-form");
+  //   const userTable = document.querySelector("#userTable tbody");
 
-//   let currentRow = null;
+  //   let currentRow = null;
 
-//   userForm.addEventListener("submit", function (event) {
-//     event.preventDefault();
+  //   userForm.addEventListener("submit", function (event) {
+  //     event.preventDefault();
 
-//     const name = document.getElementById("name").value;
-//     const email = document.getElementById("email").value;
-//     const userID = document.getElementById("userID").value;
-//     const phone = document.getElementById("phone").value;
-//     const intern = document.getElementById("intern").value;
+  //     const name = document.getElementById("name").value;
+  //     const email = document.getElementById("email").value;
+  //     const userID = document.getElementById("userID").value;
+  //     const phone = document.getElementById("phone").value;
+  //     const intern = document.getElementById("intern").value;
 
-//     if (currentRow) {
-//       updateRow(currentRow, name, email, userID, phone, intern);
-//       currentRow = null;
-//     } else {
-//       addRow(name, email, userID, phone, intern);
-//     }
+  //     if (currentRow) {
+  //       updateRow(currentRow, name, email, userID, phone, intern);
+  //       currentRow = null;
+  //     } else {
+  //       addRow(name, email, userID, phone, intern);
+  //     }
 
-//     modal.style.display = "none";
-//     userForm.reset();
-//   });
+  //     modal.style.display = "none";
+  //     userForm.reset();
+  //   });
 
-//   function addRow(name, email, userID, phone, intern) {
-//     const newRow = userTable.insertRow();
-//     newRow.innerHTML = `
-//         <td>${name}</td>
-//         <td>${email}</td>
-//         <td>${userID}</td>
-//         <td>${phone}</td>
-//         <td>${intern}</td>
-//         <td>
-//            <MdEdit  />
-//               <MdDelete />
-//         </td>
-//     `;
+  //   function addRow(name, email, userID, phone, intern) {
+  //     const newRow = userTable.insertRow();
+  //     newRow.innerHTML = `
+  //         <td>${name}</td>
+  //         <td>${email}</td>
+  //         <td>${userID}</td>
+  //         <td>${phone}</td>
+  //         <td>${intern}</td>
+  //         <td>
+  //            <MdEdit  />
+  //               <MdDelete />
+  //         </td>
+  //     `;
 
-//     newRow.querySelector(".editBtn").addEventListener("click", function () {
-//       currentRow = newRow;
-//       document.getElementById("name").value = name;
-//       document.getElementById("email").value = email;
-//       document.getElementById("userID").value = userID;
-//       document.getElementById("phone").value = phone;
-//       document.getElementById("intern").value = intern;
-//       modal.style.display = "block";
-//     });
+  //     newRow.querySelector(".editBtn").addEventListener("click", function () {
+  //       currentRow = newRow;
+  //       document.getElementById("name").value = name;
+  //       document.getElementById("email").value = email;
+  //       document.getElementById("userID").value = userID;
+  //       document.getElementById("phone").value = phone;
+  //       document.getElementById("intern").value = intern;
+  //       modal.style.display = "block";
+  //     });
 
-//     newRow.querySelector(".deleteBtn").addEventListener("click", function () {
-//       userTable.deleteRow(newRow.rowIndex - 1);
-//     });
-//   }
+  //     newRow.querySelector(".deleteBtn").addEventListener("click", function () {
+  //       userTable.deleteRow(newRow.rowIndex - 1);
+  //     });
+  //   }
 
-//   function updateRow(row, name, email, userID, phone, intern) {
-//     row.cells[0].innerText = name;
-//     row.cells[1].innerText = email;
-//     row.cells[2].innerText = userID;
-//     row.cells[3].innerText = phone;
-//     row.cells[4].innerText = intern;
-//   }
+  //   function updateRow(row, name, email, userID, phone, intern) {
+  //     row.cells[0].innerText = name;
+  //     row.cells[1].innerText = email;
+  //     row.cells[2].innerText = userID;
+  //     row.cells[3].innerText = phone;
+  //     row.cells[4].innerText = intern;
+  //   }
 
   return (
     <div className="container">
       <Sidebar />
       <div className="main-content">
         <Navbar />
-        <h1>Intern List</h1>
+        <h1>Mentor List</h1>
         <button id="openModalBtn" className="Add">
-          + Add Intern
+          + Add Mentor
         </button>
 
         <div id="myModal" className="modal">
@@ -173,7 +173,7 @@ export const Interns = () => {
               <th>Email</th>
               <th>User ID</th>
               <th>Phone Number</th>
-              <th>Mentor</th>
+              <th>Intern</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -219,4 +219,4 @@ export const Interns = () => {
     </div>
   );
 };
-export default Interns;
+export default Mentors;
