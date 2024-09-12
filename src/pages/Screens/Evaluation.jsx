@@ -3,197 +3,197 @@ import Sidebar from "../../Components/Screens/Sidebar";
 import Navbar from "../../Components/Screens/Navbar";
 import '../css/Evaluation.css';
 
+import { useState } from "react";
+
 export const Evaluation = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    problemSolving: "Excellent",
+    programmingSkills: "Excellent",
+    debugging: "Excellent",
+    codeQuality: "Excellent",
+    timeManagement: "Excellent",
+    teamwork: "Excellent",
+    innovation: "Excellent",
+  });
+
+  const [submissions, setSubmissions] = useState([]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmissions([...submissions, formData]);
+    setFormData({
+      name: "",
+      problemSolving: "Excellent",
+      programmingSkills: "Excellent",
+      debugging: "Excellent",
+      codeQuality: "Excellent",
+      timeManagement: "Excellent",
+      teamwork: "Excellent",
+      innovation: "Excellent",
+    });
+  };
+
+
   return (
     <div className="container">
       <Sidebar />
       <div className="main-content">
         <Navbar />
-        <div className="container">
-          <h1>Intern Evaluation Form</h1>
-          <form id="evaluationForm">
-            <fieldset>
-              <legend>Intern Information</legend>
-              <label htmlFor="internName">Intern Name:</label>
-              <input type="text" id="internName" name="internName" required />
-              <br />
+        <div className="content">
+      <div className="form-container">
+        <h2>Tech Intern Evaluation Form</h2>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="name" className="holder">Student Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange} 
+            required
+          />
 
-              <label htmlFor="internID">Intern ID:</label>
-              <input type="text" id="internID" name="internID" required />
-              <br />
+          <label htmlFor="problemSolving" className="holder">Problem Solving:</label>
+          <select
+            id="problemSolving"
+            name="problemSolving"
+            value={formData.problemSolving}
+            onChange={handleChange} 
+            required
+          >
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Satisfactory">Satisfactory</option>
+            <option value="Poor">Poor</option>
+          </select>
 
-              <label htmlFor="supervisorName">Supervisor Name:</label>
-              <input
-                type="text"
-                id="supervisorName"
-                name="supervisorName"
-                required
-              />
-              <br />
-            </fieldset>
+          <label htmlFor="programmingSkills" className="holder">Programming Skills:</label>
+          <select
+            id="programmingSkills"
+            name="programmingSkills"
+            value={formData.programmingSkills}
+            onChange={handleChange}
+            required
+          >
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Satisfactory">Satisfactory</option>
+            <option value="Poor">Poor</option>
+          </select>
 
-            <fieldset>
-              <legend>Evaluation Criteria</legend>
+          <label htmlFor="debugging" className="holder">Debugging:</label>
+          <select
+            id="debugging"
+            name="debugging"
+            value={formData.debugging}
+            onChange={handleChange} 
+            required
+          >
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Satisfactory">Satisfactory</option>
+            <option value="Poor">Poor</option>
+          </select>
 
-              {/* <!-- Job Performance --> */}
-              <label htmlFor="jobPerformance">Job Performance:</label>
-              <select id="jobPerformance" name="jobPerformance" required>
-                <option value="">--Select--</option>
-                <option value="1">1 - Poor</option>
-                <option value="2">2 - Fair</option>
-                <option value="3">3 - Satisfactory</option>
-                <option value="4">4 - Good</option>
-                <option value="5">5 - Excellent</option>
-              </select>
-              <br />
+          <label htmlFor="codeQuality" className="holder" >Code Quality:</label>
+          <select
+            id="codeQuality"
+            name="codeQuality"
+            value={formData.codeQuality}
+            onChange={handleChange} 
+            required
+          >
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Satisfactory">Satisfactory</option>
+            <option value="Poor">Poor</option>
+          </select>
 
-              {/* <!-- Work Ethic and Professionalism --> */}
-              <label htmlFor="workEthic">Work Ethic and Professionalism:</label>
-              <select id="workEthic" name="workEthic" required>
-                <option value="">--Select--</option>
-                <option value="1">1 - Poor</option>
-                <option value="2">2 - Fair</option>
-                <option value="3">3 - Satisfactory</option>
-                <option value="4">4 - Good</option>
-                <option value="5">5 - Excellent</option>
-              </select>
-              <br />
+          <label htmlFor="timeManagement" className="holder">Time Management:</label>
+          <select
+            id="timeManagement"
+            name="timeManagement"
+            value={formData.timeManagement}
+            onChange={handleChange} 
+            required
+          >
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Satisfactory">Satisfactory</option>
+            <option value="Poor">Poor</option>
+          </select>
 
-              {/* <!-- Communication Skills --> */}
-              <label htmlFor="communicationSkills">Communication Skills:</label>
-              <select
-                id="communicationSkills"
-                name="communicationSkills"
-                required
-              >
-                <option value="">--Select--</option>
-                <option value="1">1 - Poor</option>
-                <option value="2">2 - Fair</option>
-                <option value="3">3 - Satisfactory</option>
-                <option value="4">4 - Good</option>
-                <option value="5">5 - Excellent</option>
-              </select>
-              <br />
+          <label htmlFor="teamwork" className="holder">Teamwork:</label>
+          <select
+            id="teamwork"
+            name="teamwork"
+            value={formData.teamwork}
+            onChange={handleChange} 
+            required
+          >
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Satisfactory">Satisfactory</option>
+            <option value="Poor">Poor</option>
+          </select>
 
-              {/* <!-- Interpersonal Skills --> */}
-              <label htmlFor="interpersonalSkills">Interpersonal Skills:</label>
-              <select
-                id="interpersonalSkills"
-                name="interpersonalSkills"
-                required
-              >
-                <option value="">--Select--</option>
-                <option value="1">1 - Poor</option>
-                <option value="2">2 - Fair</option>
-                <option value="3">3 - Satisfactory</option>
-                <option value="4">4 - Good</option>
-                <option value="5">5 - Excellent</option>
-              </select>
-              <br />
+          <label htmlFor="innovation" className="holder">Innovation:</label>
+          <select
+            id="innovation"
+            name="innovation"
+            value={formData.innovation}
+            onChange={handleChange}
+            required
+          >
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Satisfactory">Satisfactory</option>
+            <option value="Poor">Poor</option>
+          </select>
 
-              {/* <!-- Learning and Development --> */}
-              <label htmlFor="learningDevelopment">
-                Learning and Development:
-              </label>
-              <select
-                id="learningDevelopment"
-                name="learningDevelopment"
-                required
-              >
-                <option value="">--Select--</option>
-                <option value="1">1 - Poor</option>
-                <option value="2">2 - Fair</option>
-                <option value="3">3 - Satisfactory</option>
-                <option value="4">4 - Good</option>
-                <option value="5">5 - Excellent</option>
-              </select>
-              <br />
+          <button type="submit">Submit</button> 
+        </form>
+      </div>
 
-              {/* <!-- Time Management --> */}
-              <label htmlFor="timeManagement">Time Management:</label>
-              <select id="timeManagement" name="timeManagement" required>
-                <option value="">--Select--</option>
-                <option value="1">1 - Poor</option>
-                <option value="2">2 - Fair</option>
-                <option value="3">3 - Satisfactory</option>
-                <option value="4">4 - Good</option>
-                <option value="5">5 - Excellent</option>
-              </select>
-              <br />
+      <div className="table-content">
+        <table>
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Problem Solving</th>
+              <th>Programming Skills</th>
+              <th>Debugging</th>
+              <th>Code Quality</th>
+              <th>Time Management</th>
+              <th>Teamwork</th>
+              <th>Innovation</th>
+            </tr>
+          </thead>
+          <tbody>
+            {submissions.map((submission, index) => (
+              <tr key={index}>
+                <td>{submission.name}</td>
+                <td>{submission.problemSolving}</td>
+                <td>{submission.programmingSkills}</td>
+                <td>{submission.debugging}</td>
+                <td>{submission.codeQuality}</td>
+                <td>{submission.timeManagement}</td>
+                <td>{submission.teamwork}</td>
+                <td>{submission.innovation}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-              {/* <!-- Cultural Fit --> */}
-              <label htmlFor="culturalFit">Outfit:</label>
-              <select id="culturalFit" name="culturalFit" required>
-                <option value="">--Select--</option>
-                <option value="1">1 - Poor</option>
-                <option value="2">2 - Fair</option>
-                <option value="3">3 - Satisfactory</option>
-                <option value="4">4 - Good</option>
-                <option value="5">5 - Excellent</option>
-              </select>
-              <br />
 
-              {/* <!-- Creativity and Innovation --> */}
-              <label htmlFor="creativityInnovation">
-                Creativity and Innovation:
-              </label>
-              <select
-                id="creativityInnovation"
-                name="creativityInnovation"
-                required
-              >
-                <option value="">--Select--</option>
-                <option value="1">1 - Poor</option>
-                <option value="2">2 - Fair</option>
-                <option value="3">3 - Satisfactory</option>
-                <option value="4">4 - Good</option>
-                <option value="5">5 - Excellent</option>
-              </select>
-              <br />
-
-              {/* <!-- Leadership Potential --> */}
-              <label htmlFor="leadershipPotential">Leadership Potential:</label>
-              <select
-                id="leadershipPotential"
-                name="leadershipPotential"
-                required
-              >
-                <option value="">--Select--</option>
-                <option value="1">1 - Poor</option>
-                <option value="2">2 - Fair</option>
-                <option value="3">3 - Satisfactory</option>
-                <option value="4">4 - Good</option>
-                <option value="5">5 - Excellent</option>
-              </select>
-              <br />
-
-              {/* <!-- Overall Contribution --> */}
-              <label htmlFor="overallContribution">Overall Contribution:</label>
-              <select
-                id="overallContribution"
-                name="overallContribution"
-                required
-              >
-                <option value="">--Select--</option>
-                <option value="1">1 - Poor</option>
-                <option value="2">2 - Fair</option>
-                <option value="3">3 - Satisfactory</option>
-                <option value="4">4 - Good</option>
-                <option value="5">5 - Excellent</option>
-              </select>
-              <br />
-            </fieldset>
-
-            {/* <!-- Additional Comments --> */}
-            <fieldset>
-              <legend>Additional Comments</legend>
-              <label htmlFor="comments">Comments:</label>
-              <textarea id="comments" name="comments"></textarea>
-            </fieldset>
-
-            <button type="submit">Submit Evaluation</button>
-          </form>
-        </div>
       </div>
     </div>
   );

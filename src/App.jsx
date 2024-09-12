@@ -10,7 +10,7 @@ import Evaluation from "./pages/Screens/Evaluation";
 import Attendance from "./pages/Screens/Attendance";
 import Messaging from "./pages/Screens/Messaging";
 import Settings from "./pages/Screens/Settings";
-import './index.css'
+// import './index.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
