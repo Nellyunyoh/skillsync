@@ -1,0 +1,101 @@
+.settings-container {
+    display: flex;
+    width: 100%;
+    /* max-width: 1200px; */
+    /* margin: 20px; */
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.side {
+    width: 250px;
+    background-color: whitesmoke;
+    padding: 20px;
+    color: black;
+}
+
+.side h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.side ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.side ul li {
+    margin-bottom: 10px;
+}
+
+.side ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.side ul li.active a,
+.side ul li a:hover {
+    background-color: #775dd2;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.settings-section {
+    margin-bottom: 40px;
+}
+
+.settings-section h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #34495e;
+}
+
+.setting {
+    margin-bottom: 20px;
+}
+
+.setting label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.setting input[type="text"],
+.setting input[type="email"],
+.setting input[type="password"],
+.setting select {
+    width: 100%;
+    /* padding: 10px; */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.setting input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.setting button {
+    padding: 10px 20px;
+    background-color: #775dd2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.setting button:hover {
+    background-color: #2980b9;
+}
