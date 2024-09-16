@@ -54,7 +54,7 @@ export const Admin = () => {
           <button className="download">Download</button>
           <button className="filter">Filter</button>
         </div> */}
-        <table>
+        <table className="custom-table">
           <thead>
             <tr>
               <th>Date</th>

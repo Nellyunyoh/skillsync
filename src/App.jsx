@@ -1,5 +1,5 @@
 // import React from "react";
-import ForgotPassword from "./pages/Screens/ForgotPassword"
+import ForgotPassword from "./pages/Screens/ForgotPassword";
 import Login from "./pages/Screens/Login";
 import Admin from "./pages/Screens/Admin";
 import Mentors from "./pages/Screens/Mentors";
@@ -10,8 +10,8 @@ import Evaluation from "./pages/Screens/Evaluation";
 import Attendance from "./pages/Screens/Attendance";
 import Messaging from "./pages/Screens/Messaging";
 import Settings from "./pages/Screens/Settings";
-// import './index.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./index.css"
 
 function App() {
   return (
@@ -29,8 +29,6 @@ function App() {
         <Route path="/attendance" element={<Attendance />} />
         <Route path="/messaging" element={<Messaging />} />
         <Route path="/settings" element={<Settings />} />
-
-        
       </Routes>
     </BrowserRouter>
   );

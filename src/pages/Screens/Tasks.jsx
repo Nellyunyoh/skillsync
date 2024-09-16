@@ -1,10 +1,10 @@
 // import React from 'react'
 // import React, { useState } from 'react';
-import "../css/Mentors.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useState } from "react";
 import Sidebar from "../../Components/Screens/Sidebar";
 import Navbar from "../../Components/Screens/Navbar";
+import Button from "../../Components/ui/Button";
 
 const Tasks = () => {
   const [tasks, setTasks] = useState([
@@ -72,11 +72,8 @@ const Tasks = () => {
         <Navbar />
         <div className="mentor-list">
           <h2>Tasks List</h2>
-          <button className="add-mentor-btn" onClick={() => setShowModal(true)}>
-            + Add Tasks
-          </button>
-
-          <table>
+          <Button label={"+ Add Tasks"} onClick={() => setShowModal(true)} />
+          <table className="custom-table">
             <thead>
               <tr>
                 <th>Name</th>

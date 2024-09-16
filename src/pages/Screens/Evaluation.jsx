@@ -1,7 +1,7 @@
 // import React from 'react'
 import Sidebar from "../../Components/Screens/Sidebar";
 import Navbar from "../../Components/Screens/Navbar";
-import '../css/Evaluation.css';
+// import '../css/Evaluation.css';
 
 import { useState } from "react";
 
@@ -162,7 +162,7 @@ export const Evaluation = () => {
       </div>
 
       <div className="table-section1">
-        <table>
+        <table className="custom-table">
           <thead>
             <tr>
               <th>Student Name</th>

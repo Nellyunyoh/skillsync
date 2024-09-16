@@ -1,6 +1,6 @@
 import Sidebar from "../../Components/Screens/Sidebar";
 import Navbar from "../../Components/Screens/Navbar";
-import "../css/Attendance.css";
+// import "../css/Attendance.css";
 
 export const Attendance = () => {
   function markAttendance(button, status) {
@@ -23,7 +23,7 @@ export const Attendance = () => {
         <Navbar />
         <div className="contain">
           <h1>Student Attendance System</h1>
-          <table id="attendanceTable">
+          <table id="attendanceTable" className="custom-table">
             <thead>
               <tr>
                 <th>Student Name</th>

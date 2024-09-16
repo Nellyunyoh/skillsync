@@ -1,8 +1,6 @@
-/* eslint-disable react/prop-types */
-// import React from 'react';
 import Sidebar from '../../Components/Screens/Sidebar'
 import Navbar from '../../Components/Screens/Navbar'
-import '../css/Projects.css'
+// import '../css/Projects.css'
 
  
 const ProjectCard = ({ title, date, status, progress, color }) => {

@@ -1,0 +1,23 @@
+.primary-button {
+  background-color: #775dd2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  min-width: 120px;
+}
+
+.primary-button:hover{
+    background-color: #5c08b0;
+    animation: 0.3s ease-out infinite;
+}
+
+.secondary-button{
+    background-color: #d4cbcb;
+    color: #775dd2;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}

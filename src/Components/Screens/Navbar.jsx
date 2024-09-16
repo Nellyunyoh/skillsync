@@ -1,7 +1,7 @@
 // import React from 'react'
 import '../../Components/css/Navbar.css'
 import profile from '../../assets/images/profile.webp';
-// import { FaSearch } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 
 
 export const Navbar = () => {
@@ -15,7 +15,7 @@ export const Navbar = () => {
 
         <div className="user-info">
           <div className="search-box">
-               {/* <FaSearch  className='search'/> */}
+               <FaSearch  className='search'/>
             <input type="text" placeholder="Search" />
 
           </div>

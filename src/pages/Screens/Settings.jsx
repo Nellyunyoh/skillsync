@@ -2,7 +2,7 @@
 
 import Sidebar from '../../Components/Screens/Sidebar'
 import Navbar from '../../Components/Screens/Navbar';
-import '../css/Settings.css'
+// import '../css/Settings.css'
 
 export const Settings = () => {
   return (
