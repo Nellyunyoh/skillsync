@@ -1,132 +1,170 @@
 // import React from 'react'
-import Sidebar from '../../Components/Screens/Sidebar'
-import Navbar from '../../Components/Screens/Navbar';
-import '../css/Tasks.css'
-import { MdEdit } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
+// import React, { useState } from 'react';
+import "../css/Mentors.css";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { useState } from "react";
+import Sidebar from "../../Components/Screens/Sidebar";
+import Navbar from "../../Components/Screens/Navbar";
 
+const Tasks = () => {
+  const [tasks, setTasks] = useState([
+    {
+      name: "Html and Css",
+      id: "IT147",
+      description: "Youtube course",
+      assigned: "Jason Jordan",
+      date: "10-07-2024",
+    },
 
-export const Tasks = () => {
+    {
+      name: "Html and Css",
+      id: "IT147",
+      description: "Youtube course",
+      assigned: "Jason Jordan",
+      date: "10-07-2024",
+    },
+
+    {
+      name: "Html and Css",
+      id: "IT147",
+      description: "Youtube course",
+      assigned: "Jason Jordan",
+      date: "10-07-2024",
+    },
+  ]);
+
+  const [showModal, setShowModal] = useState(false);
+  const [newTasks, setNewTasks] = useState({
+    name: "",
+    id: "",
+    description: "",
+    assigned: "",
+    date: "",
+  });
+
+  // Adding a new mentor
+  const handleAddMentor = () => {
+    if (
+      newTasks.name &&
+      newTasks.id &&
+      newTasks.description &&
+      newTasks.assigned &&
+      newTasks.date
+    ) {
+      setTasks([...tasks, newTasks]);
+      setShowModal(false);
+      setNewTasks({ name: "", email: "", id: "", phone: "", intern: "" });
+    } else {
+      alert("Please fill all fields before adding!");
+    }
+  };
+
+  const closeModal = (e) => {
+    if (e.target.className === "modal") {
+      setShowModal(false);
+    }
+  };
+
   return (
-    <div className='container'>
-        <Sidebar />
-        <div className='main-content'>
-            <Navbar />
-            <h1>Task List</h1> 
-        <button id="openModalBtn" className="Add">
-          + Add Task
-        </button>
+    <div className="console">
+      <Sidebar />
+      <div className="object">
+        <Navbar />
+        <div className="mentor-list">
+          <h2>Tasks List</h2>
+          <button className="add-mentor-btn" onClick={() => setShowModal(true)}>
+            + Add Tasks
+          </button>
 
-        <div id="myModal" className="modal">
-          <div className="modal-content">
-            <span className="close">&times;</span>
-            <h2>Fill in the form</h2>
-            <form id="user-form" className="form">
-              <div>
-                <label htmlFor="name">TaskName:</label>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Assigned to</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tasks.map((mentor, index) => (
+                <tr key={index}>
+                  <td>{tasks.name}</td>
+                  <td>{tasks.id}</td>
+                  <td>{tasks.description}</td>
+                  <td>{tasks.assigned}</td>
+                  <td>{tasks.date}</td>
+                  <td>
+                    <FaEdit
+                      className="edit-icon"
+                      onClick={() => alert("Edit functionality coming soon!")}
+                    />
+                    <FaTrashAlt
+                      className="delete-icon"
+                      onClick={() => alert("Delete functionality coming soon!")}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
+          {showModal && (
+            <div className="modal" onClick={closeModal}>
+              <div className="modal-content">
+                <h3>Add Tasks</h3>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
-                  className="input-control"
-                  required
+                  placeholder="Name"
+                  value={newTasks.name}
+                  onChange={(e) =>
+                    setNewTasks({ ...newTasks, name: e.target.value })
+                  }
                 />
-              </div>
-
-              <div>
-                <label htmlFor="id">Task ID:</label>
                 <input
                   type="text"
-                  id="id"
-                  name="id"
-                  className="input-control"
-                  required
+                  placeholder="Id"
+                  value={newTasks.id}
+                  onChange={(e) =>
+                    setNewTasks({ ...newTasks, id: e.target.value })
+                  }
                 />
-              </div>
-
-              <div>
-                <label htmlFor="description">Description:</label>
                 <input
                   type="text"
-                  id="description"
-                  name="description"
-                  className="input-control"
-                  required
+                  placeholder="Description"
+                  value={newTasks.description}
+                  onChange={(e) =>
+                    setNewTasks({ ...newTasks, description: e.target.value })
+                  }
                 />
-              </div>
-
-              <div>
-                <label htmlFor="assigned">Assigned To</label>
                 <input
                   type="text"
-                  id="assigned"
-                  name="assigned"
-                  className="input-control"
-                  required
+                  placeholder="Assigned To"
+                  value={newTasks.assigned}
+                  onChange={(e) =>
+                    setNewTasks({ ...newTasks, assigned: e.target.value })
+                  }
                 />
+                <input
+                  type="date"
+                  placeholder="Date"
+                  value={newTasks.intern}
+                  onChange={(e) =>
+                    setNewTasks({ ...newTasks, date: e.target.value })
+                  }
+                />
+                <div className="modal-buttons">
+                  <button onClick={handleAddMentor}>Add</button>
+                  <button onClick={() => setShowModal(false)}>Cancel</button>
+                </div>
               </div>
-
-
-              <button type="submit" id="saveBtn" className="submit">
-                Submit
-              </button>
-            </form>
-          </div>
+            </div>
+          )}
         </div>
-
-        <table id="userTable">
-          <thead>
-            <tr>
-              <th>TaskName</th>
-              <th>Task ID</th>
-              <th>Description</th>
-              <th>Assigned To</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Login Screen</td>
-              <td>114</td>
-              <td>Build a login page</td>
-              <td>Joseph Prince</td>             
-              <td>
-                <MdEdit className="editBtn" />
-                <MdDelete className="deleteBtn" />
-              </td>
-            </tr>
-
-            <tr>
-              <td>Intern screen</td>
-              <td>184</td>
-              <td>Develop the intern screen</td>
-              <td>Mary Peace</td>
-              <td>
-                <MdEdit className="editBtn" />
-                <MdDelete className="deleteBtn" />
-              </td>
-            </tr>
-
-            <td>Mentors Screen</td>
-            <td>240</td>
-            <td>Build the mentor screen</td>
-            <td>Eddy Michael</td>
-            <td>
-              <MdEdit className="editBtn" />
-              <MdDelete className="deleteBtn" />
-            </td>
-
-            <tr></tr>
-          </tbody>
-        </table>
-
-
-        </div>
-
-
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default Tasks;

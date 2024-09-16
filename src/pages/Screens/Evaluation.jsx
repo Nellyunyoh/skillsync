@@ -161,7 +161,7 @@ export const Evaluation = () => {
         </form>
       </div>
 
-      <div className="table-content">
+      <div className="table-section1">
         <table>
           <thead>
             <tr>

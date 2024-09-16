@@ -1,5 +1,6 @@
 .settings-container {
     display: flex;
+    flex-direction: column;
     width: 100%;
     /* max-width: 1200px; */
     /* margin: 20px; */
@@ -9,7 +10,7 @@
     overflow: hidden;
 }
 
-.side {
+/* .side {
     width: 250px;
     background-color: whitesmoke;
     padding: 20px;
@@ -19,9 +20,9 @@
 .side h2 {
     font-size: 24px;
     margin-bottom: 20px;
-}
+} */
 
-.side ul {
+/* .side ul {
     list-style-type: none;
     padding: 0;
 }
@@ -43,7 +44,7 @@
 .side ul li.active a,
 .side ul li a:hover {
     background-color: #775dd2;
-}
+} */
 
 .content {
     flex: 1;
@@ -96,6 +97,6 @@
     font-size: 16px;
 }
 
-.setting button:hover {
+/* .setting button:hover {
     background-color: #2980b9;
-}
+} */

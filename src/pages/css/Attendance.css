@@ -41,13 +41,13 @@ td {
   cursor: pointer;
 }
 
-.present-btn:hover {
+/* .present-btn:hover {
   background-color: #218838;
 }
 
 .absent-btn:hover {
   background-color: #c82333;
-}
+} */
 
 .status {
   padding: 5px;

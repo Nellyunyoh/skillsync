@@ -1,222 +1,169 @@
 // import React from 'react'
+// import React, { useState } from 'react';
+import "../css/Mentors.css";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { useState } from "react";
 import Sidebar from "../../Components/Screens/Sidebar";
 import Navbar from "../../Components/Screens/Navbar";
-import "../css/Mentors.css";
-import { MdEdit } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
 
-export const Interns = () => {
-  // Modal open/close functionality
-//   const modal = document.getElementById("myModal");
-//   const openModalBtn = document.getElementById("openModalBtn");
-//   const closeBtn = document.getElementsByClassName("close")[0];
+const Interns = () => {
+  const [interns, setInterns] = useState([
+    {
+      name: "Joseph Johnson",
+      email: "josephjohnson@gmail.com",
+      id: "MMS145",
+      phone: "+237 654894694",
+      intern: "Mary Mag",
+    },
+    {
+      name: "John Nasty",
+      email: "johnnasty@gmail.com",
+      id: "MMS149",
+      phone: "+237 654678975",
+      intern: "Martha Peace",
+    },
+    {
+      name: "Claire Anna",
+      email: "claireanna@gmail.com",
+      id: "MMS246",
+      phone: "+237 659087654",
+      intern: "Alfred Serge",
+    },
+  ]);
 
-//   openModalBtn.onclick = function () {
-//     modal.style.display = "block";
-//   };
+  const [showModal, setShowModal] = useState(false); // Modal visibility
+  const [newMentor, setNewMentor] = useState({
+    name: "",
+    email: "",
+    id: "",
+    phone: "",
+    intern: "",
+  });
 
-//   closeBtn.onclick = function () {
-//     modal.style.display = "none";
-//   };
+  // Adding a new mentor
+  const handleAddMentor = () => {
+    if (
+      newMentor.name &&
+      newMentor.email &&
+      newMentor.id &&
+      newMentor.phone &&
+      newMentor.intern
+    ) {
+      setInterns([...interns, newMentor]);
+      setShowModal(false);
+      setNewMentor({ name: "", email: "", id: "", phone: "", intern: "" });
+    } else {
+      alert("Please fill all fields before adding!");
+    }
+  };
 
-//   window.onclick = function (event) {
-//     if (event.target == modal) {
-//       modal.style.display = "none";
-//     }
-//   };
-
-//   // Form handling and table actions
-//   const userForm = document.getElementById("user-form");
-//   const userTable = document.querySelector("#userTable tbody");
-
-//   let currentRow = null;
-
-//   userForm.addEventListener("submit", function (event) {
-//     event.preventDefault();
-
-//     const name = document.getElementById("name").value;
-//     const email = document.getElementById("email").value;
-//     const userID = document.getElementById("userID").value;
-//     const phone = document.getElementById("phone").value;
-//     const intern = document.getElementById("intern").value;
-
-//     if (currentRow) {
-//       updateRow(currentRow, name, email, userID, phone, intern);
-//       currentRow = null;
-//     } else {
-//       addRow(name, email, userID, phone, intern);
-//     }
-
-//     modal.style.display = "none";
-//     userForm.reset();
-//   });
-
-//   function addRow(name, email, userID, phone, intern) {
-//     const newRow = userTable.insertRow();
-//     newRow.innerHTML = `
-//         <td>${name}</td>
-//         <td>${email}</td>
-//         <td>${userID}</td>
-//         <td>${phone}</td>
-//         <td>${intern}</td>
-//         <td>
-//            <MdEdit  />
-//               <MdDelete />
-//         </td>
-//     `;
-
-//     newRow.querySelector(".editBtn").addEventListener("click", function () {
-//       currentRow = newRow;
-//       document.getElementById("name").value = name;
-//       document.getElementById("email").value = email;
-//       document.getElementById("userID").value = userID;
-//       document.getElementById("phone").value = phone;
-//       document.getElementById("intern").value = intern;
-//       modal.style.display = "block";
-//     });
-
-//     newRow.querySelector(".deleteBtn").addEventListener("click", function () {
-//       userTable.deleteRow(newRow.rowIndex - 1);
-//     });
-//   }
-
-//   function updateRow(row, name, email, userID, phone, intern) {
-//     row.cells[0].innerText = name;
-//     row.cells[1].innerText = email;
-//     row.cells[2].innerText = userID;
-//     row.cells[3].innerText = phone;
-//     row.cells[4].innerText = intern;
-//   }
+  // Close modal if clicked outside modal content
+  const closeModal = (e) => {
+    if (e.target.className === "modal") {
+      setShowModal(false);
+    }
+  };
 
   return (
-    <div className="container">
+    <div className="console">
       <Sidebar />
-      <div className="main-content">
+      <div className="object">
         <Navbar />
-        <h1>Intern List</h1>
-        <button id="openModalBtn" className="Add">
-          + Add Intern
-        </button>
+        <div className="mentor-list">
+          <h2>Intern List</h2>
+          <button className="add-mentor-btn" onClick={() => setShowModal(true)}>
+            + Add Intern
+          </button>
 
-        <div id="myModal" className="modal">
-          <div className="modal-content">
-            <span className="close">&times;</span>
-            <h2>Fill in the form</h2>
-            <form id="user-form" className="form">
-              <div>
-                <label htmlFor="name">Name:</label>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>User ID</th>
+                <th>Phone Number</th>
+                <th>Intern</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {interns.map((mentor, index) => (
+                <tr key={index}>
+                  <td>{mentor.name}</td>
+                  <td>{mentor.email}</td>
+                  <td>{mentor.id}</td>
+                  <td>{mentor.phone}</td>
+                  <td>{mentor.intern}</td>
+                  <td>
+                    <FaEdit
+                      className="edit-icon"
+                      onClick={() => alert("Edit functionality coming soon!")}
+                    />
+                    <FaTrashAlt
+                      className="delete-icon"
+                      onClick={() => alert("Delete functionality coming soon!")}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
+          {showModal && (
+            <div className="modal" onClick={closeModal}>
+              <div className="modal-content">
+                <h3>Add Mentor</h3>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
-                  className="input-control"
-                  required
+                  placeholder="Name"
+                  value={newMentor.name}
+                  onChange={(e) =>
+                    setNewMentor({ ...newMentor, name: e.target.value })
+                  }
                 />
-              </div>
-
-              <div>
-                <label htmlFor="email">Email:</label>
                 <input
                   type="email"
-                  id="email"
-                  name="email"
-                  className="input-control"
-                  required
+                  placeholder="Email"
+                  value={newMentor.email}
+                  onChange={(e) =>
+                    setNewMentor({ ...newMentor, email: e.target.value })
+                  }
                 />
-              </div>
-
-              <div>
-                <label htmlFor="userID">User ID:</label>
                 <input
                   type="text"
-                  id="userID"
-                  name="userID"
-                  className="input-control"
-                  required
+                  placeholder="User ID"
+                  value={newMentor.id}
+                  onChange={(e) =>
+                    setNewMentor({ ...newMentor, id: e.target.value })
+                  }
                 />
-              </div>
-
-              <div>
-                <label htmlFor="phone">Phone Number:</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  className="input-control"
-                  required
-                />
-              </div>
-
-              <div>
-                <label htmlFor="intern">Intern:</label>
                 <input
                   type="text"
-                  id="intern"
-                  name="intern"
-                  className="input-control"
-                  required
+                  placeholder="Phone Number"
+                  value={newMentor.phone}
+                  onChange={(e) =>
+                    setNewMentor({ ...newMentor, phone: e.target.value })
+                  }
                 />
+                <input
+                  type="text"
+                  placeholder="Intern"
+                  value={newMentor.intern}
+                  onChange={(e) =>
+                    setNewMentor({ ...newMentor, intern: e.target.value })
+                  }
+                />
+                <div className="modal-buttons">
+                  <button onClick={handleAddMentor}>Add</button>
+                  <button onClick={() => setShowModal(false)}>Cancel</button>
+                </div>
               </div>
-
-              <button type="submit" id="saveBtn" className="submit">
-                Submit
-              </button>
-            </form>
-          </div>
+            </div>
+          )}
         </div>
-
-        <table id="userTable">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>User ID</th>
-              <th>Phone Number</th>
-              <th>Mentor</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Joseph Johnson</td>
-              <td>josephjohnson@gmail.com</td>
-              <td>MMS145</td>
-              <td>+237 654894694</td>
-              <td>Mary Mag</td>
-              <td>
-                <MdEdit className="editBtn" />
-                <MdDelete className="deleteBtn" />
-              </td>
-            </tr>
-
-            <tr>
-              <td>John Nasty</td>
-              <td>johnnasty@gmail.com</td>
-              <td>MMS149</td>
-              <td>+237 654678975</td>
-              <td>Martha Peace</td>
-              <td>
-                <MdEdit className="editBtn" />
-                <MdDelete className="deleteBtn" />
-              </td>
-            </tr>
-
-            <td>Claire Anna</td>
-            <td>claireanna@gmail.com</td>
-            <td>MMS246</td>
-            <td>+237 659087654</td>
-            <td>Alfred Serge</td>
-            <td>
-              <MdEdit className="editBtn" />
-              <MdDelete className="deleteBtn" />
-            </td>
-
-            <tr></tr>
-          </tbody>
-        </table>
       </div>
     </div>
   );
 };
+
 export default Interns;

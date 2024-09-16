@@ -1,8 +1,9 @@
 import { useState } from "react";
 import "../css/Messaging.css";
+// import '../'
 import profile from "../../assets/images/profileimg.png";
 import Sidebar from "../../Components/Screens/Sidebar";
-// import Navbar from '../../Components/Screens/Navbar';
+import Navbar from '../../Components/Screens/Navbar';
 
 const MessagingScreen = () => {
   const [selectedChat, setSelectedChat] = useState(1);
@@ -85,11 +86,9 @@ const MessagingScreen = () => {
   return (
     <div className="container">
       <Sidebar />
-
+      <div className="info">
+<Navbar />
       <div className="whatsapp-container">
-        {/* <div><Navbar /></div> */}
-
-        {/* <Navbar /> */}
         <div className="chat-list">
           {chats.map((chat) => (
             <div
@@ -141,6 +140,7 @@ const MessagingScreen = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -119,9 +119,9 @@
     cursor: pointer;
   }
   
-  .login-container input[type="submit"]:hover {
+  /* .login-container input[type="submit"]:hover {
     background-color: #682ce3;
-  }
+  } */
   
   .forgot-question{
     display: flex;

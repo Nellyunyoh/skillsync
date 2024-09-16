@@ -6,12 +6,17 @@
   font-family: Arial, sans-serif;
 }
 
+.info {
+  width: 100%;
+}
+
 .chat-list {
   width: 40%;
   background-color: #fff;
   border-right: 1px solid #ddd;
   padding: 10px;
   overflow-y: scroll;
+  /* margin-top: -40px; */
 }
 
 .chat-item {
@@ -56,20 +61,22 @@
   justify-content: space-between;
   background-color: #ece5dd;
   padding: 10px;
+  height: 100vh;
+  /* margin-top: -20px; */
 }
 
 .messages {
-  flex-grow: 1;
-  overflow-y: scroll;
+  /* flex-grow: 1; */
+  /* overflow-y: scroll; */
   padding-right: 10px;
 }
 
 .message {
   max-width: 60%;
-  margin-bottom: 10px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  font-size: 14px;
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 0 5px;
+  font-size: 15px;
   line-height: 1.5;
 }
 
@@ -90,7 +97,7 @@
   background-color: #fff;
   /* padding: 5px; */
   border-top: 1px solid #ddd;
-  margin: 0;
+  /* margin-top: -100px; */
 }
 
 .message-input input {
@@ -101,6 +108,7 @@
   /* border-radius: 20px; */
   background-color: #f0f0f0;
   /* margin-right: 10px; */
+  /* margin-top: -70px; */
 }
 
 .message-input button {

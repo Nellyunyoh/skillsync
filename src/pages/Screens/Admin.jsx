@@ -49,11 +49,11 @@ export const Admin = () => {
             </div>
           </div>
         </div>
-        <section className="table-section">
-        <div className="table-header">
+        <section className="table-section1">
+        {/* <div className="table-header">
           <button className="download">Download</button>
           <button className="filter">Filter</button>
-        </div>
+        </div> */}
         <table>
           <thead>
             <tr>
