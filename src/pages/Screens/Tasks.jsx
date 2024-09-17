@@ -1,64 +1,64 @@
 // import React from 'react'
 // import React, { useState } from 'react';
+import "../css/mentors.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useState } from "react";
 import Sidebar from "../../Components/Screens/Sidebar";
 import Navbar from "../../Components/Screens/Navbar";
 import Button from "../../Components/ui/Button";
 
-const Tasks = () => {
-  const [tasks, setTasks] = useState([
+const Mentors = () => {
+  const [mentors, setMentors] = useState([
     {
       name: "Html and Css",
-      id: "IT147",
-      description: "Youtube course",
-      assigned: "Jason Jordan",
-      date: "10-07-2024",
+      email: "147",
+      id: "Html and Css course",
+      phone: "Mary Peace",
+      intern: "16-09-2024",
     },
-
     {
-      name: "Html and Css",
-      id: "IT147",
-      description: "Youtube course",
-      assigned: "Jason Jordan",
-      date: "10-07-2024",
+      name: "React js",
+      email: "346",
+      id: "React JS course",
+      phone: "John Joseph",
+      intern: "10-09-2023",
     },
-
     {
-      name: "Html and Css",
-      id: "IT147",
-      description: "Youtube course",
-      assigned: "Jason Jordan",
-      date: "10-07-2024",
+      name: "Javascript ",
+      email: "267",
+      id: "Javascript DOM",
+      phone: "Alfred Junior",
+      intern: "11-08-2024",
     },
   ]);
 
-  const [showModal, setShowModal] = useState(false);
-  const [newTasks, setNewTasks] = useState({
+  const [showModal, setShowModal] = useState(false); // Modal visibility
+  const [newMentor, setNewMentor] = useState({
     name: "",
+    email: "",
     id: "",
-    description: "",
-    assigned: "",
-    date: "",
+    phone: "",
+    intern: "",
   });
 
   // Adding a new mentor
   const handleAddMentor = () => {
     if (
-      newTasks.name &&
-      newTasks.id &&
-      newTasks.description &&
-      newTasks.assigned &&
-      newTasks.date
+      newMentor.name &&
+      newMentor.email &&
+      newMentor.id &&
+      newMentor.phone &&
+      newMentor.intern
     ) {
-      setTasks([...tasks, newTasks]);
+      setMentors([...mentors, newMentor]);
       setShowModal(false);
-      setNewTasks({ name: "", email: "", id: "", phone: "", intern: "" });
+      setNewMentor({ name: "", email: "", id: "", phone: "", intern: "" });
     } else {
       alert("Please fill all fields before adding!");
     }
   };
 
+  // Close modal if clicked outside modal content
   const closeModal = (e) => {
     if (e.target.className === "modal") {
       setShowModal(false);
@@ -71,8 +71,9 @@ const Tasks = () => {
       <div className="object">
         <Navbar />
         <div className="mentor-list">
-          <h2>Tasks List</h2>
-          <Button label={"+ Add Tasks"} onClick={() => setShowModal(true)} />
+          <h2>Task List</h2>
+          <Button label={"+ Add Task"} onClick={() => setShowModal(true)} variant="primary" />
+
           <table className="custom-table">
             <thead>
               <tr>
@@ -85,13 +86,13 @@ const Tasks = () => {
               </tr>
             </thead>
             <tbody>
-              {tasks.map((mentor, index) => (
+              {mentors.map((mentor, index) => (
                 <tr key={index}>
-                  <td>{tasks.name}</td>
-                  <td>{tasks.id}</td>
-                  <td>{tasks.description}</td>
-                  <td>{tasks.assigned}</td>
-                  <td>{tasks.date}</td>
+                  <td>{mentor.name}</td>
+                  <td>{mentor.email}</td>
+                  <td>{mentor.id}</td>
+                  <td>{mentor.phone}</td>
+                  <td>{mentor.intern}</td>
                   <td>
                     <FaEdit
                       className="edit-icon"
@@ -110,45 +111,45 @@ const Tasks = () => {
           {showModal && (
             <div className="modal" onClick={closeModal}>
               <div className="modal-content">
-                <h3>Add Tasks</h3>
+                <h3>Add Task</h3>
                 <input
                   type="text"
                   placeholder="Name"
-                  value={newTasks.name}
+                  value={newMentor.name}
                   onChange={(e) =>
-                    setNewTasks({ ...newTasks, name: e.target.value })
+                    setNewMentor({ ...newMentor, name: e.target.value })
                   }
                 />
                 <input
-                  type="text"
-                  placeholder="Id"
-                  value={newTasks.id}
+                  type="email"
+                  placeholder="ID"
+                  value={newMentor.email}
                   onChange={(e) =>
-                    setNewTasks({ ...newTasks, id: e.target.value })
+                    setNewMentor({ ...newMentor, email: e.target.value })
                   }
                 />
                 <input
                   type="text"
                   placeholder="Description"
-                  value={newTasks.description}
+                  value={newMentor.id}
                   onChange={(e) =>
-                    setNewTasks({ ...newTasks, description: e.target.value })
+                    setNewMentor({ ...newMentor, id: e.target.value })
                   }
                 />
                 <input
                   type="text"
                   placeholder="Assigned To"
-                  value={newTasks.assigned}
+                  value={newMentor.phone}
                   onChange={(e) =>
-                    setNewTasks({ ...newTasks, assigned: e.target.value })
+                    setNewMentor({ ...newMentor, phone: e.target.value })
                   }
                 />
                 <input
-                  type="date"
+                  type="text"
                   placeholder="Date"
-                  value={newTasks.intern}
+                  value={newMentor.intern}
                   onChange={(e) =>
-                    setNewTasks({ ...newTasks, date: e.target.value })
+                    setNewMentor({ ...newMentor, intern: e.target.value })
                   }
                 />
                 <div className="modal-buttons">
@@ -164,4 +165,4 @@ const Tasks = () => {
   );
 };
 
-export default Tasks;
+export default Mentors;

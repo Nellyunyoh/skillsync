@@ -10,20 +10,8 @@ h1 {
   text-align: center;
 }
 
-table {
-  width: 100%;
-  /* border-collapse: collapse; */
-  margin-top: 4rem;
-}
 
-th,
-td {
-  border: 1px solid #ddd;
-  padding: 5px;
-  text-align: center;
-}
-
-.present-btn {
+.true {
   background-color: #28a745;
   color: white;
   padding: 10px 15px;
@@ -32,7 +20,7 @@ td {
   cursor: pointer;
 }
 
-.absent-btn {
+.false {
   background-color: #dc3545;
   color: white;
   padding: 10px 15px;

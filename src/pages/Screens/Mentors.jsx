@@ -6,6 +6,8 @@ import { useState } from "react";
 import Sidebar from "../../Components/Screens/Sidebar";
 import Navbar from "../../Components/Screens/Navbar";
 import Button from "../../Components/ui/Button";
+import { MdOutlineMoreHoriz } from "react-icons/md";
+
 
 const Mentors = () => {
   const [mentors, setMentors] = useState([
@@ -23,13 +25,7 @@ const Mentors = () => {
       phone: "+237 654678975",
       intern: "Martha Peace",
     },
-    {
-      name: "Claire Anna",
-      email: "claireanna@gmail.com",
-      id: "MMS246",
-      phone: "+237 659087654",
-      intern: "Alfred Serge",
-    },
+   
   ]);
 
   const [showModal, setShowModal] = useState(false); // Modal visibility
@@ -102,6 +98,9 @@ const Mentors = () => {
                       className="delete-icon"
                       onClick={() => alert("Delete functionality coming soon!")}
                     />
+
+                   <MdOutlineMoreHoriz className="more-icon" />
+
                   </td>
                 </tr>
               ))}

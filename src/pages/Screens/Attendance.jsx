@@ -1,6 +1,6 @@
 import Sidebar from "../../Components/Screens/Sidebar";
 import Navbar from "../../Components/Screens/Navbar";
-// import "../css/Attendance.css";
+import "../css/Attendance.css";
 
 export const Attendance = () => {
   function markAttendance(button, status) {
@@ -38,13 +38,13 @@ export const Attendance = () => {
                 <td>IMS103</td>
                 <td className="status-cell">
                   <button
-                    className="present-btn"
+                    className="true"
                     onClick={(e) => markAttendance(e.target, "Present")}
                   >
                     P
                   </button>
                   <button
-                    className="absent-btn"
+                    className="false"
                     onClick={(e) => markAttendance(e.target, "Absent")}
                   >
                     A
@@ -58,13 +58,13 @@ export const Attendance = () => {
                 <td>IMS245</td>
                 <td className="status-cell">
                   <button
-                    className="present-btn"
+                    className="true"
                     onClick={(e) => markAttendance(e.target, "Present")}
                   >
                     P
                   </button>
                   <button
-                    className="absent-btn"
+                    className="false"
                     onClick={(e) => markAttendance(e.target, "Absent")}
                   >
                     A
@@ -78,13 +78,13 @@ export const Attendance = () => {
                 <td>IMS149</td>
                 <td className="status-cell">
                   <button
-                    className="present-btn"
+                    className="true"
                     onClick={(e) => markAttendance(e.target, "Present")}
                   >
                     P
                   </button>
                   <button
-                    className="absent-btn"
+                    className="false"
                     onClick={(e) => markAttendance(e.target, "Absent")}
                   >
                     A

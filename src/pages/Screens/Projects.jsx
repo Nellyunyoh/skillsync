@@ -1,6 +1,6 @@
 import Sidebar from '../../Components/Screens/Sidebar'
 import Navbar from '../../Components/Screens/Navbar'
-// import '../css/Projects.css'
+import '../css/Projects.css'
 
  
 const ProjectCard = ({ title, date, status, progress, color }) => {
@@ -45,7 +45,7 @@ const ProjectsPage = () => {
         Welcome to the projects page, here you can see examples of projects. You can add as many projects as you like and there are many settings for each project (project date, links, tasks, files, comments...).
       </p>
       <div className="search-and-sort">
-        <input type="text" className="search" placeholder="Search..." />
+        {/* <input type="text" className="search" placeholder="Search..." /> */}
         {/* <button className="sort-btn">Sort By Date</button>
         <button className="sort-btn">Sort By Status</button> */}
       </div>
