@@ -1,13 +1,9 @@
-// import React from 'react'
-// import React, { useState } from 'react';
 import "../css/mentors.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useState } from "react";
 import Sidebar from "../../Components/Screens/Sidebar";
 import Navbar from "../../Components/Screens/Navbar";
 import Button from "../../Components/ui/Button";
-import { MdOutlineMoreHoriz } from "react-icons/md";
-
 
 const Mentors = () => {
   const [mentors, setMentors] = useState([
@@ -25,7 +21,6 @@ const Mentors = () => {
       phone: "+237 654678975",
       intern: "Martha Peace",
     },
-   
   ]);
 
   const [showModal, setShowModal] = useState(false); // Modal visibility
@@ -37,7 +32,10 @@ const Mentors = () => {
     intern: "",
   });
 
-  // Adding a new mentor
+  const [isEditing, setIsEditing] = useState(false); // Track if editing
+  const [editIndex, setEditIndex] = useState(null); // Track the index of mentor being edited
+
+  // Add or Edit mentor
   const handleAddMentor = () => {
     if (
       newMentor.name &&
@@ -46,18 +44,44 @@ const Mentors = () => {
       newMentor.phone &&
       newMentor.intern
     ) {
-      setMentors([...mentors, newMentor]);
+      if (isEditing) {
+        // Editing mentor
+        const updatedMentors = [...mentors];
+        updatedMentors[editIndex] = newMentor;
+        setMentors(updatedMentors);
+        setIsEditing(false); // Reset to add mode
+      } else {
+        // Adding a new mentor
+        setMentors([...mentors, newMentor]);
+      }
+
       setShowModal(false);
       setNewMentor({ name: "", email: "", id: "", phone: "", intern: "" });
     } else {
-      alert("Please fill all fields before adding!");
+      alert("Please fill all fields before submitting!");
     }
+  };
+
+  // Edit mentor handler
+  const handleEditMentor = (index) => {
+    setNewMentor(mentors[index]); // Pre-fill the form with mentor data
+    setEditIndex(index); // Set the index of the mentor being edited
+    setIsEditing(true); // Switch to edit mode
+    setShowModal(true); // Show the modal
+  };
+
+  // Delete mentor
+  const handleDeleteMentor = (index) => {
+    const updatedMentors = mentors.filter((_, i) => i !== index);
+    setMentors(updatedMentors);
   };
 
   // Close modal if clicked outside modal content
   const closeModal = (e) => {
     if (e.target.className === "modal") {
       setShowModal(false);
+      setIsEditing(false); // Reset editing state
+      setNewMentor({ name: "", email: "", id: "", phone: "", intern: "" });
     }
   };
 
@@ -68,7 +92,15 @@ const Mentors = () => {
         <Navbar />
         <div className="mentor-list">
           <h2>Mentor List</h2>
-          <Button label={"+ Add Mentor"} onClick={() => setShowModal(true)} variant="primary" />
+          <Button
+            label={"+ Add Mentor"}
+            onClick={() => {
+              setShowModal(true);
+              setIsEditing(false); // Ensure modal is for adding
+              setNewMentor({ name: "", email: "", id: "", phone: "", intern: "" }); // Reset form
+            }}
+            variant="primary"
+          />
 
           <table className="custom-table">
             <thead>
@@ -92,15 +124,12 @@ const Mentors = () => {
                   <td>
                     <FaEdit
                       className="edit-icon"
-                      onClick={() => alert("Edit functionality coming soon!")}
+                      onClick={() => handleEditMentor(index)}
                     />
                     <FaTrashAlt
                       className="delete-icon"
-                      onClick={() => alert("Delete functionality coming soon!")}
+                      onClick={() => handleDeleteMentor(index)}
                     />
-
-                   <MdOutlineMoreHoriz className="more-icon" />
-
                   </td>
                 </tr>
               ))}
@@ -110,7 +139,7 @@ const Mentors = () => {
           {showModal && (
             <div className="modal" onClick={closeModal}>
               <div className="modal-content">
-                <h3>Add Mentor</h3>
+                <h3>{isEditing ? "Edit Mentor" : "Add Mentor"}</h3>
                 <input
                   type="text"
                   placeholder="Name"
@@ -152,8 +181,18 @@ const Mentors = () => {
                   }
                 />
                 <div className="modal-buttons">
-                  <button onClick={handleAddMentor}>Add</button>
-                  <button onClick={() => setShowModal(false)}>Cancel</button>
+                  <button onClick={handleAddMentor}>
+                    {isEditing ? "Update" : "Add"}
+                  </button>
+                  <button
+                    onClick={() => {
+                      setShowModal(false);
+                      setIsEditing(false);
+                      setNewMentor({ name: "", email: "", id: "", phone: "", intern: "" });
+                    }}
+                  >
+                    Cancel
+                  </button>
                 </div>
               </div>
             </div>

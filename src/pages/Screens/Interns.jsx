@@ -1,12 +1,10 @@
-// import React from 'react'
-// import React, { useState } from 'react';
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useState } from "react";
 import Sidebar from "../../Components/Screens/Sidebar";
 import Navbar from "../../Components/Screens/Navbar";
 import Button from "../../Components/ui/Button";
 import { MdOutlineMoreHoriz } from "react-icons/md";
-
+import '../css/Interns.css'
 
 const Interns = () => {
   const [interns, setInterns] = useState([
@@ -24,10 +22,10 @@ const Interns = () => {
       phone: "+237 654678975",
       intern: "Martha Peace",
     },
-
   ]);
 
-  const [showModal, setShowModal] = useState(false); // Modal visibility
+  const [showModal, setShowModal] = useState(false); // Modal for add/edit intern
+  const [showMoreModal, setShowMoreModal] = useState(false); // Modal for more options
   const [newMentor, setNewMentor] = useState({
     name: "",
     email: "",
@@ -35,8 +33,10 @@ const Interns = () => {
     phone: "",
     intern: "",
   });
+  const [selectedIntern, setSelectedIntern] = useState(null); // Selected intern for more options
+  const [editingIndex, setEditingIndex] = useState(null); // Index of the intern being edited
 
-  // Adding a new mentor
+  // Adding a new intern or updating an existing one
   const handleAddMentor = () => {
     if (
       newMentor.name &&
@@ -45,7 +45,16 @@ const Interns = () => {
       newMentor.phone &&
       newMentor.intern
     ) {
-      setInterns([...interns, newMentor]);
+      if (editingIndex !== null) {
+        // Update existing intern
+        const updatedInterns = [...interns];
+        updatedInterns[editingIndex] = newMentor;
+        setInterns(updatedInterns);
+        setEditingIndex(null);
+      } else {
+        // Add new intern
+        setInterns([...interns, newMentor]);
+      }
       setShowModal(false);
       setNewMentor({ name: "", email: "", id: "", phone: "", intern: "" });
     } else {
@@ -53,10 +62,30 @@ const Interns = () => {
     }
   };
 
-  // Close modal if clicked outside modal content
+  // Edit mentor function
+  const handleEdit = (index) => {
+    setNewMentor(interns[index]);
+    setEditingIndex(index);
+    setShowModal(true);
+  };
+
+  // Delete intern function
+  const handleDelete = (index) => {
+    const updatedInterns = interns.filter((_, i) => i !== index);
+    setInterns(updatedInterns);
+  };
+
+  // Handle More icon click
+  const handleMore = (index) => {
+    setSelectedIntern(interns[index]);
+    setShowMoreModal(true);
+  };
+
+  // Close modals
   const closeModal = (e) => {
     if (e.target.className === "modal") {
       setShowModal(false);
+      setShowMoreModal(false);
     }
   };
 
@@ -76,7 +105,7 @@ const Interns = () => {
                 <th>Email</th>
                 <th>User ID</th>
                 <th>Phone Number</th>
-                <th>Intern</th>
+                <th>Mentor</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -91,23 +120,27 @@ const Interns = () => {
                   <td>
                     <FaEdit
                       className="edit-icon"
-                      onClick={() => alert("Edit functionality coming soon!")}
+                      onClick={() => handleEdit(index)}
                     />
                     <FaTrashAlt
                       className="delete-icon"
-                      onClick={() => alert("Delete functionality coming soon!")}
+                      onClick={() => handleDelete(index)}
                     />
-                    <MdOutlineMoreHoriz className="more-icon" />
+                    <MdOutlineMoreHoriz
+                      className="more-icon"
+                      onClick={() => handleMore(index)}
+                    />
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
 
+          {/* Add/Edit Intern Modal */}
           {showModal && (
             <div className="modal" onClick={closeModal}>
               <div className="modal-content">
-                <h3>Add Intern</h3>
+                <h3>{editingIndex !== null ? "Edit Intern" : "Add Intern"}</h3>
                 <input
                   type="text"
                   placeholder="Name"
@@ -142,16 +175,41 @@ const Interns = () => {
                 />
                 <input
                   type="text"
-                  placeholder="Intern"
+                  placeholder="Mentor"
                   value={newMentor.intern}
                   onChange={(e) =>
                     setNewMentor({ ...newMentor, intern: e.target.value })
                   }
                 />
                 <div className="modal-buttons">
-                  <button onClick={handleAddMentor}>Add</button>
+                  <button onClick={handleAddMentor}>
+                    {editingIndex !== null ? "Update" : "Add"}
+                  </button>
                   <button onClick={() => setShowModal(false)}>Cancel</button>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* More Options Modal */}
+          {showMoreModal && selectedIntern && (
+            <div className="modal-contain" onClick={closeModal}>
+              <div className="modal-container">
+                <h3>More Options for {selectedIntern.name}</h3>
+                <div className="modal-buttons">
+                  <button onClick={() => alert(`Evaluate ${selectedIntern.name}`)} >
+                    Evaluation
+                  </button>
+                  <button onClick={() => alert(`View attendance of ${selectedIntern.name}`)} >
+                    Attendance 
+                  </button>
+                  <button onClick={() => alert(`View project of ${selectedIntern.name}`)} >
+                    Projects
+                  </button>
+                  
+                </div>
+                <Button label="close" onClick={() => setShowMoreModal(false)}></Button>
+                {/* <Button label="Close" onClick={() => setShowModal(false)} /> */}
               </div>
             </div>
           )}
