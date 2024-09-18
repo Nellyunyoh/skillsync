@@ -1,4 +1,3 @@
-// import React from 'react'
 import "../../Components/css/Sidebar.css";
 import { IoIosSettings } from "react-icons/io";
 import { FaMessage } from "react-icons/fa6";
@@ -6,12 +5,19 @@ import { MdDashboard } from "react-icons/md";
 import { IoPerson } from "react-icons/io5";
 import { IoIosPeople } from "react-icons/io";
 import { FaTasks } from "react-icons/fa";
-import { FaSheetPlastic } from "react-icons/fa6";
-import { FaExclamationCircle } from "react-icons/fa";
 import { HiClipboardDocumentList } from "react-icons/hi2";
 import { Link } from "react-router-dom";
+import { FaSheetPlastic } from 'react-icons/fa6';
+import { useState } from "react";
+import { RiArrowDownSFill } from "react-icons/ri";
 
-export const sidebar = () => {
+export const Sidebar = () => {
+  const [openDropdown, setOpenDropdown] = useState(null);
+
+  const toggleDropdown = (index) => {
+    setOpenDropdown(openDropdown === index ? null : index);
+  };
+
   const data = [
     {
       title: "Dashboard",
@@ -23,65 +29,76 @@ export const sidebar = () => {
       path: "/Mentors",
       icon: <IoPerson className="icons" />,
     },
-
-    {
-      title: "Tasks",
-      path: "/tasks",
-      icon: <FaTasks className="icons" />,
-    },
-
     {
       title: "Interns",
       path: "/interns",
       icon: <IoIosPeople className="icons" />,
     },
-
     {
       title: "Projects",
       path: "/projects",
       icon: <HiClipboardDocumentList className="icons" />,
+      isDropdown: true, // Indicates that this has a dropdown
+      subItems: [
+        {
+          title: "Tasks",
+          path: "/tasks",
+          icon: <FaTasks className="icons" />,
+        },
+      ],
     },
-
     {
       title: "Evaluation",
       path: "/evaluation",
       icon: <FaSheetPlastic className="icons" />,
     },
-
-    {
-      title: "Attendance",
-      path: "/attendance",
-      icon: <FaExclamationCircle className="icons" />,
-    },
-
+    
     {
       title: "Messaging",
       path: "/messaging",
       icon: <FaMessage className="icons" />,
     },
-
     {
       title: "Settings",
       path: "/settings",
       icon: <IoIosSettings className="icons" />,
     },
   ];
+
   return (
     <div className="sidebar">
-      <div className="logo">
-        <ul className="menu">
-          {data.map((item, index) => (
-            <Link key={index} to={item.path} className="sidebar-item">
+      <ul className="menu">
+        {data.map((item, index) => (
+          <div key={index} className={`menu-item ${item.isDropdown && openDropdown === index ? "open" : ""}`}>
+            <Link to={item.path} className="sidebar-item">
               <li className="black">
                 {item.icon}
                 <span>{item.title}</span>
+                {item.isDropdown && (
+                  <RiArrowDownSFill
+                    className={`dropdown-toggle ${openDropdown === index ? "open" : ""}`}
+                    onClick={() => toggleDropdown(index)}
+                  />
+                )}
               </li>
             </Link>
-          ))}
-        </ul>
-      </div>
+            {item.isDropdown && openDropdown === index && (
+              <ul className="sub-menu">
+                {item.subItems.map((subItem, subIndex) => (
+                  <Link key={subIndex} to={subItem.path} className="sidebar-sub-item">
+                    <li className="black">
+                      {subItem.icon}
+                      <span>{subItem.title}</span>
+                    </li>
+                  </Link>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </ul>
     </div>
   );
 };
 
-export default sidebar;
+export default Sidebar;

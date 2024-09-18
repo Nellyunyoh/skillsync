@@ -7,11 +7,10 @@ import Tasks from "./pages/Screens/Tasks";
 import Interns from "./pages/Screens/Interns";
 import Projects from "./pages/Screens/Projects";
 import Evaluation from "./pages/Screens/Evaluation";
-import Attendance from "./pages/Screens/Attendance";
 import Messaging from "./pages/Screens/Messaging";
 import Settings from "./pages/Screens/Settings";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./index.css"
+import "./index.css";
 
 function App() {
   return (
@@ -26,7 +25,6 @@ function App() {
         <Route path="/interns" element={<Interns />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/evaluation" element={<Evaluation />} />
-        <Route path="/attendance" element={<Attendance />} />
         <Route path="/messaging" element={<Messaging />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>

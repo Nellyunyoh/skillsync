@@ -11,15 +11,25 @@ body {
   width: 100%;
 }
 
+@media (min-width: 1024px) {
+  body {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 600px) {
+  body {
+    font-size: 18px;
+  }
+}
+
 /* ------------------------ Table Style ------------------------- */
 .custom-table {
   width: 100%;
   border-collapse: collapse;
-  /* top: -60px; */
+  margin-top: 10px;
   color: #000;
-  /* margin-top: 10px; */
   font-size: 14px;
-  /* border-radius: 20px; */
 }
 
 th,
@@ -27,24 +37,19 @@ td {
   border: 1px solid black;
   padding: 8px;
   text-align: center;
-
-  
 }
 
 th {
   background-color: #775dd2;
   color: white;
   font-size: 15px;
-
 }
-
 
 /* -------------------------- Modal Style ---------------------- */
 .edit-icon {
   color: #6a0dad;
   cursor: pointer;
   margin-right: 10px;
- 
 }
 
 .delete-icon {

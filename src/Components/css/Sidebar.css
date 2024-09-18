@@ -1,25 +1,10 @@
-/* * {
-  margin: 0;
-  padding: 0;
-  border: none;
-  outline: none;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: white;
-  margin: 0;
-  padding: 0;
-} */
-
 .black {
   color: white;
   display: flex;
   font-weight: bold;
   gap: 20px;
   text-decoration: none;
+  align-items: center;
 }
 
 .sidebar {
@@ -31,10 +16,19 @@ body {
   height: 100vh;
   transition: all 0.5s linear;
   padding: 5px;
+  position: relative;
+
+  
 }
 
-.sidebar-item {
+.sidebar-item,
+.sidebar-sub-item {
   text-decoration: none;
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
 }
 
 .menu li {
@@ -44,14 +38,13 @@ body {
   padding-top: 22px;
   padding-bottom: 15px;
   font-size: 20px;
-  /* margin-left: 20px; */
+  position: relative;
 }
 
 .menu li:hover,
 .active {
   background: #8c79ce;
   cursor: pointer;
-  /* opacity: 0.7; */
 }
 
 .icons {
@@ -59,4 +52,37 @@ body {
   font-size: 28px;
   font-weight: bold;
   text-align: center;
+}
+
+.dropdown-toggle {
+  margin-left: auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.dropdown-toggle.open {
+  transform: rotate(180deg);
+}
+
+.sub-menu {
+  display: none;
+  list-style-type: none;
+  padding-left: 20px;
+  background-color: #6c5bb3;
+  margin: 0;
+}
+
+.sub-menu li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.sub-menu li:hover {
+  background-color: #8c79ce;
+}
+
+.menu-item.open .sub-menu {
+  display: block;
 }

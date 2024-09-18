@@ -4,7 +4,11 @@ import Sidebar from "../../Components/Screens/Sidebar";
 import Navbar from "../../Components/Screens/Navbar";
 import Button from "../../Components/ui/Button";
 import { MdOutlineMoreHoriz } from "react-icons/md";
-import '../css/Interns.css'
+import { FaSheetPlastic } from "react-icons/fa6";
+import { FaExclamationCircle } from "react-icons/fa";
+import { HiClipboardDocumentList } from "react-icons/hi2";
+
+import "../css/Interns.css";
 
 const Interns = () => {
   const [interns, setInterns] = useState([
@@ -24,8 +28,8 @@ const Interns = () => {
     },
   ]);
 
-  const [showModal, setShowModal] = useState(false); // Modal for add/edit intern
-  const [showMoreModal, setShowMoreModal] = useState(false); // Modal for more options
+  const [showModal, setShowModal] = useState(false);
+  const [showMoreModal, setShowMoreModal] = useState(false);
   const [newMentor, setNewMentor] = useState({
     name: "",
     email: "",
@@ -33,10 +37,9 @@ const Interns = () => {
     phone: "",
     intern: "",
   });
-  const [selectedIntern, setSelectedIntern] = useState(null); // Selected intern for more options
-  const [editingIndex, setEditingIndex] = useState(null); // Index of the intern being edited
+  const [selectedIntern, setSelectedIntern] = useState(null);
+  const [editingIndex, setEditingIndex] = useState(null);
 
-  // Adding a new intern or updating an existing one
   const handleAddMentor = () => {
     if (
       newMentor.name &&
@@ -46,13 +49,11 @@ const Interns = () => {
       newMentor.intern
     ) {
       if (editingIndex !== null) {
-        // Update existing intern
         const updatedInterns = [...interns];
         updatedInterns[editingIndex] = newMentor;
         setInterns(updatedInterns);
         setEditingIndex(null);
       } else {
-        // Add new intern
         setInterns([...interns, newMentor]);
       }
       setShowModal(false);
@@ -62,26 +63,22 @@ const Interns = () => {
     }
   };
 
-  // Edit mentor function
   const handleEdit = (index) => {
     setNewMentor(interns[index]);
     setEditingIndex(index);
     setShowModal(true);
   };
 
-  // Delete intern function
   const handleDelete = (index) => {
     const updatedInterns = interns.filter((_, i) => i !== index);
     setInterns(updatedInterns);
   };
 
-  // Handle More icon click
   const handleMore = (index) => {
     setSelectedIntern(interns[index]);
     setShowMoreModal(true);
   };
 
-  // Close modals
   const closeModal = (e) => {
     if (e.target.className === "modal") {
       setShowModal(false);
@@ -196,20 +193,25 @@ const Interns = () => {
             <div className="modal-contain" onClick={closeModal}>
               <div className="modal-container">
                 <h3>More Options for {selectedIntern.name}</h3>
-                <div className="modal-buttons">
-                  <button onClick={() => alert(`Evaluate ${selectedIntern.name}`)} >
-                    Evaluation
+                <div className="modal-button">
+                  <button className="display">
+                    {" "}
+                    <FaSheetPlastic className="con" /> Evaluation{" "}
                   </button>
-                  <button onClick={() => alert(`View attendance of ${selectedIntern.name}`)} >
-                    Attendance 
+                  <button className="display">
+                    {" "}
+                    <FaExclamationCircle className="con" />
+                    Attendance{" "}
                   </button>
-                  <button onClick={() => alert(`View project of ${selectedIntern.name}`)} >
-                    Projects
+                  <button className="display">
+                    {" "}
+                    <HiClipboardDocumentList className="con" /> Projects
                   </button>
-                  
                 </div>
-                <Button label="close" onClick={() => setShowMoreModal(false)}></Button>
-                {/* <Button label="Close" onClick={() => setShowModal(false)} /> */}
+                <Button
+                  label="close"
+                  onClick={() => setShowMoreModal(false)}
+                ></Button>
               </div>
             </div>
           )}

@@ -1,134 +1,290 @@
-.sector {
+/* Container */
+.projects-container {
   display: flex;
-  gap: 10px;
-  /* padding: 20px; */
+  height: 100vh;
+  overflow: hidden;
 }
 
-.projects-page {
-  /* padding: 20px; */
-  background-color: #f5f5f5;
-  display: flex;
-  flex-direction: column;
+/* Sidebar */
 
+/* Content Area */
+.content-area {
+  flex: 1;
+  padding: 2px;
+  overflow-y: auto;
+}
+
+.project-content {
+  padding: 10px;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  font-size: 32px;
-  font-weight: bold;
-  /* text-align: left; */
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
 }
 
-.description {
-  font-size: 20px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 5px;
 }
 
-.search-and-sort {
+/* Search and Sort */
+.search-sort {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-  display: flex;
 }
 
-.search {
-  padding: 8px;
-  font-size: 14px;
-  border-radius: 4px;
+.search-sort input[type="text"] {
+  padding: 8px 12px;
+  font-size: 1rem;
   border: 1px solid #ccc;
-  width: 200px;
+  border-radius: 5px;
 }
 
-.sort-btn {
-  padding: 8px 16px;
+.sort-buttons button {
+  background-color: #333;
+  color: white;
   border: none;
-  background-color: #f0f0f0;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border-radius: 5px;
   cursor: pointer;
+  margin-left: 10px;
 }
 
-/* .sort-btn:hover {
-  background-color: #e0e0e0;
-} */
+.sort-buttons button:hover {
+  background-color: #444;
+}
 
-.projects-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+/* Project Grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
 }
 
 .project-card {
   background-color: white;
   border-radius: 8px;
-  padding: 25px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 31.5%;
-  position: relative;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .project-card h3 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
 }
 
-.project-date {
+.date-status {
   display: flex;
-  align-items: center;
-  font-size: 14px;
-  margin: 10px 0;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  color: #666;
 }
 
-.project-date i {
-  margin-right: 8px;
+.date-status .date {
+  font-size: 0.9rem;
 }
 
 .status {
-  font-size: 12px;
-  padding: 4px 8px;
-  border-radius: 20px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 5px;
   color: white;
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  text-transform: capitalize;
 }
 
-.in-progress {
-  background-color: #00c8e8;
-}
-
-.new {
+.status.new {
   background-color: #ff4d4d;
 }
 
-.pending {
-  background-color: #ff9900;
+.status[in-progress] {
+  background-color: #00d8ff;
 }
 
-.completed {
+.status.pending {
+  background-color: #ffa500;
+}
+
+.status.completed {
   background-color: #800080;
 }
 
+/* Progress Bar */
 .progress-bar {
-  background-color: #e0e0e0;
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 15px 0;
+  background-color: #f0f0f0;
+  height: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .progress {
-  height: 8px;
-  border-radius: 10px;
+  height: 100%;
+  border-radius: 5px;
 }
 
-.progress-percentage {
-  font-size: 14px;
-  font-weight: bold;
-  margin: 5px 0;
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.view-link {
-  color: blue;
-  font-size: 14px;
-  text-decoration: underline;
+.progress-info span {
+  font-size: 0.9rem;
+}
+
+.progress-info button {
+  padding: 5px 10px;
+  background-color: #00d8ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.progress-info button:hover {
+  background-color: #00b8e6;
+}
+
+/* Add/Edit Project Form */
+.project-form {
+  margin-bottom: 30px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-form h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.project-form input,
+.project-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.project-form button {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.project-form button:hover {
+  background-color: #444;
+}
+
+/* Add Project Button */
+.add-project-btn {
+  background-color: #775dd2;
+  color: white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.add-project-btn:hover {
+  background-color: #5b46a8;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.modal-content .save-modal {
+  width: 100%;
+  padding: 10px;
+  background-color: #775dd2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.modal-content .save-modal:hover {
+  background-color: #5b46a8;
+}
+
+.close-modal-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  /* margin-bottom: 20px; */
+}
+
+.close-modal-btn:hover {
+  background-color: rgb(191, 0, 0);
+}
+
+.progress-info .delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.progress-info .delete-button:hover {
+  background-color: darkred;
 }

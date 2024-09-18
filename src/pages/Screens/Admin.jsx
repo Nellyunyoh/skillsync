@@ -1,5 +1,5 @@
 // import React from 'react'
-import Sidebar from '../../Components/Screens/Sidebar';
+import Sidebar from "../../Components/Screens/Sidebar";
 import Navbar from "../../Components/Screens/Navbar";
 // import Usermanagement from '../../Components/Screens/Usermanagement';
 import "././../css/Admin.css";
@@ -7,7 +7,6 @@ import { FaUserCircle } from "react-icons/fa";
 import { FaTasks } from "react-icons/fa";
 import { MdPeopleAlt } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-
 
 export const Admin = () => {
   return (
@@ -50,79 +49,91 @@ export const Admin = () => {
           </div>
         </div>
         <section className="table-section1">
-        {/* <div className="table-header">
+          {/* <div className="table-header">
           <button className="download">Download</button>
           <button className="filter">Filter</button>
         </div> */}
-        <table className="custom-table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Mentor</th>
-              <th>Task</th>
-              <th>Intern</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>2023-05-01</td>
-              <td>Joseph Johnson</td>
-              <td>HTML/CSS Course</td>
-              <td>Nelly Love</td>
-              <td> <FaEdit className="edit-icon" /></td>
-            </tr>
-            <tr>
-              <td>2023-05-01</td>
-              <td>Catalina Paw</td>
-              <td>Javascript</td>
-              <td>Jack Paul</td>
-              <td><FaEdit className="edit-icon"/></td>
-            </tr>
-            <tr>
-              <td>2023-05-01</td>
-              <td>Anita Bih</td>
-              <td>Python</td>
-              <td>Peter King</td>
-              <td><FaEdit className="edit-icon"/></td>
-            </tr>
-            <tr>
-              <td>2023-05-01</td>
-              <td>Julia Samantha</td>
-              <td>React JS</td>
-              <td>Joe Rena</td>
-              <td><FaEdit className="edit-icon"/></td>
-            </tr>
-            <tr>
-              <td>2023-05-01</td>
-              <td>Anita Ole</td>
-              <td>React Native</td>
-              <td>Anabel Bella</td>
-              <td><FaEdit className="edit-icon"/></td>
-            </tr>
-            <tr>
-              <td>2023-05-01</td>
-              <td>Ada Ole</td>
-              <td>C/C++</td>
-              <td>Antoinette Bella</td>
-              <td><FaEdit className="edit-icon"/></td>
-            </tr>
-            <tr>
-              <td>2023-05-01</td>
-              <td>Alissa Ole</td>
-              <td>Angular JS</td>
-              <td>Aneto Bella</td>
-              <td><FaEdit className="edit-icon"/></td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+          <table className="custom-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Mentor</th>
+                <th>Task</th>
+                <th>Intern</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2023-05-01</td>
+                <td>Joseph Johnson</td>
+                <td>HTML/CSS Course</td>
+                <td>Nelly Love</td>
+                <td>
+                  {" "}
+                  <FaEdit className="edit-icon" />
+                </td>
+              </tr>
+              <tr>
+                <td>2023-05-01</td>
+                <td>Catalina Paw</td>
+                <td>Javascript</td>
+                <td>Jack Paul</td>
+                <td>
+                  <FaEdit className="edit-icon" />
+                </td>
+              </tr>
+              <tr>
+                <td>2023-05-01</td>
+                <td>Anita Bih</td>
+                <td>Python</td>
+                <td>Peter King</td>
+                <td>
+                  <FaEdit className="edit-icon" />
+                </td>
+              </tr>
+              <tr>
+                <td>2023-05-01</td>
+                <td>Julia Samantha</td>
+                <td>React JS</td>
+                <td>Joe Rena</td>
+                <td>
+                  <FaEdit className="edit-icon" />
+                </td>
+              </tr>
+              <tr>
+                <td>2023-05-01</td>
+                <td>Anita Ole</td>
+                <td>React Native</td>
+                <td>Anabel Bella</td>
+                <td>
+                  <FaEdit className="edit-icon" />
+                </td>
+              </tr>
+              <tr>
+                <td>2023-05-01</td>
+                <td>Ada Ole</td>
+                <td>C/C++</td>
+                <td>Antoinette Bella</td>
+                <td>
+                  <FaEdit className="edit-icon" />
+                </td>
+              </tr>
+              <tr>
+                <td>2023-05-01</td>
+                <td>Alissa Ole</td>
+                <td>Angular JS</td>
+                <td>Aneto Bella</td>
+                <td>
+                  <FaEdit className="edit-icon" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
       </div>
-
-     
     </div>
   );
 };
-
 
 export default Admin;
