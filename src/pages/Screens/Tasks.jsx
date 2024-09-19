@@ -146,7 +146,7 @@ const Mentors = () => {
                 />
                 <input
                   type="text"
-                  placeholder=""
+                  placeholder="Date"
                   value={newMentor.intern}
                   onChange={(e) =>
                     setNewMentor({ ...newMentor, intern: e.target.value })
