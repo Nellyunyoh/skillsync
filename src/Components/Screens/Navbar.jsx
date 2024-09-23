@@ -1,4 +1,3 @@
-// import React from 'react'
 import '../../Components/css/Navbar.css'
 import profile from '../../assets/images/profile.webp';
 import { FaSearch } from "react-icons/fa";

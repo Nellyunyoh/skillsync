@@ -1,6 +1,5 @@
 .whatsapp-container {
   display: flex;
-  height: 100vh;
   width: 100%;
   background-color: #e5ddd5;
   font-family: Arial, sans-serif;
@@ -59,7 +58,7 @@
   justify-content: space-between;
   background-color: #ece5dd;
   padding: 10px;
-  height: 100vh;
+  height: 85vh;
 }
 
 .messages {
@@ -96,8 +95,11 @@
 .message-input input {
   padding: 10px;
   font-size: 14px;
+  margin-left: 10px;
   border: none;
   background-color: #f0f0f0;
+  width: 100%;
+  top: 0;
 
 }
 

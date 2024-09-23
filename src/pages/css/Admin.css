@@ -1,14 +1,8 @@
-.container {
-  /* display: flex; */
-  height: 100vh;
-}
-
 .main-content {
   position: relative;
   background: #ebe9e9;
   width: 100%;
   padding: 5px;
-  height: auto;
 }
 
 .card-container {
@@ -96,7 +90,6 @@
   letter-spacing: 2px;
   font-weight: bold;
   margin-top: -15px;
-  /* padding-top: 20px; */
 }
 
 /* color css  */
@@ -107,4 +100,3 @@
 .fresh-mint {
   background: #48c9b0;
 }
-

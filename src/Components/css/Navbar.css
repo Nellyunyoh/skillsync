@@ -37,27 +37,26 @@ h2 {
   gap: 1rem;
 }
 
-.search-box {
+.user-info .search-box {
   background: whitesmoke;
   border-radius: 15px;
-  color: black;
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 4px 12px;
 }
 
-.search-box input {
+.user-info .search-box input {
   background: transparent;
   padding: 10px;
 }
 
-.search-box i {
+.user-info .search-box i {
   font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.5s ease-out;
 }
 
-.search-box i:hover {
+.user-info .search-box i:hover {
   transform: scale(1, 2);
 }

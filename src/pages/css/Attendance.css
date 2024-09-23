@@ -1,0 +1,74 @@
+.attendance-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* Week navigation styling */
+.week-navigation {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.nav-btn {
+  background-color: rgb(57, 53, 53);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.nav-btn:hover {
+  background-color: #2c3e50;
+}
+
+/* Button Styling */
+.present-btn,
+.absent-btn {
+  padding: 3px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 50px;
+  height: 30px;
+}
+
+.present-btn {
+  background-color: #8e44ad;
+  color: white;
+  margin-right: 10px;
+}
+
+.absent-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.present-btn:hover,
+.absent-btn:hover {
+  opacity: 0.8;
+}
+
+/* Table Data Styling */
+.attendance-table td {
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+.attendance-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}

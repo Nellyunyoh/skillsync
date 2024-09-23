@@ -1,5 +1,6 @@
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Sidebar from "../../Components/Screens/Sidebar";
 import Navbar from "../../Components/Screens/Navbar";
 import Button from "../../Components/ui/Button";
@@ -39,6 +40,8 @@ const Interns = () => {
   });
   const [selectedIntern, setSelectedIntern] = useState(null);
   const [editingIndex, setEditingIndex] = useState(null);
+
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleAddMentor = () => {
     if (
@@ -84,6 +87,20 @@ const Interns = () => {
       setShowModal(false);
       setShowMoreModal(false);
     }
+  };
+
+  // Function to handle navigation to the evaluation screen
+  const goToEvaluation = () => {
+    navigate("/evaluation");
+  };
+
+  // Function to handle navigation to the attestation screen
+  const goToAttestation = () => {
+    navigate("/attestation");
+  };
+
+  const goToAttendance = () => {
+    navigate("/attendance");
   };
 
   return (
@@ -194,18 +211,16 @@ const Interns = () => {
               <div className="modal-container">
                 <h3>More Options for {selectedIntern.name}</h3>
                 <div className="modal-button">
-                  <button className="display">
-                    {" "}
-                    <FaSheetPlastic className="con" /> Evaluation{" "}
+                  <button className="display" onClick={goToEvaluation}>
+                    <FaSheetPlastic className="con" /> Evaluation form
                   </button>
-                  <button className="display">
-                    {" "}
-                    <FaExclamationCircle className="con" />
-                    Attendance{" "}
+
+                  <button className="display" onClick={goToAttendance}>
+                    <FaExclamationCircle className="con" /> Attendance
                   </button>
-                  <button className="display">
-                    {" "}
-                    <HiClipboardDocumentList className="con" /> Projects
+                  <button className="display" onClick={goToAttestation}>
+                    <HiClipboardDocumentList className="con" /> Attestation of
+                    Internship
                   </button>
                 </div>
                 <Button

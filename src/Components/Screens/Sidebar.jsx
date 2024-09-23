@@ -7,7 +7,6 @@ import { IoIosPeople } from "react-icons/io";
 import { FaTasks } from "react-icons/fa";
 import { HiClipboardDocumentList } from "react-icons/hi2";
 import { Link } from "react-router-dom";
-import { FaSheetPlastic } from 'react-icons/fa6';
 import { useState } from "react";
 import { RiArrowDownSFill } from "react-icons/ri";
 
@@ -38,7 +37,7 @@ export const Sidebar = () => {
       title: "Projects",
       path: "/projects",
       icon: <HiClipboardDocumentList className="icons" />,
-      isDropdown: true, // Indicates that this has a dropdown
+      isDropdown: true,
       subItems: [
         {
           title: "Tasks",
@@ -47,12 +46,7 @@ export const Sidebar = () => {
         },
       ],
     },
-    {
-      title: "Evaluation",
-      path: "/evaluation",
-      icon: <FaSheetPlastic className="icons" />,
-    },
-    
+
     {
       title: "Messaging",
       path: "/messaging",
@@ -69,14 +63,21 @@ export const Sidebar = () => {
     <div className="sidebar">
       <ul className="menu">
         {data.map((item, index) => (
-          <div key={index} className={`menu-item ${item.isDropdown && openDropdown === index ? "open" : ""}`}>
+          <div
+            key={index}
+            className={`menu-item ${
+              item.isDropdown && openDropdown === index ? "open" : ""
+            }`}
+          >
             <Link to={item.path} className="sidebar-item">
               <li className="black">
                 {item.icon}
                 <span>{item.title}</span>
                 {item.isDropdown && (
                   <RiArrowDownSFill
-                    className={`dropdown-toggle ${openDropdown === index ? "open" : ""}`}
+                    className={`dropdown-toggle ${
+                      openDropdown === index ? "open" : ""
+                    }`}
                     onClick={() => toggleDropdown(index)}
                   />
                 )}
@@ -85,7 +86,11 @@ export const Sidebar = () => {
             {item.isDropdown && openDropdown === index && (
               <ul className="sub-menu">
                 {item.subItems.map((subItem, subIndex) => (
-                  <Link key={subIndex} to={subItem.path} className="sidebar-sub-item">
+                  <Link
+                    key={subIndex}
+                    to={subItem.path}
+                    className="sidebar-sub-item"
+                  >
                     <li className="black">
                       {subItem.icon}
                       <span>{subItem.title}</span>

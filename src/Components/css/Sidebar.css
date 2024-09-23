@@ -2,7 +2,7 @@
   color: white;
   display: flex;
   font-weight: bold;
-  gap: 20px;
+  gap: 10px;
   text-decoration: none;
   align-items: center;
 }
@@ -17,8 +17,6 @@
   transition: all 0.5s linear;
   padding: 5px;
   position: relative;
-
-  
 }
 
 .sidebar-item,
@@ -35,10 +33,13 @@
   border-radius: 8px;
   transition: all 0.5s ease-in-out;
   padding-inline: 1.5rem;
-  padding-top: 22px;
-  padding-bottom: 15px;
-  font-size: 20px;
+  padding-top: 33px;
+  padding-bottom: 33px;
   position: relative;
+}
+
+.letter {
+  font-size: 40px;
 }
 
 .menu li:hover,
@@ -49,7 +50,7 @@
 
 .icons {
   color: white;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
 }
