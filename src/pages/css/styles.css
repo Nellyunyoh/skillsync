@@ -27,7 +27,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.4); /* Overlay with transparency */
+    background-color: rgba(0, 0, 0, 0.4); 
   }
   
   .logo-text {
@@ -118,10 +118,6 @@
     font-size: 16px;
     cursor: pointer;
   }
-  
-  /* .login-container input[type="submit"]:hover {
-    background-color: #682ce3;
-  } */
   
   .forgot-question{
     display: flex;

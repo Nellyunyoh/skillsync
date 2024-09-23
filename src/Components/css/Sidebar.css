@@ -1,10 +1,13 @@
 .black {
   color: white;
   display: flex;
-  font-weight: bold;
   gap: 10px;
   text-decoration: none;
   align-items: center;
+}
+
+.black span{
+  font-size: 20px;
 }
 
 .sidebar {
@@ -22,6 +25,7 @@
 .sidebar-item,
 .sidebar-sub-item {
   text-decoration: none;
+  /* margin-bottom: 70px; */
 }
 
 .menu {
@@ -33,14 +37,12 @@
   border-radius: 8px;
   transition: all 0.5s ease-in-out;
   padding-inline: 1.5rem;
-  padding-top: 33px;
-  padding-bottom: 33px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   position: relative;
+  margin-bottom: 10px;
 }
 
-.letter {
-  font-size: 40px;
-}
 
 .menu li:hover,
 .active {
@@ -50,9 +52,9 @@
 
 .icons {
   color: white;
-  font-size: 30px;
   font-weight: bold;
   text-align: center;
+  font-size: 25px;
 }
 
 .dropdown-toggle {
