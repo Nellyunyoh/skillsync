@@ -1,6 +1,6 @@
 // import React from 'react'
 // import React, { useState } from 'react';
-import "../css/mentors.css";
+import "../css/Mentors.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useState } from "react";
 import Sidebar from "../../Components/Screens/Sidebar";
