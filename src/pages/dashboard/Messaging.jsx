@@ -2,8 +2,8 @@ import { useState } from "react";
 import "../css/Messaging.css";
 // import '../'
 import profile from "../../assets/images/profileimg.png";
-import Sidebar from "../../Components/Screens/Sidebar";
-import Navbar from '../../Components/Screens/Navbar';
+import Sidebar from "../../Components/partials/Sidebar";
+import Navbar from '../../Components/partials/Navbar';
 
 const MessagingScreen = () => {
   const [selectedChat, setSelectedChat] = useState(1);

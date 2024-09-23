@@ -74,14 +74,19 @@ th {
   width: 500px;
 }
 
-.modal-content input {
-  display: block;
+.form-input {
   width: 100%;
+  padding: 12px;
   margin-bottom: 20px;
-  padding: 10px;
-  font-size: 15px;
-  border-radius: 5px;
-  border: 1px solid black;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.form-input:hover{
+  border: 1px solid #6a0dada4;
+  transition: 0.5s ease-in-out;
 }
 
 .modal h3 {

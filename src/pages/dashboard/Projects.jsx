@@ -1,5 +1,5 @@
-import Sidebar from "../../Components/Screens/Sidebar";
-import Navbar from "../../Components/Screens/Navbar";
+import Sidebar from "../../Components/partials/Sidebar";
+import Navbar from "../../Components/partials/Navbar";
 import "../css/Projects.css";
 import { useState } from "react";
 import { FaCalendarDays } from "react-icons/fa6";
