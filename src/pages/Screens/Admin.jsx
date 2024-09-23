@@ -22,7 +22,7 @@ export const Admin = () => {
                 <div className="number">
                   <FaUserCircle className="icon" />
                   <span className="title"> Total Number of Mentors</span>
-                  <span className="card-detail">20</span>
+                  <span className="card-details">20</span>
                 </div>
               </div>
             </div>
@@ -44,7 +44,7 @@ export const Admin = () => {
                   <span className="title"> Total Number of Interns </span>
                 </div>
               </div>
-              <span className="card-details">50</span>
+              <span className="card-detail">50</span>
             </div>
           </div>
         </div>

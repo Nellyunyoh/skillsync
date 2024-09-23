@@ -50,8 +50,8 @@
   flex-direction: column;
 }
 
-.title {
-  font-size: 18px;
+.number .title {
+  font-size: 25px;
   font-weight: 200;
 }
 
@@ -89,7 +89,7 @@
   color: black;
   letter-spacing: 2px;
   font-weight: bold;
-  margin-top: -15px;
+  margin-top: 20px;
 }
 
 /* color css  */
