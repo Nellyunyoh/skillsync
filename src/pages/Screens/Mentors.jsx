@@ -1,4 +1,4 @@
-import "../css/mentors.css";
+import "../css/Mentors.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useState } from "react";
 import Sidebar from "../../Components/Screens/Sidebar";
@@ -97,7 +97,13 @@ const Mentors = () => {
             onClick={() => {
               setShowModal(true);
               setIsEditing(false); // Ensure modal is for adding
-              setNewMentor({ name: "", email: "", id: "", phone: "", intern: "" }); // Reset form
+              setNewMentor({
+                name: "",
+                email: "",
+                id: "",
+                phone: "",
+                intern: "",
+              }); // Reset form
             }}
             variant="primary"
           />
@@ -188,7 +194,13 @@ const Mentors = () => {
                     onClick={() => {
                       setShowModal(false);
                       setIsEditing(false);
-                      setNewMentor({ name: "", email: "", id: "", phone: "", intern: "" });
+                      setNewMentor({
+                        name: "",
+                        email: "",
+                        id: "",
+                        phone: "",
+                        intern: "",
+                      });
                     }}
                   >
                     Cancel
