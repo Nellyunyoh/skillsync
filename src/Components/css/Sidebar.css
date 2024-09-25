@@ -70,14 +70,14 @@
 .sub-menu {
   display: none;
   list-style-type: none;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   background-color: #6c5bb3;
   margin: 0;
 }
 
 .sub-menu li {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  /* padding-top: 10px;
+  padding-bottom: 10px; */
   font-size: 18px;
   border-radius: 5px;
 }

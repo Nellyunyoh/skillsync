@@ -9,7 +9,7 @@ function Login() {
   const navigate = useNavigate();
 
   function handleSubmit() {
-    navigate("/admin")
+    navigate("/admin");
   }
   return (
     <div>
@@ -33,6 +33,7 @@ function Login() {
             <div>
               <label htmlFor="email">Email</label>
               <input
+                className="form-input"
                 type="email"
                 id="email"
                 name="email"
@@ -44,6 +45,7 @@ function Login() {
             <div>
               <label htmlFor="password">Password</label>
               <input
+                className="form-input"
                 type="text"
                 id="password"
                 name="password"
@@ -53,7 +55,9 @@ function Login() {
             </div>
 
             {/* <Link to="/Admin"></Link> */}
-            <button type="submit" className="login">Login</button>
+            <button type="submit" className="login">
+              Login
+            </button>
 
             {/* <input type="submit" value="Login" /> */}
 
