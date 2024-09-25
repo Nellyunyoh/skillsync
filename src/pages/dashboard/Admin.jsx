@@ -1,19 +1,13 @@
 // import React from 'react'
-import Sidebar from "../../Components/Screens/Sidebar";
-import Navbar from "../../Components/Screens/Navbar";
-// import Usermanagement from '../../Components/Screens/Usermanagement';
-import "././../css/Admin.css";
-import { FaUserCircle } from "react-icons/fa";
-import { FaTasks } from "react-icons/fa";
+import { FaEdit, FaTasks, FaUserCircle } from "react-icons/fa";
 import { MdPeopleAlt } from "react-icons/md";
-import { FaEdit } from "react-icons/fa";
+import DashboardLayouts from "../../layouts/DashboardLayouts";
+import "././../css/Admin.css";
 
 export const Admin = () => {
   return (
-    <div className="container">
-      <Sidebar />
-      <div className="main-content">
-        <Navbar />
+    <DashboardLayouts>
+      <div>
         <div className="card-container">
           <h3 className="main-title">Today Insights</h3>
           <div className="card-wrapper">
@@ -22,9 +16,9 @@ export const Admin = () => {
                 <div className="number">
                   <FaUserCircle className="icon" />
                   <span className="title"> Total Number of Mentors</span>
-                  <span className="card-details">20</span>
                 </div>
               </div>
+                <span className="card-details">20</span>
             </div>
 
             <div className="info-card tranquil-blue">
@@ -128,7 +122,7 @@ export const Admin = () => {
           </table>
         </section>
       </div>
-    </div>
+    </DashboardLayouts>
   );
 };
 

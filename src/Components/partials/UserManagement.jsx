@@ -1,6 +1,6 @@
 // import React from 'react'
-import Sidebar from '../../Components/Screens/Sidebar'
-import Navbar from '../../Components/Screens/Navbar'
+import Sidebar from './Sidebar'
+import Navbar from './Navbar'
 export const Usermanagement = () => {
   return (
     <div>

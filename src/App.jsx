@@ -1,16 +1,16 @@
 // import React from "react";
-import ForgotPassword from "./pages/Screens/ForgotPassword";
-import Login from "./pages/Screens/Login";
-import Admin from "./pages/Screens/Admin";
-import Mentors from "./pages/Screens/Mentors";
-import Tasks from "./pages/Screens/Tasks";
-import Interns from "./pages/Screens/Interns";
-import Projects from "./pages/Screens/Projects";
-import Evaluation from "./pages/Screens/Evaluation";
-import Attestation from "./pages/Screens/Attestation";
-import Messaging from "./pages/Screens/Messaging";
-import Settings from "./pages/Screens/Settings";
-import Attendance from "./pages/Screens/Attendance";
+import ForgotPassword from "./pages/dashboard/ForgotPassword";
+import Login from "./pages/auth/Login";
+import Admin from "./pages/dashboard/Admin";
+import Mentors from "./pages/dashboard/Mentors";
+import Tasks from "./pages/dashboard/Tasks";
+import Interns from "./pages/dashboard/Interns";
+import Projects from "./pages/dashboard/Projects";
+import Evaluation from "./pages/dashboard/Evaluation";
+import Attestation from "./pages/dashboard/Attestation";
+import Messaging from "./pages/dashboard/Messaging";
+import Settings from "./pages/dashboard/Settings";
+import Attendance from "./pages/dashboard/Attendance";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 

@@ -1,5 +1,5 @@
 // import React from 'react';
-import "../css/styles.css";
+import "../css/auth.css";
 import profile from "../../assets/images/profileimg.png";
 import logomark from "../../assets/images/Logomark.png";
 import logo from "../../assets/images/logo1.png";

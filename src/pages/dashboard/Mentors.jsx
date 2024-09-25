@@ -1,9 +1,7 @@
-import "../css/Mentors.css";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useState } from "react";
-import Sidebar from "../../Components/Screens/Sidebar";
-import Navbar from "../../Components/Screens/Navbar";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Button from "../../Components/ui/Button";
+import DashboardLayouts from "../../layouts/DashboardLayouts";
 
 const Mentors = () => {
   const [mentors, setMentors] = useState([
@@ -86,11 +84,8 @@ const Mentors = () => {
   };
 
   return (
-    <div className="console">
-      <Sidebar />
-      <div className="object">
-        <Navbar />
-        <div className="mentor-list">
+    <DashboardLayouts>
+      <div className="mentor-list">
           <h2>Mentor List</h2>
           <Button
             label={"+ Add Mentor"}
@@ -210,8 +205,7 @@ const Mentors = () => {
             </div>
           )}
         </div>
-      </div>
-    </div>
+    </DashboardLayouts>
   );
 };
 
