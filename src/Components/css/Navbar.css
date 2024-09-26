@@ -60,3 +60,42 @@ h2 {
 .user-info .search-box i:hover {
   transform: scale(1, 2);
 }
+
+@media only screen and (max-width: 768px) {
+  .header-wrapper {
+    flex-direction: row; 
+  }
+
+  .header-title {
+    font-size: 20px; 
+  }
+
+  span {
+    font-size: 18px; 
+  }
+
+  h2 {
+    font-size: 20px; 
+    margin-bottom: 5px; 
+  }
+
+  .user-info {
+    flex-direction: row; 
+    width: 85%; 
+  }
+
+  .user-info .search-box {
+    width: 100%; 
+    margin-top: 5px;
+  }
+
+  .user-info .search-box input {
+    width: 100%; 
+    padding: 5px; 
+  }
+
+  .user-info .search-box i {
+    font-size: 1.5rem; /* Increase icon size for better accessibility */
+  }
+}
+

@@ -117,3 +117,52 @@ th {
   background-color: #ccc;
   width: 70px;
 }
+
+@media only screen and (max-width: 768px) {
+   .custom-table {
+    font-size: 12px; 
+    margin-top: 5px; 
+    display: flex;
+    flex-direction: column;
+  }
+
+  th,
+  td {
+    padding: 6px; 
+  }
+
+  th {
+    font-size: 17px;
+  }
+
+
+  /* .custom-table,
+  .custom-table thead,
+  .custom-table tbody,
+  .custom-table th,
+  .custom-table td {
+    display: flex;
+    flex-direction: row; 
+  } */
+/* 
+  .custom-table thead {
+    display: flex;
+    flex-direction: row; 
+  } */
+
+  /* .custom-table tr {
+    margin-bottom: 20px; 
+  } */
+
+  /* .custom-table td {
+    display: flex;
+    text-align: center; 
+   padding: 9.2px;
+    position: relative; 
+  } */
+
+} 
+
+
+
+

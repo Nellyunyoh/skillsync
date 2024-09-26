@@ -1,74 +1,27 @@
-// Import necessary libraries
+
 import { useState } from "react";
-import Sidebar from "../../Components/partials/Sidebar";
-import Navbar from "../../Components/partials/Navbar";
 import "../css/Settings.css";
 import DashboardLayouts from "../../layouts/DashboardLayouts";
 
 export const Settings = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [theme, setTheme] = useState("light");
   const [language, setLanguage] = useState("en");
   const [emailNotifications, setEmailNotifications] = useState(false);
   const [pushNotifications, setPushNotifications] = useState(false);
-  const [twoFactorAuth, setTwoFactorAuth] = useState(false);
 
-  const handleUsernameChange = (e) => setUsername(e.target.value);
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleThemeChange = (e) => setTheme(e.target.value);
   const handleLanguageChange = (e) => setLanguage(e.target.value);
   const handleEmailNotificationsChange = () =>
     setEmailNotifications(!emailNotifications);
   const handlePushNotificationsChange = () =>
     setPushNotifications(!pushNotifications);
-  const handleTwoFactorAuthChange = () => setTwoFactorAuth(!twoFactorAuth);
-
-  // Function to simulate viewing account activity
-  const viewAccountActivity = () => {
-    alert("Account activity is currently unavailable.");
-  };
 
   return (
     <DashboardLayouts>
       <div className="settings-container">
         <aside className="side"></aside>
         <main className="content">
-          {/* Account Settings Section */}
-          <section id="account" className="settings-section">
-            <h3>Account Settings</h3>
-            <div className="setting">
-              <label htmlFor="username">Username:</label>
-              <input
-                type="text"
-                id="username"
-                value={username}
-                onChange={handleUsernameChange}
-              />
-            </div>
-            <div className="setting">
-              <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={handleEmailChange}
-              />
-            </div>
-            <div className="setting">
-              <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={handlePasswordChange}
-              />
-            </div>
-          </section>
-
-          {/* Preferences Section */}
+         
           <section id="preferences" className="settings-section">
             <h3>Preferences</h3>
             <div className="setting">
@@ -92,7 +45,7 @@ export const Settings = () => {
             </div>
           </section>
 
-          {/* Notifications Section */}
+       
           <section id="notifications" className="settings-section">
             <h3>Notifications</h3>
             <div className="setting">
@@ -115,23 +68,6 @@ export const Settings = () => {
             </div>
           </section>
 
-          {/* Privacy & Security Section */}
-          <section id="privacy" className="settings-section">
-            <h3>Privacy & Security</h3>
-            <div className="setting">
-              <label htmlFor="2fa">Two-Factor Authentication:</label>
-              <input
-                type="checkbox"
-                id="2fa"
-                checked={twoFactorAuth}
-                onChange={handleTwoFactorAuthChange}
-              />
-            </div>
-            <div className="setting">
-              <label htmlFor="account-activity">Account Activity:</label>
-              <button onClick={viewAccountActivity}>View Activity</button>
-            </div>
-          </section>
         </main>
       </div>
     </DashboardLayouts>

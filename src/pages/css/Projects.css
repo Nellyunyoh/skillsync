@@ -1,13 +1,10 @@
-/* Container */
+
 .projects-container {
   display: flex;
   height: 100vh;
   overflow: hidden;
 }
 
-/* Sidebar */
-
-/* Content Area */
 .content-area {
   flex: 1;
   padding: 2px;
@@ -33,7 +30,7 @@ p {
   margin-bottom: 5px;
 }
 
-/* Search and Sort */
+
 .search-sort {
   display: flex;
   justify-content: space-between;
@@ -61,7 +58,7 @@ p {
   background-color: #444;
 }
 
-/* Project Grid */
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -117,7 +114,7 @@ p {
   background-color: #800080;
 }
 
-/* Progress Bar */
+
 .progress-bar {
   background-color: #f0f0f0;
   height: 10px;
@@ -153,7 +150,7 @@ p {
   background-color: #00b8e6;
 }
 
-/* Add/Edit Project Form */
+
 .project-form {
   margin-bottom: 30px;
   background-color: #fff;
@@ -191,7 +188,7 @@ p {
   background-color: #444;
 }
 
-/* Add Project Button */
+
 .add-project-btn {
   background-color: #775dd2;
   color: white;
@@ -206,7 +203,7 @@ p {
   background-color: #5b46a8;
 }
 
-/* Modal Overlay */
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -269,7 +266,6 @@ p {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  /* margin-bottom: 20px; */
 }
 
 .close-modal-btn:hover {
@@ -287,4 +283,90 @@ p {
 
 .progress-info .delete-button:hover {
   background-color: darkred;
+}
+
+@media only screen and (max-width: 768px) {
+  .content-area {
+    padding: 10px; 
+  }
+
+  .project-content {
+    padding: 15px; 
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1rem; 
+  }
+
+  
+  .search-sort {
+    flex-direction: column; 
+  }
+
+  .search-sort input[type="text"] {
+    width: 100%; 
+    margin-bottom: 10px; 
+  }
+
+  .sort-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+  }
+
+  .sort-buttons button {
+    margin-left: 0; 
+    margin-bottom: 10px; 
+  }
+
+ 
+  .project-grid {
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+  }
+
+
+  .project-card {
+    padding: 15px;
+  }
+
+  
+  .progress-bar {
+    height: 8px; 
+  }
+
+  
+  .project-form {
+    padding: 15px; 
+  }
+
+
+  .modal-content {
+    width: 90%; 
+    max-width: 400px; 
+  }
+
+
+  .add-project-btn {
+    width: 100%;
+    padding: 10px; 
+  }
+
+  
+  .modal-overlay {
+    padding: 10px; 
+  }
+
+
+  .progress-info button,
+  .modal-content .save-modal,
+  .close-modal-btn,
+  .progress-info .delete-button {
+    width: 100%;
+    padding: 8px; 
+  }
 }

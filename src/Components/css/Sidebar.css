@@ -89,3 +89,45 @@
 .menu-item.open .sub-menu {
   display: block;
 }
+
+@media only screen and (max-width: 768px) {
+  .black {
+    flex-direction: column; /* Stack items vertically */
+    gap: 2px; /* Reduce the gap between items */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .black span {
+    font-size: 10px;
+  }
+
+  .sidebar {
+    width: 20%;
+    height: auto; 
+    position: relative; 
+  }
+
+  .menu {
+    padding: 0;
+  }
+
+  .menu li {
+    padding-inline: 1rem; 
+  }
+
+  .icons {
+    font-size: 30px;
+  }
+
+  .dropdown-toggle {
+    margin-left: 0;
+  }
+
+  .sub-menu {
+    padding-left: 0;
+  }
+
+  .sub-menu li {
+    font-size: 10px; 
+  }
+}

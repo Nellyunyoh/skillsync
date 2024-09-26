@@ -2,8 +2,8 @@
 // import React, { useState } from 'react';
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useState } from "react";
-import Sidebar from "../../Components/partials/Sidebar";
-import Navbar from "../../Components/partials/Navbar";
+// import Sidebar from "../../Components/partials/Sidebar";
+// import Navbar from "../../Components/partials/Navbar";
 import Button from "../../Components/ui/Button";
 import DashboardLayouts from "../../layouts/DashboardLayouts";
 
@@ -41,7 +41,7 @@ const Mentors = () => {
     intern: "",
   });
 
-  // Adding a new mentor
+ 
   const handleAddMentor = () => {
     if (
       newMentor.name &&

@@ -34,7 +34,6 @@ img {
 }
 
 .form-section p {
-  /* margin-top: 10px; */
   margin-bottom: 10px;
 }
 
@@ -110,19 +109,62 @@ img {
   margin-top: 10px;
 }
 
-
-@media screen and (max-width: 768px) {
-  .evaluation-container {
-    width: 90%;
-    padding: 20px;
+@media only screen and (max-width: 768px) {
+  .evaluation-form {
+    width: 100%;
+    padding: 15px;
   }
 
-  .evaluation-footer {
+  img {
+    width: 150px; 
+  }
+
+  .evaluation-form h1 {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+
+  .evaluation-form h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+
+  .evaluation-table th,
+  .evaluation-table td {
+    padding: 8px; 
+    font-size: 14px;
+  }
+
+  .evaluation-table input[type="text"],
+  .evaluation-table input[type="email"],
+  .evaluation-table input[type="date"] {
+    width: 100%;
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .teller {
     flex-direction: column;
-    padding: 0;
   }
 
-  .signature {
-    margin-bottom: 20px;
+  .save-btn {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .form-section .long-text {
+    height: 60px;
+  }
+
+  .short {
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+  }
+
+  .long {
+    gap: 5px;
   }
 }
+

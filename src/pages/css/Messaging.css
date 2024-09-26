@@ -100,7 +100,6 @@
   background-color: #f0f0f0;
   width: 100%;
   top: 0;
-
 }
 
 .message-input button {
@@ -116,4 +115,55 @@
 
 .message-input button:hover {
   background-color: #775de2;
+}
+
+@media only screen and (max-width: 768px) {
+  .whatsapp-container {
+    flex-direction: row;
+    height: 77vh;
+  }
+
+  .chat-list {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+
+    overflow-y: auto;
+  }
+
+  .message-area {
+    width: 100%;
+    height: auto;
+    padding: 5px;
+  }
+
+  .message {
+    max-width: 80%;
+    font-size: 14px;
+  }
+
+  .sent {
+    align-self: flex-end;
+  }
+
+  .received {
+    align-self: flex-start;
+  }
+
+  .message-input {
+    padding: 5px;
+  }
+
+  .message-input input {
+    font-size: 14px;
+  }
+
+  .message-input button {
+    width: 100%;
+    margin: 0;
+  }
+
+  .message-input button:hover {
+    background-color: #775de2;
+  }
 }

@@ -1,3 +1,4 @@
+
 .modal-contain {
   position: fixed;
   top: 0;
@@ -23,7 +24,6 @@
 .modal-container h3 {
   font-size: 25px;
   text-align: center;
-  /* margin-top: -20px; */
 }
 
 .modal-button {
@@ -53,3 +53,29 @@
   color: black;
 }
 
+
+@media screen and (max-width: 768px) {
+  .modal-container {
+    width: 90%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .modal-container h3 {
+    font-size: 20px;
+  }
+
+  .modal-button {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .display {
+    font-size: 18px;
+    padding: 6px;
+  }
+
+  .modal-button .con {
+    font-size: 18px;
+  }
+}
