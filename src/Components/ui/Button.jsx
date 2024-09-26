@@ -2,24 +2,15 @@
 import "./style.css";
 
 function Button({ label, onClick, variant }) {
-  if (variant === "primary") {
-    return (
-      <button className={"primary-button"} onClick={onClick}>
-        {label}
-      </button>
-    );
-  }
-
-  if (variant === "secondary") {
-    return (
-      <button className={"secondary-button"} onClick={onClick}>
-        {label}
-      </button>
-    );
-  }
+  const BUTTON = {
+    primary: "primary-button",
+    secondary: "secondary-button",
+    danger: "danger-button",
+    default: "default-button",
+  };
 
   return (
-    <button className={"primary-button"} onClick={onClick}>
+    <button className={BUTTON[variant]} onClick={onClick}>
       {label}
     </button>
   );

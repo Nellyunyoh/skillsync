@@ -1,9 +1,9 @@
 // import React from 'react';
-import "../css/auth.css";
-import profile from "../../assets/images/profileimg.png";
+import { Link, useNavigate } from "react-router-dom";
 import logomark from "../../assets/images/Logomark.png";
 import logo from "../../assets/images/logo1.png";
-import { Link, useNavigate } from "react-router-dom";
+import profile from "../../assets/images/profileimg.png";
+import "../css/auth.css";
 
 function Login() {
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ function Login() {
                 type="email"
                 id="email"
                 name="email"
-                placeholder="johnmerry@gmail.com"
+                placeholder="Ex: johnmerry@mail.com"
                 required
               />
             </div>
@@ -46,20 +46,17 @@ function Login() {
               <label htmlFor="password">Password</label>
               <input
                 className="form-input"
-                type="text"
+                type="password"
                 id="password"
                 name="password"
-                placeholder="1234@5"
+                placeholder="Enter your password"
                 required
               />
             </div>
 
-            {/* <Link to="/Admin"></Link> */}
             <button type="submit" className="login">
               Login
             </button>
-
-            {/* <input type="submit" value="Login" /> */}
 
             <div className="forgot-question">
               <Link to="/ForgotPassword" className="forgot-password">

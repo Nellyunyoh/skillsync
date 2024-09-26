@@ -23,3 +23,21 @@
     cursor: pointer;
     margin-bottom: 20px;
 }
+
+.danger-button{
+    background-color: #d30a1a;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.default-button{
+    background-color: #679dee;
+    color: #460909;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
