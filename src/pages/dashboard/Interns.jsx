@@ -6,7 +6,7 @@ import { MdOutlineMoreHoriz } from "react-icons/md";
 import { FaSheetPlastic } from "react-icons/fa6";
 import { FaExclamationCircle } from "react-icons/fa";
 import { HiClipboardDocumentList } from "react-icons/hi2";
-import { useForm } from "react-hook-form"; // Import useForm from React Hook Form
+import { useForm } from "react-hook-form";
 
 import "../css/Interns.css";
 import DashboardLayouts from "../../layouts/DashboardLayouts";
