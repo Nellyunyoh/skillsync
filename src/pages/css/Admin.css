@@ -3,6 +3,7 @@
   background: #ebe9e9;
   width: 100%;
   padding: 6px;
+  overflow-y: scroll;
 }
 
 .dashboard-content {

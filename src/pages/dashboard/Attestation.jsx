@@ -36,7 +36,7 @@ const Attestation = () => {
         <button onClick={handlePrint}>Save as PDF</button>
       </div>
 
-      {/* Certificate Layout */}
+   
       <div className="certificate-container" ref={certificateRef}>
         <div className="certificate-header">
           <img src={mav} alt="mav" />

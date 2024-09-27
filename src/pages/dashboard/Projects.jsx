@@ -3,6 +3,9 @@ import Navbar from "../../Components/partials/Navbar";
 import "../css/Projects.css";
 import { useState } from "react";
 import { FaCalendarDays } from "react-icons/fa6";
+import { FaRegEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+
 
 const initialProjects = [
   {
@@ -23,7 +26,7 @@ const initialProjects = [
     name: "Portfolio Site",
     date: "08 July 2024",
     status: "Pending",
-    progress: 80,
+    progress: 2,
     color: "#0000FF",
   },
 ];
@@ -41,7 +44,6 @@ function Projects() {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false); 
 
-  // Handle form input for adding a new project
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewProject({ ...newProject, [name]: value });
@@ -60,7 +62,6 @@ function Projects() {
     setIsModalOpen(false); 
   };
 
-  // Start editing a project
   const startEdit = (index) => {
     setIsEditing(true);
     setCurrentProjectIndex(index);
@@ -123,7 +124,8 @@ function Projects() {
                   name="name"
                   placeholder="Project Name"
                   value={newProject.name}
-                  onChange={handleChange}
+                  onChange={handleChange} 
+                  required
                 />
                 <input
                   type="date"
@@ -131,6 +133,7 @@ function Projects() {
                   placeholder="Date"
                   value={newProject.date}
                   onChange={handleChange}
+                  required
                 />
                 <select
                   name="status"
@@ -199,13 +202,14 @@ function Projects() {
                 </div>
                 <div className="progress-info">
                   <span>{project.progress}%</span>
-                  <button onClick={() => startEdit(index)}>Edit</button>
-                  <button
-                    onClick={() => deleteProject(index)}
-                    className="delete-button"
-                  >
-                    Delete
-                  </button>
+
+                  <div className="fad">
+                  <FaRegEdit onClick={()=> startEdit(index)} className="fa" />
+                  
+                  <MdDelete onClick={()=> deleteProject(index)} className="md" />
+                  </div>
+                
+                 
                 </div>
               </div>
             ))}

@@ -71,6 +71,7 @@ p {
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  width: 100%;
 }
 
 .project-card h3 {
@@ -92,10 +93,13 @@ p {
 
 .status {
   font-weight: bold;
-  padding: 3px 8px;
+  width: 70px;
+  padding: 2px;
   border-radius: 5px;
   color: white;
   text-transform: capitalize;
+  font-size: 15px;
+  text-align: center;
 }
 
 .status.new {
@@ -283,6 +287,21 @@ p {
 
 .progress-info .delete-button:hover {
   background-color: darkred;
+}
+
+.fad {
+  display: flex;
+  gap: 20px;
+}
+
+.fad .fa {
+  font-size: 17px;
+  color: #775dd2;
+}
+
+.fad .md {
+  font-size: 17px;
+  color: red;
 }
 
 @media only screen and (max-width: 768px) {

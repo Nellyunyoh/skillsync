@@ -1,13 +1,12 @@
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import Sidebar from "../../Components/partials/Sidebar";
-import Navbar from "../../Components/partials/Navbar";
 import Button from "../../Components/ui/Button";
 import { MdOutlineMoreHoriz } from "react-icons/md";
 import { FaSheetPlastic } from "react-icons/fa6";
 import { FaExclamationCircle } from "react-icons/fa";
 import { HiClipboardDocumentList } from "react-icons/hi2";
+import { useForm } from "react-hook-form"; // Import useForm from React Hook Form
 
 import "../css/Interns.css";
 import DashboardLayouts from "../../layouts/DashboardLayouts";
@@ -32,43 +31,33 @@ const Interns = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [showMoreModal, setShowMoreModal] = useState(false);
-  const [newMentor, setNewMentor] = useState({
-    name: "",
-    email: "",
-    id: "",
-    phone: "",
-    intern: "",
-  });
   const [selectedIntern, setSelectedIntern] = useState(null);
   const [editingIndex, setEditingIndex] = useState(null);
 
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate(); 
 
-  const handleAddMentor = () => {
-    if (
-      newMentor.name &&
-      newMentor.email &&
-      newMentor.id &&
-      newMentor.phone &&
-      newMentor.intern
-    ) {
-      if (editingIndex !== null) {
-        const updatedInterns = [...interns];
-        updatedInterns[editingIndex] = newMentor;
-        setInterns(updatedInterns);
-        setEditingIndex(null);
-      } else {
-        setInterns([...interns, newMentor]);
-      }
-      setShowModal(false);
-      setNewMentor({ name: "", email: "", id: "", phone: "", intern: "" });
+  const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm();
+
+  const handleAddMentor = (data) => {
+    if (editingIndex !== null) {
+      const updatedInterns = [...interns];
+      updatedInterns[editingIndex] = data;
+      setInterns(updatedInterns);
+      setEditingIndex(null);
     } else {
-      alert("Please fill all fields before adding!");
+      setInterns([...interns, data]);
     }
+    setShowModal(false);
+    reset();
   };
 
   const handleEdit = (index) => {
-    setNewMentor(interns[index]);
+    const intern = interns[index];
+    setValue("name", intern.name);
+    setValue("email", intern.email);
+    setValue("id", intern.id);
+    setValue("phone", intern.phone);
+    setValue("intern", intern.intern);
     setEditingIndex(index);
     setShowModal(true);
   };
@@ -90,12 +79,10 @@ const Interns = () => {
     }
   };
 
-  // Function to handle navigation to the evaluation screen
   const goToEvaluation = () => {
     navigate("/evaluation");
   };
 
-  // Function to handle navigation to the attestation screen
   const goToAttestation = () => {
     navigate("/attestation");
   };
@@ -108,7 +95,14 @@ const Interns = () => {
     <DashboardLayouts>
       <div className="mentor-list">
         <h2>Intern List</h2>
-        <Button label="+ Add Intern" onClick={() => setShowModal(true)} />
+        <Button
+          variant="primary"
+          label={"+ Add Intern"}
+          onClick={() => {
+            setShowModal(true);
+            reset(); 
+          }}
+        />
 
         <table className="custom-table">
           <thead>
@@ -148,62 +142,67 @@ const Interns = () => {
           </tbody>
         </table>
 
-        {/* Add/Edit Intern Modal */}
+      
         {showModal && (
           <div className="modal" onClick={closeModal}>
             <div className="modal-content">
               <h3>{editingIndex !== null ? "Edit Intern" : "Add Intern"}</h3>
-              <input
-                type="text"
-                placeholder="Name"
-                value={newMentor.name}
-                onChange={(e) =>
-                  setNewMentor({ ...newMentor, name: e.target.value })
-                }
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                value={newMentor.email}
-                onChange={(e) =>
-                  setNewMentor({ ...newMentor, email: e.target.value })
-                }
-              />
-              <input
-                type="text"
-                placeholder="User ID"
-                value={newMentor.id}
-                onChange={(e) =>
-                  setNewMentor({ ...newMentor, id: e.target.value })
-                }
-              />
-              <input
-                type="text"
-                placeholder="Phone Number"
-                value={newMentor.phone}
-                onChange={(e) =>
-                  setNewMentor({ ...newMentor, phone: e.target.value })
-                }
-              />
-              <input
-                type="text"
-                placeholder="Mentor"
-                value={newMentor.intern}
-                onChange={(e) =>
-                  setNewMentor({ ...newMentor, intern: e.target.value })
-                }
-              />
-              <div className="modal-buttons">
-                <button onClick={handleAddMentor}>
-                  {editingIndex !== null ? "Update" : "Add"}
-                </button>
-                <button onClick={() => setShowModal(false)}>Cancel</button>
-              </div>
+              <form onSubmit={handleSubmit(handleAddMentor)}>
+                <input
+                  type="text"
+                  placeholder="Name"
+                  {...register("name", { required: "Name is required" })}
+                />
+                {errors.name && <p className="error">{errors.name.message}</p>}
+
+                <input
+                  type="email"
+                  placeholder="Email"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /\S+@\S+\.\S+/,
+                      message: "Entered value does not match email format"
+                    }
+                  })}
+                />
+                {errors.email && <p className="error">{errors.email.message}</p>}
+
+                <input
+                  type="text"
+                  placeholder="User ID"
+                  {...register("id", { required: "ID is required" })}
+                />
+                {errors.id && <p className="error">{errors.id.message}</p>}
+
+                <input
+                  type="text"
+                  placeholder="Phone Number"
+                  {...register("phone", { required: "Phone number is required" })}
+                />
+                {errors.phone && <p className="error">{errors.phone.message}</p>}
+
+                <input
+                  type="text"
+                  placeholder="Mentor"
+                  {...register("intern", { required: "Mentor name is required" })}
+                />
+                {errors.intern && <p className="error">{errors.intern.message}</p>}
+
+                <div className="modal-buttons">
+                  <button type="submit">
+                    {editingIndex !== null ? "Update" : "Add"}
+                  </button>
+                  <button type="button" onClick={() => setShowModal(false)}>
+                    Cancel
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         )}
 
-        {/* More Options Modal */}
+       
         {showMoreModal && selectedIntern && (
           <div className="modal-contain" onClick={closeModal}>
             <div className="modal-container">

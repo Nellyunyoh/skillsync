@@ -15,7 +15,7 @@ export const Navbar = () => {
         <div className="user-info">
           <div className="search-box">
                <FaSearch  className='search'/>
-            <input type="text" placeholder="Search" />
+            <input type="text" placeholder="Search" className='series' />
 
           </div>
 

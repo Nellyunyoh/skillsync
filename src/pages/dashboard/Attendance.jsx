@@ -3,15 +3,15 @@ import '../css/Attendance.css';
 
 const Attendance = () => {
   const [records, setRecords] = useState({});
-  const [currentWeek, setCurrentWeek] = useState(0); // Tracks the current week number (0 = current week)
+  const [currentWeek, setCurrentWeek] = useState(0); 
 
-  // Function to get the current week's dates dynamically
+  
   const getWeekDates = (weekOffset = 0) => {
     const today = new Date();
     const firstDayOfWeek = new Date(today.setDate(today.getDate() - today.getDay() + 1 + weekOffset * 7));
     const weekDates = [];
 
-    for (let i = 0; i < 5; i++) { // Loop for Monday to Friday
+    for (let i = 0; i < 5; i++) { 
       const currentDate = new Date(firstDayOfWeek);
       currentDate.setDate(firstDayOfWeek.getDate() + i);
       weekDates.push({

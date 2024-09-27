@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Button from "../../Components/ui/Button";
 import DashboardLayouts from "../../layouts/DashboardLayouts";
@@ -21,65 +22,60 @@ const Mentors = () => {
     },
   ]);
 
-  const [showModal, setShowModal] = useState(false); // Modal visibility
-  const [newMentor, setNewMentor] = useState({
-    name: "",
-    email: "",
-    id: "",
-    phone: "",
-    intern: "",
+  const [showModal, setShowModal] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editIndex, setEditIndex] = useState(null);
+
+
+  const { register, handleSubmit, reset, setValue } = useForm({
+    defaultValues: {
+      name: "",
+      email: "",
+      id: "",
+      phone: "",
+      intern: "",
+    },
   });
 
-  const [isEditing, setIsEditing] = useState(false); // Track if editing
-  const [editIndex, setEditIndex] = useState(null); // Track the index of mentor being edited
 
-  // Add or Edit mentor
-  const handleAddMentor = () => {
-    if (
-      newMentor.name &&
-      newMentor.email &&
-      newMentor.id &&
-      newMentor.phone &&
-      newMentor.intern
-    ) {
-      if (isEditing) {
-        // Editing mentor
-        const updatedMentors = [...mentors];
-        updatedMentors[editIndex] = newMentor;
-        setMentors(updatedMentors);
-        setIsEditing(false); // Reset to add mode
-      } else {
-        // Adding a new mentor
-        setMentors([...mentors, newMentor]);
-      }
-
-      setShowModal(false);
-      setNewMentor({ name: "", email: "", id: "", phone: "", intern: "" });
+  const onSubmit = (data) => {
+    if (isEditing) {
+      const updatedMentors = [...mentors];
+      updatedMentors[editIndex] = data;
+      setMentors(updatedMentors);
+      setIsEditing(false);
     } else {
-      alert("Please fill all fields before submitting!");
+      setMentors([...mentors, data]);
     }
+
+    setShowModal(false);
+    reset(); 
   };
 
-  // Edit mentor handler
   const handleEditMentor = (index) => {
-    setNewMentor(mentors[index]); // Pre-fill the form with mentor data
-    setEditIndex(index); // Set the index of the mentor being edited
-    setIsEditing(true); // Switch to edit mode
-    setShowModal(true); // Show the modal
+    const mentor = mentors[index];
+    setEditIndex(index);
+    setIsEditing(true);
+    setShowModal(true);
+    
+   
+    setValue("name", mentor.name);
+    setValue("email", mentor.email);
+    setValue("id", mentor.id);
+    setValue("phone", mentor.phone);
+    setValue("intern", mentor.intern);
   };
 
-  // Delete mentor
   const handleDeleteMentor = (index) => {
     const updatedMentors = mentors.filter((_, i) => i !== index);
     setMentors(updatedMentors);
   };
 
-  // Close modal if clicked outside modal content
   const closeModal = (e) => {
     if (e.target.className === "modal") {
       setShowModal(false);
-      setIsEditing(false); // Reset editing state
-      setNewMentor({ name: "", email: "", id: "", phone: "", intern: "" });
+      setIsEditing(false);
+      reset();
     }
   };
 
@@ -92,14 +88,8 @@ const Mentors = () => {
           label={"+ Add Mentor"}
           onClick={() => {
             setShowModal(true);
-            setIsEditing(false); // Ensure modal is for adding
-            setNewMentor({
-              name: "",
-              email: "",
-              id: "",
-              phone: "",
-              intern: "",
-            }); // Reset form
+            setIsEditing(false);
+            reset(); 
           }}
         />
 
@@ -141,66 +131,49 @@ const Mentors = () => {
           <div className="modal" onClick={closeModal}>
             <div className="modal-content">
               <h3>{isEditing ? "Edit Mentor" : "Add Mentor"}</h3>
-              <input
-                type="text"
-                placeholder="Name"
-                value={newMentor.name}
-                onChange={(e) =>
-                  setNewMentor({ ...newMentor, name: e.target.value })
-                }
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                value={newMentor.email}
-                onChange={(e) =>
-                  setNewMentor({ ...newMentor, email: e.target.value })
-                }
-              />
-              <input
-                type="text"
-                placeholder="User ID"
-                value={newMentor.id}
-                onChange={(e) =>
-                  setNewMentor({ ...newMentor, id: e.target.value })
-                }
-              />
-              <input
-                type="text"
-                placeholder="Phone Number"
-                value={newMentor.phone}
-                onChange={(e) =>
-                  setNewMentor({ ...newMentor, phone: e.target.value })
-                }
-              />
-              <input
-                type="text"
-                placeholder="Intern"
-                value={newMentor.intern}
-                onChange={(e) =>
-                  setNewMentor({ ...newMentor, intern: e.target.value })
-                }
-              />
-              <div className="modal-buttons">
-                <button onClick={handleAddMentor}>
-                  {isEditing ? "Update" : "Add"}
-                </button>
-                <button
-                  onClick={() => {
-                    setShowModal(false);
-                    setIsEditing(false);
-                    setNewMentor({
-                      name: "",
-                      email: "",
-                      id: "",
-                      phone: "",
-                      intern: "",
-                    });
-                  }}
-                >
-                  Cancel
-                </button>
-              </div>
+
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <input
+                  type="text"
+                  placeholder="Name"
+                  {...register("name", { required: true })}
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  {...register("email", { required: true })}
+                />
+                <input
+                  type="text"
+                  placeholder="User ID"
+                  {...register("id", { required: true })}
+                />
+                <input
+                  type="text"
+                  placeholder="Phone Number"
+                  {...register("phone", { required: true })}
+                />
+                <input
+                  type="text"
+                  placeholder="Intern"
+                  {...register("intern", { required: true })}
+                />
+                <div className="modal-buttons">
+                  <button type="submit">
+                    {isEditing ? "Update" : "Add"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowModal(false);
+                      setIsEditing(false);
+                      reset();
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         )}

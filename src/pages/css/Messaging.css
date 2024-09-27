@@ -3,6 +3,7 @@
   width: 100%;
   background-color: #e5ddd5;
   font-family: Arial, sans-serif;
+  overflow: scroll;
 }
 
 .info {
