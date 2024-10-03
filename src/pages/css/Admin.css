@@ -3,7 +3,6 @@
   background: #ebe9e9;
   width: 100%;
   padding: 6px;
-  overflow-y: scroll;
 }
 
 .dashboard-content {
@@ -97,7 +96,6 @@
   margin-top: 20px;
 }
 
-/* color css  */
 .tranquil-blue {
   background: #5dade2;
 }

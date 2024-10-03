@@ -75,12 +75,13 @@ function Login() {
             )}
           </div>
 
-          <button type="submit" className="login">
+          <button type="submit" className="logins">
             Login
           </button>
 
           <div className="forgot-question">
-            <Link to="/ForgotPassword" className="forgot-password">
+            {/* Make sure this Link correctly routes to the ForgotPassword page */}
+            <Link to="/forgot-password" className="forgot-password">
               Forgot Password?
             </Link>
           </div>

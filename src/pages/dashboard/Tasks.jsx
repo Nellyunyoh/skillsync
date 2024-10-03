@@ -7,25 +7,24 @@ import DashboardLayouts from "../../layouts/DashboardLayouts";
 const Mentors = () => {
   const [mentors, setMentors] = useState([
     {
-      id: "114",
+      id: "TMS114",
       name: "Html and Css",
       description: "Login form with html and css",
       assigned: "Peace Bright",
       status: "New",
     },
     {
-      id: "189",
+      id: "TMS189",
       name: "Javascript",
       description: "Form Validation",
-      assigned: "+237 654678975",
-      status: "Martha Peace",
+      assigned: "Ella Joy",
+      status: "New",
     },
   ]);
 
   const [showModal, setShowModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
-
 
   const { register, handleSubmit, reset, setValue } = useForm({
     defaultValues: {
@@ -37,6 +36,10 @@ const Mentors = () => {
     },
   });
 
+  const generateTaskId = () => {
+    const randomId = Math.floor(100 + Math.random() * 900);
+    return `TMS${randomId}`;
+  };
 
   const onSubmit = (data) => {
     if (isEditing) {
@@ -45,11 +48,12 @@ const Mentors = () => {
       setMentors(updatedMentors);
       setIsEditing(false);
     } else {
-      setMentors([...mentors, data]);
+      const newTask = { ...data, id: generateTaskId() };
+      setMentors([...mentors, newTask]);
     }
 
     setShowModal(false);
-    reset(); 
+    reset();
   };
 
   const handleEditMentor = (index) => {
@@ -57,13 +61,12 @@ const Mentors = () => {
     setEditIndex(index);
     setIsEditing(true);
     setShowModal(true);
-    
-   
-    setValue("name", mentor.id);
-    setValue("email", mentor.name);
-    setValue("id", mentor.description);
-    setValue("phone", mentor.assigned);
-    setValue("intern", mentor.status);
+
+    setValue("id", mentor.id);
+    setValue("name", mentor.name);
+    setValue("description", mentor.description);
+    setValue("assigned", mentor.assigned);
+    setValue("status", mentor.status);
   };
 
   const handleDeleteMentor = (index) => {
@@ -89,7 +92,17 @@ const Mentors = () => {
           onClick={() => {
             setShowModal(true);
             setIsEditing(false);
-            reset(); 
+            reset();
+          }}
+        />
+
+        <Button
+          variant="primary"
+          label={"+ Add Jobs"}
+          onClick={() => {
+            setShowModal(true);
+            setIsEditing(false);
+            reset();
           }}
         />
 
@@ -130,14 +143,9 @@ const Mentors = () => {
         {showModal && (
           <div className="modal" onClick={closeModal}>
             <div className="modal-content">
-              <h3>{isEditing ? "Edit Mentor" : "Add Mentor"}</h3>
+              <h3>{isEditing ? "Edit Task" : "Add Task"}</h3>
 
               <form onSubmit={handleSubmit(onSubmit)}>
-                <input
-                  type="text"
-                  placeholder="Task Id"
-                  {...register("name", { required: true })}
-                />
                 <input
                   type="text"
                   placeholder="Name"
@@ -159,9 +167,7 @@ const Mentors = () => {
                   {...register("status", { required: true })}
                 />
                 <div className="modal-buttons">
-                  <button type="submit">
-                    {isEditing ? "Update" : "Add"}
-                  </button>
+                  <button type="submit">{isEditing ? "Update" : "Add"}</button>
                   <button
                     type="button"
                     onClick={() => {

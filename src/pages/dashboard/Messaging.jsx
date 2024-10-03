@@ -3,7 +3,7 @@ import "../css/Messaging.css";
 // import '../'
 import profile from "../../assets/images/profileimg.png";
 import Sidebar from "../../Components/partials/Sidebar";
-import Navbar from '../../Components/partials/Navbar';
+import Navbar from "../../Components/partials/Navbar";
 
 const MessagingScreen = () => {
   const [selectedChat, setSelectedChat] = useState(1);
@@ -87,60 +87,60 @@ const MessagingScreen = () => {
     <div className="container">
       <Sidebar />
       <div className="info">
-<Navbar />
-      <div className="whatsapp-container">
-        <div className="chat-list">
-          {chats.map((chat) => (
-            <div
-              key={chat.id}
-              className={`chat-item ${
-                selectedChat === chat.id ? "active" : ""
-              }`}
-              onClick={() => setSelectedChat(chat.id)}
-            >
-              <img
-                src={chat.profileImage}
-                alt={chat.name}
-                className="profile-image"
-              />
-              <div className="chat-details">
-                <div className="chat-name">{chat.name}</div>
-                <div className="last-message">
-                  {chat.messages[chat.messages.length - 1].content}
+        <Navbar />
+        <div className="whatsapp-container">
+          <div className="chat-list">
+            {chats.map((chat) => (
+              <div
+                key={chat.id}
+                className={`chat-item ${
+                  selectedChat === chat.id ? "active" : ""
+                }`}
+                onClick={() => setSelectedChat(chat.id)}
+              >
+                <img
+                  src={chat.profileImage}
+                  alt={chat.name}
+                  className="profile-image"
+                />
+                <div className="chat-details">
+                  <div className="chat-name">{chat.name}</div>
+                  <div className="last-message">
+                    {chat.messages[chat.messages.length - 1].content}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="message-area">
-          <div className="messages">
-            {chats
-              .find((chat) => chat.id === selectedChat)
-              .messages.map((msg, idx) => (
-                <div
-                  key={idx}
-                  className={`message ${
-                    msg.sender === "Lumina" ? "sent" : "received"
-                  }`}
-                >
-                  {msg.content}
-                </div>
-              ))}
+            ))}
           </div>
 
-          <div className="message-input">
-            <input
-              type="text"
-              placeholder="Type a message..."
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            />
-            <button onClick={handleSendMessage}>Send</button>
+          <div className="message-area">
+            <div className="messages">
+              {chats
+                .find((chat) => chat.id === selectedChat)
+                .messages.map((msg, idx) => (
+                  <div
+                    key={idx}
+                    className={`message ${
+                      msg.sender === "Lumina" ? "sent" : "received"
+                    }`}
+                  >
+                    {msg.content}
+                  </div>
+                ))}
+            </div>
+
+            <div className="message-input">
+              <input
+                type="text"
+                placeholder="Type a message..."
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+              <button onClick={handleSendMessage}>Send</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

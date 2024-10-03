@@ -116,7 +116,7 @@ img {
   }
 
   img {
-    width: 150px; 
+    width: 150px;
   }
 
   .evaluation-form h1 {
@@ -132,7 +132,7 @@ img {
 
   .evaluation-table th,
   .evaluation-table td {
-    padding: 8px; 
+    padding: 8px;
     font-size: 14px;
   }
 
@@ -167,4 +167,3 @@ img {
     gap: 5px;
   }
 }
-

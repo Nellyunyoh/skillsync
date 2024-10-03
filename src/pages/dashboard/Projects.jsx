@@ -6,7 +6,6 @@ import { FaCalendarDays } from "react-icons/fa6";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
-
 const initialProjects = [
   {
     name: "Intern System",
@@ -42,14 +41,15 @@ function Projects() {
   });
   const [isEditing, setIsEditing] = useState(false);
   const [currentProjectIndex, setCurrentProjectIndex] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [deleteIndex, setDeleteIndex] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewProject({ ...newProject, [name]: value });
   };
 
-  
   const addProject = () => {
     setProjects([...projects, newProject]);
     setNewProject({
@@ -59,7 +59,7 @@ function Projects() {
       progress: 0,
       color: "#00D8FF",
     });
-    setIsModalOpen(false); 
+    setIsModalOpen(false);
   };
 
   const startEdit = (index) => {
@@ -69,7 +69,6 @@ function Projects() {
     setIsModalOpen(true);
   };
 
-  
   const saveEdit = () => {
     const updatedProjects = [...projects];
     updatedProjects[currentProjectIndex] = newProject;
@@ -82,21 +81,29 @@ function Projects() {
       progress: 0,
       color: "#00D8FF",
     });
-    setIsModalOpen(false); 
+    setIsModalOpen(false);
   };
 
-  
-  const deleteProject = (index) => {
-    const updatedProjects = projects.filter((_, i) => i !== index);
+  const openDeleteModal = (index) => {
+    setDeleteIndex(index);
+    setIsDeleteModalOpen(true);
+  };
+
+  const confirmDeleteProject = () => {
+    const updatedProjects = projects.filter((_, i) => i !== deleteIndex);
     setProjects(updatedProjects);
+    setIsDeleteModalOpen(false);
+  };
+
+  const cancelDelete = () => {
+    setIsDeleteModalOpen(false);
+    setDeleteIndex(null);
   };
 
   return (
     <div className="projects-container">
-      
       <Sidebar />
 
-    
       <div className="content-area">
         <Navbar />
         <div className="project-content">
@@ -106,7 +113,6 @@ function Projects() {
             projects.
           </p>
 
-          
           <button
             className="add-project-btn"
             onClick={() => setIsModalOpen(true)}
@@ -114,7 +120,6 @@ function Projects() {
             Add New Project
           </button>
 
-        
           {isModalOpen && (
             <div className="modal-overlay">
               <div className="modal-content">
@@ -124,7 +129,7 @@ function Projects() {
                   name="name"
                   placeholder="Project Name"
                   value={newProject.name}
-                  onChange={handleChange} 
+                  onChange={handleChange}
                   required
                 />
                 <input
@@ -173,6 +178,23 @@ function Projects() {
             </div>
           )}
 
+          {isDeleteModalOpen && (
+            <div className="modal-overlay">
+              <div className="modal-content">
+                <h2>Are you sure you want to delete this project?</h2>
+                <button
+                  onClick={confirmDeleteProject}
+                  className="primary-button"
+                >
+                  Confirm
+                </button>
+                <button onClick={cancelDelete} className="danger-button">
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
+
           <div className="project-grid">
             {projects.map((project, index) => (
               <div className="project-card" key={index}>
@@ -204,12 +226,16 @@ function Projects() {
                   <span>{project.progress}%</span>
 
                   <div className="fad">
-                  <FaRegEdit onClick={()=> startEdit(index)} className="fa" />
-                  
-                  <MdDelete onClick={()=> deleteProject(index)} className="md" />
+                    <FaRegEdit
+                      onClick={() => startEdit(index)}
+                      className="fa"
+                    />
+
+                    <MdDelete
+                      onClick={() => openDeleteModal(index)}
+                      className="md"
+                    />
                   </div>
-                
-                 
                 </div>
               </div>
             ))}

@@ -10,14 +10,14 @@ const Mentors = () => {
       name: "Joseph Johnson",
       email: "josephjohnson@gmail.com",
       id: "MMS145",
-      phone: "+237 654894694",
+      phone: "654894694",
       intern: "Mary Mag",
     },
     {
       name: "John Nasty",
       email: "johnnasty@gmail.com",
       id: "MMS149",
-      phone: "+237 654678975",
+      phone: "654678975",
       intern: "Martha Peace",
     },
   ]);
@@ -25,7 +25,8 @@ const Mentors = () => {
   const [showModal, setShowModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
-
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteIndex, setDeleteIndex] = useState(null);
 
   const { register, handleSubmit, reset, setValue } = useForm({
     defaultValues: {
@@ -37,6 +38,10 @@ const Mentors = () => {
     },
   });
 
+  const generateId = () => {
+    const randomNumber = Math.floor(100 + Math.random() * 900);
+    return `MMS${randomNumber}`;
+  };
 
   const onSubmit = (data) => {
     if (isEditing) {
@@ -47,9 +52,8 @@ const Mentors = () => {
     } else {
       setMentors([...mentors, data]);
     }
-
     setShowModal(false);
-    reset(); 
+    reset();
   };
 
   const handleEditMentor = (index) => {
@@ -57,8 +61,7 @@ const Mentors = () => {
     setEditIndex(index);
     setIsEditing(true);
     setShowModal(true);
-    
-   
+
     setValue("name", mentor.name);
     setValue("email", mentor.email);
     setValue("id", mentor.id);
@@ -67,14 +70,15 @@ const Mentors = () => {
   };
 
   const handleDeleteMentor = (index) => {
-    const updatedMentors = mentors.filter((_, i) => i !== index);
-    setMentors(updatedMentors);
+    setDeleteIndex(index);
+    setShowDeleteModal(true);
   };
 
   const closeModal = (e) => {
     if (e.target.className === "modal") {
       setShowModal(false);
       setIsEditing(false);
+      setShowDeleteModal(false);
       reset();
     }
   };
@@ -89,7 +93,8 @@ const Mentors = () => {
           onClick={() => {
             setShowModal(true);
             setIsEditing(false);
-            reset(); 
+            reset();
+            setValue("id", generateId());
           }}
         />
 
@@ -147,6 +152,7 @@ const Mentors = () => {
                   type="text"
                   placeholder="User ID"
                   {...register("id", { required: true })}
+                  readOnly
                 />
                 <input
                   type="text"
@@ -159,9 +165,7 @@ const Mentors = () => {
                   {...register("intern", { required: true })}
                 />
                 <div className="modal-buttons">
-                  <button type="submit">
-                    {isEditing ? "Update" : "Add"}
-                  </button>
+                  <button type="submit">{isEditing ? "Update" : "Add"}</button>
                   <button
                     type="button"
                     onClick={() => {
@@ -174,6 +178,36 @@ const Mentors = () => {
                   </button>
                 </div>
               </form>
+            </div>
+          </div>
+        )}
+
+        {showDeleteModal && (
+          <div className="modal" onClick={closeModal}>
+            <div className="modal-content">
+              <h3>Are you sure you want to delete this mentor?</h3>
+              <div className="modal-buttons">
+                <button
+                  onClick={() => {
+                    const updatedMentors = mentors.filter(
+                      (_, i) => i !== deleteIndex
+                    );
+                    setMentors(updatedMentors);
+                    setShowDeleteModal(false);
+                    setDeleteIndex(null);
+                  }}
+                >
+                  Confirm
+                </button>
+                <button
+                  onClick={() => {
+                    setShowDeleteModal(false);
+                    setDeleteIndex(null);
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           </div>
         )}

@@ -1,7 +1,6 @@
-
 .attendance-container {
   width: 100%;
-  max-width: 100%; 
+  max-width: 100%;
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
@@ -16,7 +15,6 @@
   font-size: 35px;
   font-weight: bold;
 }
-
 
 .week-navigation {
   display: flex;
@@ -39,22 +37,23 @@
   background-color: #2c3e50;
 }
 
-
 .present-btn,
 .absent-btn {
-  padding: 8px;
+  padding: 3px;
   border: none;
+  gap: 20px;
   border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
-  width: 70px; 
-  height: 35px;
+  width: 60px;
+  height: 30px;
   text-align: center;
 }
 
 .present-btn {
   background-color: #8e44ad;
   color: white;
+  margin: 5px;
 }
 
 .absent-btn {
@@ -67,18 +66,19 @@
   opacity: 0.8;
 }
 
-/* Table Data Styling */
+
 .attendance-table {
-  width: 100%; 
-  border-collapse: collapse; 
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.attendance-table th, .attendance-table td {
+.attendance-table th,
+.attendance-table td {
   font-size: 14px;
   color: #2c3e50;
   padding: 8px;
   text-align: center;
-  word-wrap: break-word; 
+  word-wrap: break-word;
 }
 
 .attendance-table tr:nth-child(even) {
@@ -86,13 +86,13 @@
 }
 
 .attendance-table th {
-  background-color: #ddd; 
+  background-color: #ddd;
 }
 
 /* Media Query for Smaller Screens */
 @media screen and (max-width: 768px) {
   .attendance-container {
-    padding: 10px; 
+    padding: 10px;
   }
 
   .title {
@@ -100,13 +100,13 @@
   }
 
   .week-navigation {
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
   }
 
   .nav-btn {
     padding: 8px 15px;
-    width: 100%; 
+    width: 100%;
     margin: 5px 0;
   }
 
@@ -115,11 +115,12 @@
     font-size: 12px;
     width: 40px;
     height: 30px;
-    gap: 10px; 
+    gap: 10px;
   }
 
-  .attendance-table th, .attendance-table td {
+  .attendance-table th,
+  .attendance-table td {
     font-size: 12px;
-    padding: 6px; 
+    padding: 6px;
   }
 }

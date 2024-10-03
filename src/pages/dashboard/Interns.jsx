@@ -1,13 +1,12 @@
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import Button from "../../Components/ui/Button";
 import { MdOutlineMoreHoriz } from "react-icons/md";
 import { FaSheetPlastic } from "react-icons/fa6";
 import { FaExclamationCircle } from "react-icons/fa";
 import { HiClipboardDocumentList } from "react-icons/hi2";
 import { useForm } from "react-hook-form";
-
 import "../css/Interns.css";
 import DashboardLayouts from "../../layouts/DashboardLayouts";
 
@@ -16,15 +15,15 @@ const Interns = () => {
     {
       name: "Joseph Johnson",
       email: "josephjohnson@gmail.com",
-      id: "MMS145",
-      phone: "+237 654894694",
+      id: "IMS145",
+      phone: "654894694",
       intern: "Mary Mag",
     },
     {
       name: "John Nasty",
       email: "johnnasty@gmail.com",
-      id: "MMS149",
-      phone: "+237 654678975",
+      id: "IMS149",
+      phone: "654678975",
       intern: "Martha Peace",
     },
   ]);
@@ -33,10 +32,23 @@ const Interns = () => {
   const [showMoreModal, setShowMoreModal] = useState(false);
   const [selectedIntern, setSelectedIntern] = useState(null);
   const [editingIndex, setEditingIndex] = useState(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteIndex, setDeleteIndex] = useState(null);
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
-  const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    formState: { errors },
+  } = useForm();
+
+  const generateId = () => {
+    const randomNumber = Math.floor(100 + Math.random() * 900);
+    return `IMS${randomNumber}`;
+  };
 
   const handleAddMentor = (data) => {
     if (editingIndex !== null) {
@@ -63,8 +75,8 @@ const Interns = () => {
   };
 
   const handleDelete = (index) => {
-    const updatedInterns = interns.filter((_, i) => i !== index);
-    setInterns(updatedInterns);
+    setDeleteIndex(index);
+    setShowDeleteModal(true);
   };
 
   const handleMore = (index) => {
@@ -76,11 +88,12 @@ const Interns = () => {
     if (e.target.className === "modal") {
       setShowModal(false);
       setShowMoreModal(false);
+      setShowDeleteModal(false);
     }
   };
 
-  const goToEvaluation = () => {
-    navigate("/evaluation");
+  const goToEvaluation = (intern) => {
+    navigate("/evaluation", { state: { intern } });
   };
 
   const goToAttestation = () => {
@@ -100,7 +113,8 @@ const Interns = () => {
           label={"+ Add Intern"}
           onClick={() => {
             setShowModal(true);
-            reset(); 
+            reset();
+            setValue("id", generateId());
           }}
         />
 
@@ -116,13 +130,13 @@ const Interns = () => {
             </tr>
           </thead>
           <tbody>
-            {interns.map((mentor, index) => (
+            {interns.map((intern, index) => (
               <tr key={index}>
-                <td>{mentor.name}</td>
-                <td>{mentor.email}</td>
-                <td>{mentor.id}</td>
-                <td>{mentor.phone}</td>
-                <td>{mentor.intern}</td>
+                <td>{intern.name}</td>
+                <td>{intern.email}</td>
+                <td>{intern.id}</td>
+                <td>{intern.phone}</td>
+                <td>{intern.intern}</td>
                 <td>
                   <FaEdit
                     className="edit-icon"
@@ -142,7 +156,6 @@ const Interns = () => {
           </tbody>
         </table>
 
-      
         {showModal && (
           <div className="modal" onClick={closeModal}>
             <div className="modal-content">
@@ -162,32 +175,43 @@ const Interns = () => {
                     required: "Email is required",
                     pattern: {
                       value: /\S+@\S+\.\S+/,
-                      message: "Entered value does not match email format"
-                    }
+                      message: "Entered value does not match email format",
+                    },
                   })}
                 />
-                {errors.email && <p className="error">{errors.email.message}</p>}
+                {errors.email && (
+                  <p className="error">{errors.email.message}</p>
+                )}
 
                 <input
                   type="text"
                   placeholder="User ID"
                   {...register("id", { required: "ID is required" })}
+                  readOnly //
                 />
                 {errors.id && <p className="error">{errors.id.message}</p>}
 
                 <input
                   type="text"
                   placeholder="Phone Number"
-                  {...register("phone", { required: "Phone number is required" })}
+                  {...register("phone", {
+                    required: "Phone number is required",
+                  })}
                 />
-                {errors.phone && <p className="error">{errors.phone.message}</p>}
+                {errors.phone && (
+                  <p className="error">{errors.phone.message}</p>
+                )}
 
                 <input
                   type="text"
                   placeholder="Mentor"
-                  {...register("intern", { required: "Mentor name is required" })}
+                  {...register("intern", {
+                    required: "Mentor name is required",
+                  })}
                 />
-                {errors.intern && <p className="error">{errors.intern.message}</p>}
+                {errors.intern && (
+                  <p className="error">{errors.intern.message}</p>
+                )}
 
                 <div className="modal-buttons">
                   <button type="submit">
@@ -202,13 +226,15 @@ const Interns = () => {
           </div>
         )}
 
-       
         {showMoreModal && selectedIntern && (
           <div className="modal-contain" onClick={closeModal}>
             <div className="modal-container">
               <h3>More Options for {selectedIntern.name}</h3>
               <div className="modal-button">
-                <button className="display" onClick={goToEvaluation}>
+                <button
+                  className="display"
+                  onClick={() => goToEvaluation(selectedIntern)}
+                >
                   <FaSheetPlastic className="con" /> Evaluation form
                 </button>
 
@@ -221,9 +247,40 @@ const Interns = () => {
                 </button>
               </div>
               <Button
-                label="close"
+                variant="danger"
+                label="Close"
                 onClick={() => setShowMoreModal(false)}
               ></Button>
+            </div>
+          </div>
+        )}
+
+        {showDeleteModal && (
+          <div className="modal" onClick={closeModal}>
+            <div className="modal-content">
+              <h3>Are you sure you want to delete this intern?</h3>
+              <div className="modal-buttons">
+                <button
+                  onClick={() => {
+                    const updatedInterns = interns.filter(
+                      (_, i) => i !== deleteIndex
+                    );
+                    setInterns(updatedInterns);
+                    setShowDeleteModal(false);
+                    setDeleteIndex(null);
+                  }}
+                >
+                  Confirm
+                </button>
+                <button
+                  onClick={() => {
+                    setShowDeleteModal(false);
+                    setDeleteIndex(null);
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           </div>
         )}

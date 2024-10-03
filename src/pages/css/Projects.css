@@ -1,14 +1,15 @@
-
 .projects-container {
   display: flex;
   height: 100vh;
   overflow: hidden;
+  width: 100%;
 }
 
 .content-area {
   flex: 1;
   padding: 2px;
   overflow-y: auto;
+  width: 100%;
 }
 
 .project-content {
@@ -16,6 +17,7 @@
   background-color: #f4f4f9;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 h1 {
@@ -29,7 +31,6 @@ p {
   color: #666;
   margin-bottom: 5px;
 }
-
 
 .search-sort {
   display: flex;
@@ -57,7 +58,6 @@ p {
 .sort-buttons button:hover {
   background-color: #444;
 }
-
 
 .project-grid {
   display: grid;
@@ -118,7 +118,6 @@ p {
   background-color: #800080;
 }
 
-
 .progress-bar {
   background-color: #f0f0f0;
   height: 10px;
@@ -153,7 +152,6 @@ p {
 .progress-info button:hover {
   background-color: #00b8e6;
 }
-
 
 .project-form {
   margin-bottom: 30px;
@@ -192,7 +190,6 @@ p {
   background-color: #444;
 }
 
-
 .add-project-btn {
   background-color: #775dd2;
   color: white;
@@ -206,7 +203,6 @@ p {
 .add-project-btn:hover {
   background-color: #5b46a8;
 }
-
 
 .modal-overlay {
   position: fixed;
@@ -297,20 +293,22 @@ p {
 .fad .fa {
   font-size: 17px;
   color: #775dd2;
+  cursor: pointer;
 }
 
 .fad .md {
   font-size: 17px;
   color: red;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 768px) {
   .content-area {
-    padding: 10px; 
+    padding: 10px;
   }
 
   .project-content {
-    padding: 15px; 
+    padding: 15px;
   }
 
   h1 {
@@ -318,74 +316,65 @@ p {
   }
 
   p {
-    font-size: 1rem; 
+    font-size: 1rem;
   }
 
-  
   .search-sort {
-    flex-direction: column; 
+    flex-direction: column;
   }
 
   .search-sort input[type="text"] {
-    width: 100%; 
-    margin-bottom: 10px; 
+    width: 100%;
+    margin-bottom: 10px;
   }
 
   .sort-buttons {
     display: flex;
     flex-direction: column;
-    gap: 10px; 
+    gap: 10px;
   }
 
   .sort-buttons button {
-    margin-left: 0; 
-    margin-bottom: 10px; 
+    margin-left: 0;
+    margin-bottom: 10px;
   }
 
- 
   .project-grid {
     grid-template-columns: 1fr;
     grid-gap: 15px;
   }
 
-
   .project-card {
     padding: 15px;
   }
 
-  
   .progress-bar {
-    height: 8px; 
+    height: 8px;
   }
 
-  
   .project-form {
-    padding: 15px; 
+    padding: 15px;
   }
-
 
   .modal-content {
-    width: 90%; 
-    max-width: 400px; 
+    width: 90%;
+    max-width: 400px;
   }
-
 
   .add-project-btn {
     width: 100%;
-    padding: 10px; 
+    padding: 10px;
   }
 
-  
   .modal-overlay {
-    padding: 10px; 
+    padding: 10px;
   }
-
 
   .progress-info button,
   .modal-content .save-modal,
   .close-modal-btn,
   .progress-info .delete-button {
     width: 100%;
-    padding: 8px; 
+    padding: 8px;
   }
 }
