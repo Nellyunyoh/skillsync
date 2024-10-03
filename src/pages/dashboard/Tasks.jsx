@@ -96,16 +96,6 @@ const Mentors = () => {
           }}
         />
 
-        <Button
-          variant="primary"
-          label={"+ Add Jobs"}
-          onClick={() => {
-            setShowModal(true);
-            setIsEditing(false);
-            reset();
-          }}
-        />
-
         <table className="custom-table">
           <thead>
             <tr>
