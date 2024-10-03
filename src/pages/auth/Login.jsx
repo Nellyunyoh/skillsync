@@ -31,7 +31,8 @@ function Login() {
         </div>
       </div>
 
-      <div className="login-container">
+     <div className="nelly">
+     <div className="login-container">
         <img src={logo} alt="Logo" />
         <h2>Welcome back</h2>
         <p>Please enter your details</p>
@@ -80,13 +81,14 @@ function Login() {
           </button>
 
           <div className="forgot-question">
-            {/* Make sure this Link correctly routes to the ForgotPassword page */}
             <Link to="/forgot-password" className="forgot-password">
               Forgot Password?
             </Link>
           </div>
         </form>
       </div>
+
+     </div>
     </div>
   );
 }

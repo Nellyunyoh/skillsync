@@ -18,26 +18,30 @@ body {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
-  color: #000;
+  color: black;
   font-size: 14px;
+  line-height: 30px;
+  border-radius: 10px; 
+  overflow: hidden; 
 }
 
-th,
-td {
-  border: 1px solid black;
+th, td {
   padding: 8px;
   text-align: center;
+  background-color: white;
+  border-bottom: 1px solid #eaecf0; 
 }
 
 th {
-  background-color: #775dd2;
-  color: white;
+  background-color: #f9fafb;
+  color: black;
   font-size: 15px;
 }
 
+
 /* -------------------------- Modal Style ---------------------- */
 .edit-icon {
-  color: #6a0dad;
+  color: rgba(0, 15, 159, 1);
   cursor: pointer;
   margin-right: 10px;
 }
@@ -106,15 +110,19 @@ th {
   border-radius: 10px;
 }
 
-.modal-buttons button:first-child {
-  background-color: #6a0dad;
+.modal-buttons button:last-child {
+  background-color: rgba(0, 15, 159, 1);
   color: white;
-  width: 70px;
+  width: 100px;
+  height: 5vh;
+  float: right;
 }
 
-.modal-buttons button:last-child {
+.modal-buttons button:first-child {
   background-color: #ccc;
-  width: 70px;
+  width: 100px;
+  height: 5vh;
+  float: left;
 }
 
 @media only screen and (max-width: 768px) {

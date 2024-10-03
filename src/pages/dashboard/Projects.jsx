@@ -5,6 +5,8 @@ import { useState } from "react";
 import { FaCalendarDays } from "react-icons/fa6";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import Button from "../../Components/ui/Button";
+
 
 const initialProjects = [
   {
@@ -120,6 +122,15 @@ function Projects() {
             Add New Project
           </button>
 
+          <Button
+          variant="default"
+          label={"Filter"}
+         
+          
+        />
+
+          
+
           {isModalOpen && (
             <div className="modal-overlay">
               <div className="modal-content">
@@ -162,18 +173,22 @@ function Projects() {
                   min="0"
                   max="100"
                 />
+                <div className="modal-buttons">
+              
                 <button
-                  onClick={isEditing ? saveEdit : addProject}
-                  className="save-modal"
-                >
-                  {isEditing ? "Save Changes" : "Add Project"}
-                </button>
-                <button
-                  className="close-modal-btn"
+                  className=""
                   onClick={() => setIsModalOpen(false)}
                 >
                   Close
                 </button>
+
+                <button
+                  onClick={isEditing ? saveEdit : addProject}
+                  className=""
+                >
+                  {isEditing ? "Save Changes" : "Save "}
+                </button>
+                </div>
               </div>
             </div>
           )}

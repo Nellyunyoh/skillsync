@@ -11,30 +11,30 @@ export const Admin = () => {
         <div className="card-container">
           <h3 className="main-title">Today Insights</h3>
           <div className="card-wrapper">
-            <div className="info-card">
+          <div className="info-card">
               <div className="card-header">
                 <div className="number">
-                  <FaUserCircle className="icon" />
+                  <FaUserCircle className="icon-card" />
                   <span className="title"> Total Number of Mentors</span>
                 </div>
               </div>
-                <span className="card-details">20</span>
+              <span className="card-detail">100</span>
             </div>
 
-            <div className="info-card tranquil-blue">
+            <div className="info-cards">
               <div className="card-header">
                 <div className="number">
-                  <FaTasks className="icon" />
+                  <FaTasks className="icon-cards" />
                   <span className="title"> Total Number of Tasks</span>
                 </div>
               </div>
               <span className="card-detail">100</span>
             </div>
 
-            <div className="info-card fresh-mint">
+            <div className="infos-card">
               <div className="card-header">
                 <div className="number">
-                  <MdPeopleAlt className="icon" />
+                  <MdPeopleAlt className="iconic" />
                   <span className="title"> Total Number of Interns </span>
                 </div>
               </div>

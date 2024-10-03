@@ -105,7 +105,7 @@
 
 .message-input button {
   padding: 10px;
-  background-color: #775dd2;
+  background-color: rgba(0, 15, 159, 1);
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -115,7 +115,7 @@
 }
 
 .message-input button:hover {
-  background-color: #775de2;
+  background-color: rgba(0, 15, 159, 1);
 }
 
 @media only screen and (max-width: 768px) {

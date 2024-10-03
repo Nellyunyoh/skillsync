@@ -118,6 +118,13 @@ const Interns = () => {
           }}
         />
 
+<Button
+          variant="default"
+          label={"Filter"}
+         
+          
+        />
+
         <table className="custom-table">
           <thead>
             <tr>
@@ -214,11 +221,13 @@ const Interns = () => {
                 )}
 
                 <div className="modal-buttons">
-                  <button type="submit">
-                    {editingIndex !== null ? "Update" : "Add"}
-                  </button>
+                
                   <button type="button" onClick={() => setShowModal(false)}>
                     Cancel
+                  </button>
+
+                  <button type="submit">
+                    {editingIndex !== null ? "Update" : "Save"}
                   </button>
                 </div>
               </form>
@@ -229,26 +238,29 @@ const Interns = () => {
         {showMoreModal && selectedIntern && (
           <div className="modal-contain" onClick={closeModal}>
             <div className="modal-container">
-              <h3>More Options for {selectedIntern.name}</h3>
+              <h3>Select Action for {selectedIntern.name}</h3>
+              <p>Please choose an action to perform for this intern</p>
               <div className="modal-button">
-                <button
-                  className="display"
+       <div className="jelly">
+       <button
+                  className=""
                   onClick={() => goToEvaluation(selectedIntern)}
                 >
-                  <FaSheetPlastic className="con" /> Evaluation form
+                 <div className="fish"> <FaSheetPlastic className="con" /></div> Evaluation
                 </button>
 
-                <button className="display" onClick={goToAttendance}>
-                  <FaExclamationCircle className="con" /> Attendance
+                <button className="" onClick={goToAttendance}>
+                  <div className="fish"><FaExclamationCircle className="con" /> </div>Attendance
                 </button>
-                <button className="display" onClick={goToAttestation}>
-                  <HiClipboardDocumentList className="con" /> Attestation of
-                  Internship
+
+                <button className="" onClick={goToAttestation}>
+                 <div className="fish"> <HiClipboardDocumentList className="con" /></div> Attestation 
                 </button>
+       </div>
               </div>
               <Button
                 variant="danger"
-                label="Close"
+                label="Cancel"
                 onClick={() => setShowMoreModal(false)}
               ></Button>
             </div>

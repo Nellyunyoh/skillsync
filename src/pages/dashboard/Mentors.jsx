@@ -98,6 +98,17 @@ const Mentors = () => {
           }}
         />
 
+<Button
+          variant="default"
+          label={"Filter"}
+          onClick={() => {
+            setShowModal(true);
+            setIsEditing(false);
+            reset();
+            setValue("id", generateId());
+          }}
+        />
+
         <table className="custom-table">
           <thead>
             <tr>
@@ -165,7 +176,7 @@ const Mentors = () => {
                   {...register("intern", { required: true })}
                 />
                 <div className="modal-buttons">
-                  <button type="submit">{isEditing ? "Update" : "Add"}</button>
+                 
                   <button
                     type="button"
                     onClick={() => {
@@ -176,6 +187,8 @@ const Mentors = () => {
                   >
                     Cancel
                   </button>
+
+                  <button type="submit">{isEditing ? "Update" : "Save"}</button>
                 </div>
               </form>
             </div>

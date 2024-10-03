@@ -5,19 +5,17 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  justify-content: center;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
 .modal-container {
-  background-color: #f5f5f5;
+  background-color: white;
   padding: 40px;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  height: 70vh;
+  top: 20px;
+  width: 500px;
 }
 
 .modal-container h3 {
@@ -33,29 +31,55 @@
   margin-bottom: 10px;
   padding: 20px;
   justify-self: center;
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
   border-radius: 5px;
+  width: 100%;
 }
 
-.display {
-  padding: 8px;
-  font-size: 25px;
+.jelly {
+  display: flex;
+  gap: 40px;
+  height: 20vh;
+  width: 100%;
+  /* background-color: yellow; */
+}
+
+.jelly button {
+  width: 100%;
+  background-color: white;
+  border: 1px solid #eeee;
+  border-radius: 10px;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+.fish {
+  background-color: #f9f5ff;
+  width: 80%;
+  height: 12vh;
+  margin: 0 auto;
+  color: rgba(0, 15, 159, 1);
+  font-size: 50px;
+  border-radius: 20px;
+  /* margin-bottom: 10px; */
+  /* margin-top: 20px; */
+}
+
+.con {
+  margin: 0 auto;
   text-align: center;
-  color: black;
-  background-color: #c5bbec;
-  border-radius: 5px;
-  border: 1px solid black;
-  cursor: pointer;
+  margin-top: 20px;
 }
 
-.modal-button .con {
-  font-size: 25px;
-  color: black;
-}
 
-.modal-contain .spe {
-  background-color: red;
-}
+
+
+
+
+
+
 
 @media screen and (max-width: 768px) {
   .modal-container {

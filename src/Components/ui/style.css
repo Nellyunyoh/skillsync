@@ -1,23 +1,24 @@
 .primary-button {
-  background-color: #775dd2;
+  background-color: rgba(0, 15, 159, 1);
   color: white;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   border-radius: 10px;
   min-width: 120px;
+  float: right;
+  font-weight: bolder;
 }
 
 .primary-button:hover{
-    background-color: #5c08b0;
+    background-color: rgba(0, 15, 159, 1);
     animation: 0.3s ease-out infinite;
 }
 
 .secondary-button{
     background-color: #d4cbcb;
-    color: #775dd2;
+    color: rgba(0, 15, 159, 1);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -25,7 +26,7 @@
 }
 
 .danger-button{
-    background-color: #d30a1a;
+    background-color: rgba(0, 15, 159, 1);
     color: #fff;
     font-size: 15px;
     border: none;
@@ -33,13 +34,22 @@
     cursor: pointer;
     margin-bottom: 20px;
     border-radius: 10px;
+    width: 90%;
+    margin-left: 20px;
 }
 
 .default-button{
-    background-color: #679dee;
-    color: #460909;
-    border: none;
-    padding: 10px 20px;
+    background-color: white;
+    color: rgba(0, 15, 159, 1);
+    border: 0.5px solid rgba(0, 15, 159, 1);
+    padding: 10px 10px;
     cursor: pointer;
-    margin-bottom: 20px;
+    font-weight: bolder;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    min-width: 120px;
+    float: right;
+    margin-right: 10px;
 }
+
+

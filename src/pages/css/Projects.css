@@ -29,7 +29,7 @@ h1 {
 p {
   font-size: 1.1rem;
   color: #666;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .search-sort {
@@ -72,6 +72,8 @@ p {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   width: 100%;
+  /* margin-bottom: 30px; */
+  margin-top: 20%;
 }
 
 .project-card h3 {
@@ -191,13 +193,14 @@ p {
 }
 
 .add-project-btn {
-  background-color: #775dd2;
+  background-color: rgba(0, 15, 159, 1);
   color: white;
   padding: 10px 30px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 10px;
+  float: right;
 }
 
 .add-project-btn:hover {
@@ -246,7 +249,7 @@ p {
 .modal-content .save-modal {
   width: 100%;
   padding: 10px;
-  background-color: #775dd2;
+  background-color: rgba(0, 15, 159, 1);
   color: white;
   border: none;
   border-radius: 5px;
@@ -292,7 +295,7 @@ p {
 
 .fad .fa {
   font-size: 17px;
-  color: #775dd2;
+  color: rgba(0, 15, 159, 1);
   cursor: pointer;
 }
 

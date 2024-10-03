@@ -9,6 +9,7 @@ import { HiClipboardDocumentList } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { RiArrowDownSFill } from "react-icons/ri";
+import image from '../../assets/images/image 20.png'
 
 export const Sidebar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -18,6 +19,7 @@ export const Sidebar = () => {
   };
 
   const data = [
+   
     {
       title: "Dashboard",
       path: "/admin",
@@ -35,10 +37,15 @@ export const Sidebar = () => {
     },
     {
       title: "Projects",
-      path: "/projects",
+      path: "",
       icon: <HiClipboardDocumentList className="icons" />,
       isDropdown: true,
       subItems: [
+        {
+          title: "Projects",
+          path: "/projects",
+                    icon: <HiClipboardDocumentList className="icons" />,
+        },
         {
           title: "Tasks",
           path: "/tasks",
@@ -62,6 +69,7 @@ export const Sidebar = () => {
   return (
     <div className="sidebar">
       <ul className="menu">
+      <img src = {image} className="desk" alt=""  />
         {data.map((item, index) => (
           <div
             key={index}

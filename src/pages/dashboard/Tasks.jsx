@@ -13,6 +13,46 @@ const Mentors = () => {
       assigned: "Peace Bright",
       status: "New",
     },
+
+    {
+      id: "TMS114",
+      name: "Html and Css",
+      description: "Login form with html and css",
+      assigned: "Peace Bright",
+      status: "New",
+    },
+
+    {
+      id: "TMS114",
+      name: "Html and Css",
+      description: "Login form with html and css",
+      assigned: "Peace Bright",
+      status: "New",
+    },
+
+    {
+      id: "TMS114",
+      name: "Html and Css",
+      description: "Login form with html and css",
+      assigned: "Peace Bright",
+      status: "New",
+    },
+
+    {
+      id: "TMS114",
+      name: "Html and Css",
+      description: "Login form with html and css",
+      assigned: "Peace Bright",
+      status: "New",
+    },
+
+    {
+      id: "TMS114",
+      name: "Html and Css",
+      description: "Login form with html and css",
+      assigned: "Peace Bright",
+      status: "New",
+    },
     {
       id: "TMS189",
       name: "Javascript",
@@ -96,6 +136,17 @@ const Mentors = () => {
           }}
         />
 
+<Button
+          variant="default"
+          label={"Filter"}
+          onClick={() => {
+            setShowModal(true);
+            setIsEditing(false);
+            reset();
+          
+          }}
+        />
+
         <table className="custom-table">
           <thead>
             <tr>
@@ -133,7 +184,7 @@ const Mentors = () => {
         {showModal && (
           <div className="modal" onClick={closeModal}>
             <div className="modal-content">
-              <h3>{isEditing ? "Edit Task" : "Add Task"}</h3>
+              <h3>{isEditing ? "Edit Task" : "Save Task"}</h3>
 
               <form onSubmit={handleSubmit(onSubmit)}>
                 <input
@@ -157,7 +208,7 @@ const Mentors = () => {
                   {...register("status", { required: true })}
                 />
                 <div className="modal-buttons">
-                  <button type="submit">{isEditing ? "Update" : "Add"}</button>
+                  
                   <button
                     type="button"
                     onClick={() => {
@@ -168,6 +219,7 @@ const Mentors = () => {
                   >
                     Cancel
                   </button>
+                  <button type="submit">{isEditing ? "Update" : "Add"}</button>
                 </div>
               </form>
             </div>

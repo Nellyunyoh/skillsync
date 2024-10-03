@@ -47,13 +47,20 @@
   margin: 25px;
 }
 
-.login-container {
+.nelly {
   flex: 1;
   padding: 60px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+}
+
+.login-container{
+  /* background-color: red; */
+  width: 60%;
+  margin: 0 auto;
+  margin-top: -20%;
 }
 
 .login-container img {
@@ -97,7 +104,7 @@
 }
 
 .login-container .logins {
-  background-color: #775dd2;
+  background-color: rgba(0, 15, 159, 1);
   width: 100%;
   padding: 8px;
   margin-bottom: 20px;
@@ -134,7 +141,7 @@
 }
 
 .otp-container input:focus {
-  border-color: #775dd2;
+  border-color: rgba(0, 15, 159, 1);
   outline: none;
 }
 
@@ -160,7 +167,7 @@
   margin-bottom: 10px;
   font-size: 15px;
   cursor: pointer;
-  color: #775dd2;
+  color: rgba(0, 15, 159, 1);
   float: right;
 }
 

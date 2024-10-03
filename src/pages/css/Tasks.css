@@ -9,7 +9,7 @@ form label {
 }
 
 .submit {
-  background-color: #775dd2;
+  background-color: rgba(0, 15, 159, 1);
   height: 7vh;
   width: 25%;
   float: right;
@@ -34,14 +34,14 @@ form label {
 
 
 .Add {
-  background-color: #775dd2;
+  background-color: rgba(0, 15, 159, 1);
   width: 14%;
   height: 7%;
   margin: 10px;
   padding: 8px;
   color: white;
   font-size: 18px;
-  border: 2px solid #775dd2;
+  border: 2px solid rgba(0, 15, 159, 1);
   float: right;
   position: relative;
   top: -10%;
@@ -50,7 +50,7 @@ form label {
 }
 
 .editBtn {
-  color: #775dd2;
+  color: rgba(0, 15, 159, 1);
   width: 25%;
   height: 4vh;
   margin-left: 10px;

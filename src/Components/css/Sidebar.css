@@ -14,12 +14,19 @@
   width: 20%;
   top: 0;
   bottom: 0;
-  background-color: #775dd2;
+  background-color: rgba(0, 15, 159, 1);
   color: white;
   height: 100vh;
   transition: all 0.5s linear;
   padding: 5px;
   position: relative;
+}
+
+.sidebar img {
+  width: 70%;
+  margin-top: 10px;
+  margin-bottom: 35px;
+
 }
 
 .sidebar-item,
@@ -96,6 +103,8 @@
     font-size: 10px;
     text-align: center;
   }
+
+ 
 
   .sidebar {
     width: 20%;

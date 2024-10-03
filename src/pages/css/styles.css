@@ -111,7 +111,7 @@
   padding: 12px;
   border-radius: 8px;
   border: none;
-  background-color: #775dd2;
+  background-color: rgba(0, 15, 159, 1);
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -123,7 +123,7 @@
   margin-bottom: 10px;
   font-size: 15px;
   cursor: pointer;
-  color: #775dd2;
+  color: rgba(0, 15, 159, 1);
   float: right;
 }
 

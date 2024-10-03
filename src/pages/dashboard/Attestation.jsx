@@ -1,8 +1,8 @@
 import  { useState, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import '../css/Attestation.css';
-import mav from '../../assets/images/mav.png'
-
+import grass from '../../assets/images/Frame 111.png'
+import group from '../../assets/images/Capture-removebg-preview.png'
 const Attestation = () => {
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
@@ -23,7 +23,7 @@ const Attestation = () => {
         </label>
         <label>
           Date:
-          <input type="text" value={date} onChange={(e) => setDate(e.target.value)} />
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
         </label>
         <label>
           Supervisor:
@@ -39,15 +39,15 @@ const Attestation = () => {
    
       <div className="certificate-container" ref={certificateRef}>
         <div className="certificate-header">
-          <img src={mav} alt="mav" />
-          <h1>CERTIFICATE OF ATTESTATION</h1>
-          <p>This is to certify that </p>
+          <img src={group} alt="mav" />
+          <h1>PRESENTED TO</h1>
+          
         </div>
         <div className="certificate-body">
-          <h2>{name || 'Your Name'}</h2>
+          <h2>{name || 'Name & Surname'}</h2>
           <p>
             For outstanding completion of the compulsory internship program
-            at MAVIANCE PLC  from {date || 'Date'}.
+            at MAVIANCE PLC on {date || 'Date'}.
             During this period has demonstrated exceptional commitment, professionalism, and the ability to apply the skills and knowledge acquired throughout the internship. Their contributions have been invaluable, and they have fulfilled all the requirements of the internship program.
 We hereby acknowledge their successful completion of the internship and wish them the best in their future endeavors.
           </p>
@@ -57,6 +57,7 @@ We hereby acknowledge their successful completion of the internship and wish the
             <p>{ceo || 'John Joseph'}</p>
             <span>SUPERVISOR</span>
           </div>
+          <img src = {grass} className='grass' alt='' />
           <div className="signature">
             <p>{programManager || 'Jerry Johnny'}</p>
             <span>MANAGER</span>
@@ -69,3 +70,4 @@ We hereby acknowledge their successful completion of the internship and wish the
 };
 
 export default Attestation;
+
