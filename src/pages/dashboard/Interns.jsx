@@ -26,6 +26,20 @@ const Interns = () => {
       phone: "654678975",
       intern: "Martha Peace",
     },
+    {
+      name: "John Nasty",
+      email: "johnnasty@gmail.com",
+      id: "IMS149",
+      phone: "654678975",
+      intern: "Martha Peace",
+    },
+    {
+      name: "John Nasty",
+      email: "johnnasty@gmail.com",
+      id: "IMS149",
+      phone: "654678975",
+      intern: "Martha Peace",
+    },
   ]);
 
   const [showModal, setShowModal] = useState(false);

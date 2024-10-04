@@ -23,13 +23,15 @@ body {
   line-height: 30px;
   border-radius: 10px; 
   overflow: hidden; 
+  border-color: black;
 }
 
 th, td {
   padding: 8px;
-  text-align: center;
+  text-align: left;
   background-color: white;
   border-bottom: 1px solid #eaecf0; 
+  padding-left: 40px;
 }
 
 th {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import "../css/Evaluations.css";
-import maviance from "../../assets/images/mav.png";
+import maviance from "../../assets/images/image 21 copy.png";
 import { useLocation } from "react-router-dom";
 
 const Evaluation = () => {
@@ -108,15 +108,17 @@ const Evaluation = () => {
   return (
     <div className="evaluation-form">
       <img src={maviance} alt="Maviance"></img>
-      <h1>INTERNSHIP EVALUATION FORM</h1>
+      <h3>INTERNSHIP EVALUATION FORM</h3>
+
       <p>
         This evaluation is designed primarily to provide feedback on job
         performance and related issues to assist the student. This form is to be
         completed and submitted at the end of the semester.
       </p>
 
-      <div className="form-section">
-        <h3>SUPERVISOR INFORMATION</h3>
+    <div className="information">
+    <div className="form-section">
+        <h3>Supervisor Information*</h3>
         <table className="evaluation-table">
           <tbody>
             <tr>
@@ -163,7 +165,7 @@ const Evaluation = () => {
       </div>
 
       <div className="form-section">
-        <h3>INTERN INFORMATION</h3>
+        <h3>Intern Information*</h3>
         <table className="evaluation-table">
           <tbody>
             <tr>
@@ -209,10 +211,11 @@ const Evaluation = () => {
         </table>
       </div>
 
+    </div>
       <div className="form-section">
-        <h3>ABOUT THE INTERN</h3>
+        <h3 required >Core skills and competencies*</h3>
         <p>
-          1- Please rate this intern on the following items by checking the
+          Please rate this intern on the following items by checking the
           appropriate rating.
         </p>
         <table className="evaluation-table">
@@ -228,7 +231,7 @@ const Evaluation = () => {
           </thead>
           <tbody>
             <tr>
-              <td>Arrived on time</td>
+              <td>Punctuality</td>
               <td>
                 <input
                   type="radio"
@@ -272,7 +275,7 @@ const Evaluation = () => {
             </tr>
 
             <tr>
-              <td>Behaved in a Professional manner</td>
+              <td>Professionalism</td>
               <td>
                 <input
                   type="radio"
@@ -316,7 +319,7 @@ const Evaluation = () => {
             </tr>
 
             <tr>
-              <td>Effectively performed assignments</td>
+              <td>Proficiency</td>
               <td>
                 <input
                   type="radio"
@@ -359,52 +362,10 @@ const Evaluation = () => {
               </td>
             </tr>
 
-            <tr>
-              <td>Computer Skills</td>
-              <td>
-                <input
-                  type="radio"
-                  name="ratings.computer"
-                  value="Excellent"
-                  onChange={handleChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="radio"
-                  name="ratings.computer"
-                  value="Very Good"
-                  onChange={handleChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="radio"
-                  name="ratings.computer"
-                  value="Satisfactory"
-                  onChange={handleChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="radio"
-                  name="ratings.computer"
-                  value="Needs Improvement"
-                  onChange={handleChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="radio"
-                  name="ratings.computer"
-                  value="Unsatisfactory"
-                  onChange={handleChange}
-                />
-              </td>
-            </tr>
+   
 
             <tr>
-              <td>Ability to work with others</td>
+              <td>Team work</td>
               <td>
                 <input
                   type="radio"
@@ -580,7 +541,7 @@ const Evaluation = () => {
             </tr>
 
             <tr>
-              <td>Demonstrated critical thinking and problem solving skills</td>
+              <td>Strategic thinking</td>
               <td>
                 <input
                   type="radio"
@@ -623,52 +584,10 @@ const Evaluation = () => {
               </td>
             </tr>
 
-            <tr>
-              <td>Making and meeting deadlines</td>
-              <td>
-                <input
-                  type="radio"
-                  name="ratings.meeting"
-                  value="Excellent"
-                  onChange={handleChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="radio"
-                  name="ratings.meeting"
-                  value="Very Good"
-                  onChange={handleChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="radio"
-                  name="ratings.meeting"
-                  value="Satisfactory"
-                  onChange={handleChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="radio"
-                  name="ratings.meeting"
-                  value="Needs Improvement"
-                  onChange={handleChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="radio"
-                  name="ratings.meeting"
-                  value="Unsatisfactory"
-                  onChange={handleChange}
-                />
-              </td>
-            </tr>
+  
 
             <tr>
-              <td>Decision making, setting priorities</td>
+              <td>Decision making</td>
               <td>
                 <input
                   type="radio"
@@ -717,56 +636,46 @@ const Evaluation = () => {
       <div className="form-section">
         <h3>COMMENTS</h3>
         <div className="long">
-          <label>
-            2-Describe the ways in which the intern’s performance benefited your
-            organization.
-          </label>
+          
           <input
             name="comments.performanceBenefits"
-            placeholder=""
+            placeholder="Describe the ways in which the intern’s performance benefited your organization."
             value={formData.comments.performanceBenefits}
             onChange={handleChange}
             className="long-text"
           />
 
-          <label>
-            {" "}
-            3-What development have you observed in the student’s skills,
-            knowledge, personal and/or professional performance?
-          </label>
+         
           <input
             name="comments.skills"
-            placeholder=""
+            placeholder="What development have you observed in the student’s skills, knowledge, personal and/or professional performance?"
             value={formData.comments.skills}
             onChange={handleChange}
             className="long-text"
           />
 
-          <label> 4-What do you consider to be the intern’s strengths?</label>
+         
           <input
             name="comments.performanceBenefits"
-            placeholder=""
+            placeholder="What do you consider to be the intern’s strengths?"
             value={formData.comments.strengths}
             onChange={handleChange}
             className="long-text"
           />
 
-          <label> 5-In what areas does the intern need to improve?</label>
+          
           <input
             name="comments.performanceBenefits"
-            placeholder=""
+            placeholder="In what areas does the intern need to improve?"
             value={formData.comments.improve}
             onChange={handleChange}
             className="long-text"
           />
 
-          <label>
-            {" "}
-            6-Overall, how do you rate your experience with this intern ?
-          </label>
+         
           <input
             name="comments.performanceBenefits"
-            placeholder=""
+            placeholder="Overall, how do you rate your experience with this intern ?"
             value={formData.comments.rate}
             onChange={handleChange}
             className="long-text"
@@ -774,64 +683,11 @@ const Evaluation = () => {
         </div>
       </div>
 
-      <div className="form-section">
-        <h3>ABOUT THE INTERNSHIP EXPERIENCE</h3>
-        <div className="long">
-          <label>
-            7-What are your suggestions for improving the Department of
-            Information Technology’s internship program?
-          </label>
-          <input
-            name="internshipExperience.suggestions"
-            placeholder=""
-            value={formData.internshipExperience.suggestions}
-            onChange={handleChange}
-            className="long-text"
-          />
+     
 
-          <label>
-            8-What are your suggestions for improving the Department of
-            Information Technology’s internship program?
-          </label>
-          <input
-            name="internshipExperience.suggestions"
-            placeholder=""
-            value={formData.internshipExperience.improve}
-            onChange={handleChange}
-            className="long-text"
-          />
+     
 
-          <label>
-            9-Based on your experience, would you supervise other Department of
-            Information Technology interns or recommend the internship program
-            to others?
-          </label>
-          <input
-            name="internshipExperience.suggestions"
-            placeholder=""
-            value={formData.internshipExperience.program}
-            onChange={handleChange}
-            className="long-text"
-          />
-
-          <label>
-            10-Do you have any other comments that will help the Department and
-            our students ?
-          </label>
-          <input
-            name="internshipExperience.suggestions"
-            placeholder=""
-            value={formData.internshipExperience.department}
-            onChange={handleChange}
-            className="long-text"
-          />
-        </div>
-      </div>
-
-      <div className="short">
-        <input type="text" placeholder="Supervisor Signature" />
-        <input type="date" placeholder="Date" />
-      </div>
+      
 
       <button className="save-btn" onClick={handleDownloadPDF}>
         Save as PDF

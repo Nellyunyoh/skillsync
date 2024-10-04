@@ -2,7 +2,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import logomark from "../../assets/images/Logomark.png";
-import logo from "../../assets/images/logo1.png";
+import logo from "../../assets/images/image 21 copy.png";
 import profile from "../../assets/images/profileimg.png";
 import "../css/auth.css";
 
@@ -23,12 +23,7 @@ function Login() {
     <div className="container">
       <div className="image-container">
         <img src={profile} alt="Profile" />
-        <div className="overlay">
-          <div className="logo-text">
-            <img src={logomark} alt="Logo" />
-            <h1>Catalog</h1>
-          </div>
-        </div>
+        
       </div>
 
      <div className="nelly">

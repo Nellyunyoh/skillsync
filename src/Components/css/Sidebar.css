@@ -26,6 +26,8 @@
   width: 70%;
   margin-top: 10px;
   margin-bottom: 35px;
+  /* margin: 0 auto; */
+  margin-left: 40px;
 
 }
 
@@ -51,7 +53,7 @@
 
 .menu li:hover,
 .active {
-  background: #8c79ce;
+  background: blue;
   cursor: pointer;
 }
 
