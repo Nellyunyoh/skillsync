@@ -1,0 +1,66 @@
+{
+  "users": [
+    {
+      "email": "johnmerry@mail.com",
+      "password": "password123"
+    },
+    {
+      "email": "jane.doe@mail.com",
+      "password": "my-password"
+    },
+    {
+      "email": "neltineunyoh@gmail.com",
+      "password": "123456"
+    },
+    {
+      "email": "tientcheuvanessa27@gmail.com",
+      "password": "124578"
+    }
+  ],
+  "mentors": [
+    {
+      "name": "Janice Will",
+      "email": "janicewillson@gmail.com",
+      "id": "MMS189",
+      "phone": "658907654",
+      "intern": "Alice Jane"
+    },
+    {
+      "name": "John Nasty",
+      "email": "johnnasty@gmail.com",
+      "id": "MMS149",
+      "phone": "654678975",
+      "intern": "Martha Peace"
+    },
+    {
+      "id": "MMS998",
+      "name": "Priscilla",
+      "email": "neltineunyoh@gmail.com",
+      "phone": "12345678908",
+      "intern": "Jok"
+    },
+    {
+      "id": "MMS774",
+      "name": "Precious",
+      "email": "precious@gmail.com",
+      "phone": "678653425",
+      "intern": "Preshy"
+    }
+  ],
+  "interns": [
+    {
+      "id": "IMS145",
+      "name": "Prince William",
+      "email": "princewilliam@gmail.com",
+      "phone": "676543367",
+      "intern": "Alice Pearls"
+    },
+    {
+      "id": "IMS149",
+      "name": "John Nasty",
+      "email": "johnnasty@gmail.com",
+      "phone": "654678975",
+      "intern": "Martha Peace"
+    }
+  ]
+}

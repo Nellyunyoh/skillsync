@@ -115,7 +115,7 @@
 }
 
 .login-container input[type="submit"]:hover {
-  background-color: #614ab7;
+  background-color: blue;
 }
 
 .login-container input[type="email"]::placeholder,

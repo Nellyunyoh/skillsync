@@ -54,17 +54,15 @@
   margin-bottom: 10px;
 }
 
-
 .fish {
-  background-color: #F2F4FF;
+  background-color: #f2f4ff;
   width: 80%;
-  height: 8vh;
+  height: 10vh;
   margin: 0 auto;
   color: rgba(0, 15, 159, 1);
   font-size: 50px;
   border-radius: 20px;
   margin-bottom: 20px;
-  /* margin-top: 20px; */
 }
 
 .con {
@@ -73,14 +71,6 @@
   margin-top: 15px;
   margin-bottom: 20px;
 }
-
-
-
-
-
-
-
-
 
 @media screen and (max-width: 768px) {
   .modal-container {

@@ -1,32 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Button from "../../Components/ui/Button";
 import DashboardLayouts from "../../layouts/DashboardLayouts";
+import { API_ENDPOINTS, getData } from "../../config/apiConfig";
 
 const Mentors = () => {
-  const [mentors, setMentors] = useState([
-    {
-      name: "Joseph Johnson",
-      email: "josephjohnson@gmail.com",
-      id: "MMS145",
-      phone: "654894694",
-      intern: "Mary Mag",
-    },
-    {
-      name: "John Nasty",
-      email: "johnnasty@gmail.com",
-      id: "MMS149",
-      phone: "654678975",
-      intern: "Martha Peace",
-    },
-  ]);
-
+  const [mentors, setMentors] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [editIndex, setEditIndex] = useState(null);
+  const [setEditIndex] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [deleteIndex, setDeleteIndex] = useState(null);
+  const [setDeleteIndex] = useState(null);
 
   const { register, handleSubmit, reset, setValue } = useForm({
     defaultValues: {
@@ -38,23 +24,33 @@ const Mentors = () => {
     },
   });
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/mentors")
+      .then((response) => {
+        setMentors(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching mentors:", error);
+      });
+  }, []);
+
   const generateId = () => {
     const randomNumber = Math.floor(100 + Math.random() * 900);
     return `MMS${randomNumber}`;
   };
 
-  const onSubmit = (data) => {
-    if (isEditing) {
-      const updatedMentors = [...mentors];
-      updatedMentors[editIndex] = data;
-      setMentors(updatedMentors);
-      setIsEditing(false);
-    } else {
-      setMentors([...mentors, data]);
+
+  const getMentors = async () => {
+    try {
+      const mentors = await getData(API_ENDPOINTS.mentors);
+      console.log("Mentors:", mentors);
+    } catch (error) {
+      console.error("Error fetching mentors:", error);
     }
-    setShowModal(false);
-    reset();
   };
+
+  getMentors();
 
   const handleEditMentor = (index) => {
     const mentor = mentors[index];
@@ -69,10 +65,22 @@ const Mentors = () => {
     setValue("intern", mentor.intern);
   };
 
-  const handleDeleteMentor = (index) => {
+  const handleDeleteMentor = async (index) => {
     setDeleteIndex(index);
     setShowDeleteModal(true);
   };
+
+  // const confirmDeleteMentor = async () => {
+  //   try {
+  //     await axios.delete(`http://localhost:3000/mentors/${mentors[deleteIndex].id}`);
+  //     const updatedMentors = mentors.filter((_, i) => i !== deleteIndex);
+  //     setMentors(updatedMentors);
+  //     setShowDeleteModal(false);
+  //     setDeleteIndex(null);
+  //   } catch (error) {
+  //     console.error("Error deleting mentor:", error);
+  //   }
+  // };
 
   const closeModal = (e) => {
     if (e.target.className === "modal") {
@@ -90,17 +98,6 @@ const Mentors = () => {
         <Button
           variant="primary"
           label={"+ Add Mentor"}
-          onClick={() => {
-            setShowModal(true);
-            setIsEditing(false);
-            reset();
-            setValue("id", generateId());
-          }}
-        />
-
-<Button
-          variant="default"
-          label={"Filter"}
           onClick={() => {
             setShowModal(true);
             setIsEditing(false);
@@ -148,7 +145,7 @@ const Mentors = () => {
             <div className="modal-content">
               <h3>{isEditing ? "Edit Mentor" : "Add Mentor"}</h3>
 
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={handleSubmit()}>
                 <input
                   type="text"
                   placeholder="Name"
@@ -176,7 +173,6 @@ const Mentors = () => {
                   {...register("intern", { required: true })}
                 />
                 <div className="modal-buttons">
-                 
                   <button
                     type="button"
                     onClick={() => {
@@ -200,18 +196,7 @@ const Mentors = () => {
             <div className="modal-content">
               <h3>Are you sure you want to delete this mentor?</h3>
               <div className="modal-buttons">
-                <button
-                  onClick={() => {
-                    const updatedMentors = mentors.filter(
-                      (_, i) => i !== deleteIndex
-                    );
-                    setMentors(updatedMentors);
-                    setShowDeleteModal(false);
-                    setDeleteIndex(null);
-                  }}
-                >
-                  Confirm
-                </button>
+                <button onClick>Confirm</button>
                 <button
                   onClick={() => {
                     setShowDeleteModal(false);

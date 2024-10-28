@@ -10,6 +10,8 @@ import { useForm } from "react-hook-form";
 import "../css/Interns.css";
 import DashboardLayouts from "../../layouts/DashboardLayouts";
 
+import { API_ENDPOINTS, getData }    from "../../config/apiConfig.js";
+
 const Interns = () => {
   const [interns, setInterns] = useState([
     {
@@ -18,20 +20,6 @@ const Interns = () => {
       id: "IMS145",
       phone: "654894694",
       intern: "Mary Mag",
-    },
-    {
-      name: "John Nasty",
-      email: "johnnasty@gmail.com",
-      id: "IMS149",
-      phone: "654678975",
-      intern: "Martha Peace",
-    },
-    {
-      name: "John Nasty",
-      email: "johnnasty@gmail.com",
-      id: "IMS149",
-      phone: "654678975",
-      intern: "Martha Peace",
     },
     {
       name: "John Nasty",
@@ -64,19 +52,36 @@ const Interns = () => {
     return `IMS${randomNumber}`;
   };
 
-  const handleAddMentor = (data) => {
-    if (editingIndex !== null) {
-      const updatedInterns = [...interns];
-      updatedInterns[editingIndex] = data;
-      setInterns(updatedInterns);
-      setEditingIndex(null);
-    } else {
-      setInterns([...interns, data]);
+  const getInterns = async () => {
+    try {
+      const interns = await getData(API_ENDPOINTS.interns);
+      console.log('Interns:', interns);
+    } catch (error) {
+      console.error('Error fetching interns:', error);
     }
-    setShowModal(false);
-    reset();
   };
+  
+  getInterns();
+  
 
+  // const handleAddMentor = async (data) => {
+  //   if (editingIndex !== null) {
+  //     try {
+  //       const response = await axios.put(`http://localhost:3000/interns/${data.id}`, data);
+  //       const updatedInterns = [...interns];
+  //       updatedInterns[editingIndex] = response.data; 
+  //       setInterns(updatedInterns);
+  //       setEditingIndex(null);
+  //     } catch (error) {
+  //       console.error("Error updating intern:", error);
+  //     }
+  //   } else {
+  //     handleAddMentor(data);
+  //   }
+  //   setShowModal(false);
+  //   reset();
+  // };
+  
   const handleEdit = (index) => {
     const intern = interns[index];
     setValue("name", intern.name);
@@ -88,11 +93,17 @@ const Interns = () => {
     setShowModal(true);
   };
 
-  const handleDelete = (index) => {
-    setDeleteIndex(index);
-    setShowDeleteModal(true);
-  };
-
+  // const handleDelete = async (index) => {
+  //   try {
+  //     await axios.delete(`http://localhost:3000/interns/${interns[index].id}`); 
+  //     const updatedInterns = interns.filter((_, i) => i !== index); 
+  //     setInterns(updatedInterns);
+  //   } catch (error) {
+  //     console.error("Error deleting intern:", error);
+  //   }
+  //   setShowDeleteModal(false);
+  // };
+  
   const handleMore = (index) => {
     setSelectedIntern(interns[index]);
     setShowMoreModal(true);
@@ -132,12 +143,7 @@ const Interns = () => {
           }}
         />
 
-<Button
-          variant="default"
-          label={"Filter"}
-         
-          
-        />
+        <Button variant="default" label={"Filter"} />
 
         <table className="custom-table">
           <thead>
@@ -165,7 +171,7 @@ const Interns = () => {
                   />
                   <FaTrashAlt
                     className="delete-icon"
-                    onClick={() => handleDelete(index)}
+                    onClick={() =>(index)}
                   />
                   <MdOutlineMoreHoriz
                     className="more-icon"
@@ -181,7 +187,7 @@ const Interns = () => {
           <div className="modal" onClick={closeModal}>
             <div className="modal-content">
               <h3>{editingIndex !== null ? "Edit Intern" : "Add Intern"}</h3>
-              <form onSubmit={handleSubmit(handleAddMentor)}>
+              <form onSubmit={handleSubmit()}>
                 <input
                   type="text"
                   placeholder="Name"
@@ -208,7 +214,7 @@ const Interns = () => {
                   type="text"
                   placeholder="User ID"
                   {...register("id", { required: "ID is required" })}
-                  readOnly //
+                  readOnly 
                 />
                 {errors.id && <p className="error">{errors.id.message}</p>}
 
@@ -235,7 +241,6 @@ const Interns = () => {
                 )}
 
                 <div className="modal-buttons">
-                
                   <button type="button" onClick={() => setShowModal(false)}>
                     Cancel
                   </button>
@@ -255,22 +260,33 @@ const Interns = () => {
               <h3>Select Action for {selectedIntern.name}</h3>
               <p>Please choose an action to perform for this intern</p>
               <div className="modal-button">
-       <div className="jelly">
-       <button
-                  className=""
-                  onClick={() => goToEvaluation(selectedIntern)}
-                >
-                 <div className="fish"> <FaSheetPlastic className="con" /></div> Evaluation
-                </button>
+                <div className="jelly">
+                  <button
+                    className=""
+                    onClick={() => goToEvaluation(selectedIntern)}
+                  >
+                    <div className="fish">
+                      {" "}
+                      <FaSheetPlastic className="con" />
+                    </div>{" "}
+                    Evaluation
+                  </button>
 
-                <button className="" onClick={goToAttendance}>
-                  <div className="fish"><FaExclamationCircle className="con" /> </div>Attendance
-                </button>
+                  <button className="" onClick={goToAttendance}>
+                    <div className="fish">
+                      <FaExclamationCircle className="con" />{" "}
+                    </div>
+                    Attendance
+                  </button>
 
-                <button className="" onClick={goToAttestation}>
-                 <div className="fish"> <HiClipboardDocumentList className="con" /></div> Attestation 
-                </button>
-       </div>
+                  <button className="" onClick={goToAttestation}>
+                    <div className="fish">
+                      {" "}
+                      <HiClipboardDocumentList className="con" />
+                    </div>{" "}
+                    Attestation
+                  </button>
+                </div>
               </div>
               <Button
                 variant="danger"

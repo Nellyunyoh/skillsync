@@ -1,8 +1,8 @@
 // import React, { useState } from 'react';
 import "../css/auth.css";
 import profile from "../../assets/images/profileimg.png";
-import logomark from "../../assets/images/Logomark.png";
-import logo from "../../assets/images/logo1.png";
+// import logomark from "../../assets/images/Logomark.png";
+import logo from "../../assets/images/image 21 copy.png";
 import { useState } from "react";
 
 export const ForgotPassword = () => {
@@ -34,14 +34,12 @@ export const ForgotPassword = () => {
       <div className="image-container">
         <img src={profile} alt="" />
         <div className="overlay">
-          <div className="logo-text">
-            <img src={logomark} alt="Logo" />
-            <h1>Catalog</h1>
-          </div>
+          
         </div>
       </div>
 
-      <div className="login-container">
+     <div className="nelly">
+     <div className="login-container">
         <img src={logo} alt="Logo" />
         {step === 1 && (
           <div>
@@ -104,6 +102,7 @@ export const ForgotPassword = () => {
           </div>
         )}
       </div>
+     </div>
     </div>
   );
 };

@@ -161,7 +161,7 @@ function Projects() {
                   </option>
                   <option value="New">New</option>
                   <option value="In Progress">In Progress</option>
-                  <option value="Pending">Pending</option>
+                  <option value="Pending">In review</option>
                   <option value="Completed">Completed</option>
                 </select>
                 <input
