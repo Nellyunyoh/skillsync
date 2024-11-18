@@ -1,4 +1,4 @@
-import  { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import '../css/Attestation.css';
 import grass from '../../assets/images/Frame 111.png'
@@ -30,18 +30,18 @@ const Attestation = () => {
           <input type="text" value={ceo} onChange={(e) => setCeo(e.target.value)} />
         </label>
         <label>
-         Manager :
+          Manager :
           <input type="text" value={programManager} onChange={(e) => setProgramManager(e.target.value)} />
         </label>
         <button onClick={handlePrint}>Save as PDF</button>
       </div>
 
-   
+
       <div className="certificate-container" ref={certificateRef}>
         <div className="certificate-header">
           <img src={group} alt="mav" />
           <h1>PRESENTED TO</h1>
-          
+
         </div>
         <div className="certificate-body">
           <h2>{name || 'Name & Surname'}</h2>
@@ -49,7 +49,7 @@ const Attestation = () => {
             For outstanding completion of the compulsory internship program
             at MAVIANCE PLC on {date || 'Date'}.
             During this period has demonstrated exceptional commitment, professionalism, and the ability to apply the skills and knowledge acquired throughout the internship. Their contributions have been invaluable, and they have fulfilled all the requirements of the internship program.
-We hereby acknowledge their successful completion of the internship and wish them the best in their future endeavors.
+            We hereby acknowledge their successful completion of the internship and wish them the best in their future endeavors.
           </p>
         </div>
         <div className="certificate-footer">
@@ -57,7 +57,7 @@ We hereby acknowledge their successful completion of the internship and wish the
             <p>{ceo || 'John Joseph'}</p>
             <span>SUPERVISOR</span>
           </div>
-          <img src = {grass} className='grass' alt='' />
+          <img src={grass} className='grass' alt='' />
           <div className="signature">
             <p>{programManager || 'Jerry Johnny'}</p>
             <span>MANAGER</span>

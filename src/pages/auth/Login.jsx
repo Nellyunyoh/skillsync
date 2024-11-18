@@ -15,18 +15,16 @@ function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.get("http://localhost:3000/users");
-      const users = response.data;
+      console.log(data);
 
-      const user = users.find(
-        (user) => user.email === data.email && user.password === data.password
-      );
+      const response = await axios.get("http://localhost:3000/users");
+      const user = response.data?.find((item) => item.email === data.email && item.password === data.password)
 
       if (user) {
         console.log("Login successful!");
+
         navigate("/admin");
       } else {
-        console.error("Invalid email or password");
         alert("Invalid email or password");
       }
     } catch (err) {

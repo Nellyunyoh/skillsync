@@ -7,10 +7,10 @@ import { FaSheetPlastic } from "react-icons/fa6";
 import { FaExclamationCircle } from "react-icons/fa";
 import { HiClipboardDocumentList } from "react-icons/hi2";
 import { useForm } from "react-hook-form";
+import axios from "axios"; 
 import "../css/Interns.css";
 import DashboardLayouts from "../../layouts/DashboardLayouts";
-
-import { API_ENDPOINTS, getData }    from "../../config/apiConfig.js";
+import { API_ENDPOINTS, getData } from "../../config/apiConfig.js";
 
 const Interns = () => {
   const [interns, setInterns] = useState([
@@ -38,7 +38,6 @@ const Interns = () => {
   const [deleteIndex, setDeleteIndex] = useState(null);
 
   const navigate = useNavigate();
-
   const {
     register,
     handleSubmit,
@@ -47,41 +46,42 @@ const Interns = () => {
     formState: { errors },
   } = useForm();
 
-  const generateId = () => {
-    const randomNumber = Math.floor(100 + Math.random() * 900);
-    return `IMS${randomNumber}`;
-  };
+  const generateId = () => `IMS${Math.floor(100 + Math.random() * 900)}`;
 
   const getInterns = async () => {
     try {
-      const interns = await getData(API_ENDPOINTS.interns);
-      console.log('Interns:', interns);
+      const internsData = await getData(API_ENDPOINTS.interns);
+      console.log("Interns:", internsData);
     } catch (error) {
-      console.error('Error fetching interns:', error);
+      console.error("Error fetching interns:", error);
     }
   };
-  
-  getInterns();
-  
 
-  // const handleAddMentor = async (data) => {
-  //   if (editingIndex !== null) {
-  //     try {
-  //       const response = await axios.put(`http://localhost:3000/interns/${data.id}`, data);
-  //       const updatedInterns = [...interns];
-  //       updatedInterns[editingIndex] = response.data; 
-  //       setInterns(updatedInterns);
-  //       setEditingIndex(null);
-  //     } catch (error) {
-  //       console.error("Error updating intern:", error);
-  //     }
-  //   } else {
-  //     handleAddMentor(data);
-  //   }
-  //   setShowModal(false);
-  //   reset();
-  // };
-  
+  getInterns();
+
+  const handleAddMentor = async (data) => {
+    try {
+      if (editingIndex !== null) {
+        const response = await axios.put(
+          `http://localhost:3000/interns/${data.id}`,
+          data
+        );
+        const updatedInterns = [...interns];
+        updatedInterns[editingIndex] = response.data;
+        setInterns(updatedInterns);
+        setEditingIndex(null);
+      } else {
+        const newIntern = { ...data, id: generateId() };
+        const response = await axios.post("http://localhost:3000/interns", newIntern);
+        setInterns((prev) => [...prev, response.data]);
+      }
+      setShowModal(false);
+      reset();
+    } catch (error) {
+      console.error("Error saving intern:", error);
+    }
+  };
+
   const handleEdit = (index) => {
     const intern = interns[index];
     setValue("name", intern.name);
@@ -93,17 +93,16 @@ const Interns = () => {
     setShowModal(true);
   };
 
-  // const handleDelete = async (index) => {
-  //   try {
-  //     await axios.delete(`http://localhost:3000/interns/${interns[index].id}`); 
-  //     const updatedInterns = interns.filter((_, i) => i !== index); 
-  //     setInterns(updatedInterns);
-  //   } catch (error) {
-  //     console.error("Error deleting intern:", error);
-  //   }
-  //   setShowDeleteModal(false);
-  // };
-  
+  const handleDelete = async (index) => {
+    try {
+      await axios.delete(`http://localhost:3000/interns/${interns[index].id}`);
+      setInterns(interns.filter((_, i) => i !== index));
+    } catch (error) {
+      console.error("Error deleting intern:", error);
+    }
+    setShowDeleteModal(false);
+  };
+
   const handleMore = (index) => {
     setSelectedIntern(interns[index]);
     setShowMoreModal(true);
@@ -117,17 +116,9 @@ const Interns = () => {
     }
   };
 
-  const goToEvaluation = (intern) => {
-    navigate("/evaluation", { state: { intern } });
-  };
-
-  const goToAttestation = () => {
-    navigate("/attestation");
-  };
-
-  const goToAttendance = () => {
-    navigate("/attendance");
-  };
+  const goToEvaluation = (intern) => navigate("/evaluation", { state: { intern } });
+  const goToAttestation = () => navigate("/attestation");
+  const goToAttendance = () => navigate("/attendance");
 
   return (
     <DashboardLayouts>
@@ -135,15 +126,14 @@ const Interns = () => {
         <h2>Intern List</h2>
         <Button
           variant="primary"
-          label={"+ Add Intern"}
+          label="+ Add Intern"
           onClick={() => {
             setShowModal(true);
             reset();
             setValue("id", generateId());
           }}
         />
-
-        <Button variant="default" label={"Filter"} />
+        <Button variant="default" label="Filter" />
 
         <table className="custom-table">
           <thead>
@@ -165,13 +155,11 @@ const Interns = () => {
                 <td>{intern.phone}</td>
                 <td>{intern.intern}</td>
                 <td>
-                  <FaEdit
-                    className="edit-icon"
-                    onClick={() => handleEdit(index)}
-                  />
-                  <FaTrashAlt
-                    className="delete-icon"
-                    onClick={() =>(index)}
+                  <FaEdit className="edit-icon" onClick={() => handleEdit(index)} />
+                  <FaTrashAlt className="delete-icon" onClick={() => {
+                      setDeleteIndex(index);
+                      setShowDeleteModal(true);
+                    }}
                   />
                   <MdOutlineMoreHoriz
                     className="more-icon"
@@ -187,7 +175,7 @@ const Interns = () => {
           <div className="modal" onClick={closeModal}>
             <div className="modal-content">
               <h3>{editingIndex !== null ? "Edit Intern" : "Add Intern"}</h3>
-              <form onSubmit={handleSubmit()}>
+              <form onSubmit={handleSubmit(handleAddMentor)}>
                 <input
                   type="text"
                   placeholder="Name"
@@ -206,15 +194,13 @@ const Interns = () => {
                     },
                   })}
                 />
-                {errors.email && (
-                  <p className="error">{errors.email.message}</p>
-                )}
+                {errors.email && <p className="error">{errors.email.message}</p>}
 
                 <input
                   type="text"
                   placeholder="User ID"
                   {...register("id", { required: "ID is required" })}
-                  readOnly 
+                  readOnly
                 />
                 {errors.id && <p className="error">{errors.id.message}</p>}
 
@@ -225,26 +211,19 @@ const Interns = () => {
                     required: "Phone number is required",
                   })}
                 />
-                {errors.phone && (
-                  <p className="error">{errors.phone.message}</p>
-                )}
+                {errors.phone && <p className="error">{errors.phone.message}</p>}
 
                 <input
                   type="text"
                   placeholder="Mentor"
-                  {...register("intern", {
-                    required: "Mentor name is required",
-                  })}
+                  {...register("intern", { required: "Mentor name is required" })}
                 />
-                {errors.intern && (
-                  <p className="error">{errors.intern.message}</p>
-                )}
+                {errors.intern && <p className="error">{errors.intern.message}</p>}
 
                 <div className="modal-buttons">
                   <button type="button" onClick={() => setShowModal(false)}>
                     Cancel
                   </button>
-
                   <button type="submit">
                     {editingIndex !== null ? "Update" : "Save"}
                   </button>
@@ -261,38 +240,18 @@ const Interns = () => {
               <p>Please choose an action to perform for this intern</p>
               <div className="modal-button">
                 <div className="jelly">
-                  <button
-                    className=""
-                    onClick={() => goToEvaluation(selectedIntern)}
-                  >
-                    <div className="fish">
-                      {" "}
-                      <FaSheetPlastic className="con" />
-                    </div>{" "}
-                    Evaluation
+                  <button onClick={() => goToEvaluation(selectedIntern)}>
+                    <FaSheetPlastic className="con" /> Evaluation
                   </button>
-
-                  <button className="" onClick={goToAttendance}>
-                    <div className="fish">
-                      <FaExclamationCircle className="con" />{" "}
-                    </div>
-                    Attendance
+                  <button onClick={goToAttendance}>
+                    <FaExclamationCircle className="con" /> Attendance
                   </button>
-
-                  <button className="" onClick={goToAttestation}>
-                    <div className="fish">
-                      {" "}
-                      <HiClipboardDocumentList className="con" />
-                    </div>{" "}
-                    Attestation
+                  <button onClick={goToAttestation}>
+                    <HiClipboardDocumentList className="con" /> Attestation
                   </button>
                 </div>
               </div>
-              <Button
-                variant="danger"
-                label="Cancel"
-                onClick={() => setShowMoreModal(false)}
-              ></Button>
+              <Button variant="danger" label="Cancel" onClick={() => setShowMoreModal(false)} />
             </div>
           </div>
         )}
@@ -300,27 +259,14 @@ const Interns = () => {
         {showDeleteModal && (
           <div className="modal" onClick={closeModal}>
             <div className="modal-content">
-              <h3>Are you sure you want to delete this intern?</h3>
+              <h3>Confirm Delete</h3>
+              <p>Are you sure you want to delete this intern?</p>
               <div className="modal-buttons">
-                <button
-                  onClick={() => {
-                    const updatedInterns = interns.filter(
-                      (_, i) => i !== deleteIndex
-                    );
-                    setInterns(updatedInterns);
-                    setShowDeleteModal(false);
-                    setDeleteIndex(null);
-                  }}
-                >
-                  Confirm
-                </button>
-                <button
-                  onClick={() => {
-                    setShowDeleteModal(false);
-                    setDeleteIndex(null);
-                  }}
-                >
+                <button type="button" onClick={() => setShowDeleteModal(false)}>
                   Cancel
+                </button>
+                <button type="button" onClick={() => handleDelete(deleteIndex)}>
+                  Delete
                 </button>
               </div>
             </div>
