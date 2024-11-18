@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const mentorSchema = new mongoose.Schema ({
+const mentorSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true

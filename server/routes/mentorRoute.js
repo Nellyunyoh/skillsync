@@ -3,9 +3,9 @@ import { createMentor, fetchMentors, updateMentors, deleteMentor } from "../cont
 
 const router = express.Router();
 
-router.post ("/createMentors", createMentors);
-router.get("/fetchMentors", fetchMentors);
-router.put("/updateMentors/:id", updateMentors);
-router.delete("/deleteMentors/:id", deleteMentors);
+router.post ("/", createMentors);
+router.get("/", fetchMentors);
+router.put("/:id", updateMentors);
+router.delete("/:id", deleteMentors);
 
 export default router;

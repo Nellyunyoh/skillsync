@@ -1,4 +1,4 @@
-import Mentor from "../model/userModel.js";
+import Mentor from "../model/mentorModel.js";
 
 export const createMentor = async (req, res) => {
     try {
