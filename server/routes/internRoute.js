@@ -1,11 +1,10 @@
 import express from 'express';
-import { createIntern, fetchInterns, updateInterns, deleteIntern } from "../controller/InternController.js";
+import { createIntern, fetchInterns, updateIntern, deleteIntern } from "../controller/InternController.js";
 
 const router = express.Router();
-
-router.post ("/", createIntern);
+router.post("/", createIntern);
 router.get("/", fetchInterns);
-router.put("/:id", updateInterns);
+router.put("/:id", updateIntern);
 router.delete("/:id", deleteIntern);
 
 export default router;

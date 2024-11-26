@@ -1,11 +1,11 @@
 import express from 'express';
-import { createMentor, fetchMentors, updateMentors, deleteMentor } from "../controller/userController.js";
+import { createMentor, fetchMentor, updateMentor, deleteMentor } from "../controller/MentorController.js";
 
 const router = express.Router();
 
-router.post ("/", createMentors);
-router.get("/", fetchMentors);
-router.put("/:id", updateMentors);
-router.delete("/:id", deleteMentors);
+router.post ("/", createMentor);
+router.get("/", fetchMentor);
+router.put("/:id", updateMentor);
+router.delete("/:id", deleteMentor);
 
 export default router;
