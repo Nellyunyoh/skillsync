@@ -20,7 +20,7 @@ export const createMentor = async (req, res) => {
     }
 }
 
-export const fetchMentors = async (req, res) => {
+export const fetchMentor = async (req, res) => {
     try {
         const mentors = await Mentor.find();
         if (mentors.length === 0) {
@@ -58,4 +58,18 @@ export const deleteMentor = async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: "Internal Server Error" });
     }
+};
+
+export const patchMentor = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const mentorExist = await Mentor.findById(id);
+        if (!mentorExist) {
+            return res.status(404).json({ message: "Mentor not found" });
+        }
+        const updatedMentor = await Mentor.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
+        res.status(200).json(updatedMentor);
+    } catch (error) {
+            res.status(500).json({ error: "Internal Server Error" });
+        }
 };

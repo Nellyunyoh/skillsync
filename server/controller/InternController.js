@@ -1,11 +1,11 @@
-import intern from "../model/userModel.js";
+import intern from "../model/internModel.js";
 
 export const createIntern = async (req, res) => {
     try {
         const internData = req.body;
         const { email } = internData;
 
-        const internExist = await Intern.findOne({ email });
+        const internExist = await intern.findOne({ email });
 
         if (internExist) {
             return res.status(400).json({ message: "Intern already exists" });
@@ -60,3 +60,16 @@ export const deleteIntern = async (req, res) => {
     }
 };
 
+export const patchIntern = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const internExist = await intern.findById(id);
+        if (!internExist) {
+            return res.status(404).json({ message: "intern not found" });
+        }
+        const updatedIntern = await intern.findByIdAndUpdate(id, { ...req.body, _id: id }, { new: true });
+        res.status(200).json(updatedIntern);
+    } catch (error) {
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
